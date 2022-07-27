@@ -9,5 +9,5 @@ export default {
     gift: mdiGiftOpenOutline,
     accountVoice: mdiAccountVoice,
     phone: mdiPhoneOutline,
-    menu: mdiMenu,
+    TheMenu: mdiMenu,
 }
