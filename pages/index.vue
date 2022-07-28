@@ -1,11 +1,14 @@
 <template>
-    <Header />
+    <Home />
 </template>
 
 <script>
-import Header from '../components/global/The/Header.vue'
+import Home from '@/Views/Home.vue'
+
 export default {
     name: 'IndexPage',
-    components: { Header },
+    components: {
+        Home,
+    },
 }
 </script>
