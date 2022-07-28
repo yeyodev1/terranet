@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full">
+    <header class="w-full border-b-2 border-solid border-lightBlue">
         <div class="w-full flex justify-between py-5 lg:hidden">
             <div class="w-16 flex items-center justify-center px-5">
                 <LogoHeader />
