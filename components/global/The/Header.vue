@@ -1,5 +1,6 @@
 <template>
     <header class="w-full border-b-2 border-solid border-lightBlue">
+        <!-- HEADER UNTIL BEFORE LG DEVICES -->
         <div class="w-full flex justify-between py-5 lg:hidden">
             <div class="w-16 flex items-center justify-center px-5">
                 <LogoHeader />
@@ -10,9 +11,8 @@
                 </button>
             </div>
         </div>
-        <div
-            class="w-full hidden lg:flex justify-between px-10 max-w-6xl mx-auto"
-        >
+        <!-- HEADER SINCE LG DEVICES -->
+        <div class="w-full hidden lg:flex justify-between max-w-6xl mx-auto">
             <div class="w-32 flex items-center justify-center pt-6 pb-5">
                 <img
                     class=""
@@ -30,9 +30,9 @@
                     </TheTextStyle>
                 </nuxt-link>
             </div>
-            <div class="flex justify-center items-center">
+            <div class="flex justify-center items-center pr-3">
                 <button
-                    class="font-principal w-52 border border-yellow rounded-md text-lg text-white py-3 px-6"
+                    class="font-principal border border-yellow rounded-md text-lg text-white w-52 py-3"
                 >
                     Contrata tu servicio
                 </button>
