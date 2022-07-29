@@ -1,7 +1,7 @@
 <template>
     <div class="background">
         <TheHeader />
-        <TheHero />
+        <HomeHero />
     </div>
 </template>
 
@@ -10,5 +10,8 @@
 <style scoped>
 .background {
     background-image: url('@/static/Backgrounds/Background-2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 </style>
