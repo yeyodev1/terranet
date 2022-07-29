@@ -51,13 +51,11 @@
 <script>
 import Man from '../global/The/Svg/Man.vue'
 import Plus from '../global/The/Svg/Plus.vue'
-import ManTablet from '../global/The/Svg/ManTablet.vue'
 
 export default {
     components: {
         Man,
         Plus,
-        ManTablet,
     },
     data: () => ({
         traits: [
