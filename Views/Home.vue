@@ -2,10 +2,18 @@
     <div class="background">
         <TheHeader />
         <HomeHero />
+        <PhoneCallToAction />
     </div>
 </template>
 
-<script></script>
+<script>
+import PhoneCallToAction from '../components/Home/PhoneCallToAction.vue'
+export default {
+    components: {
+        PhoneCallToAction,
+    },
+}
+</script>
 
 <style scoped>
 .background {
