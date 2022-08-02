@@ -1,7 +1,7 @@
 <template>
-    <div class="w-full border-b-2 border-white">
+    <div class="w-full border-b-2 border-white mx-auto">
         <!-- MAIN IDEA  -->
-        <div class="w-4/5 mx-auto lg:mt-32 sm:mt-24">
+        <div class="w-4/5 mx-auto lg:mt-32 sm:mt-24 max-w-7xl">
             <div class="w-full mt-8">
                 <p
                     class="font-principal text-2xl font-bold text-white sm:text-4xl"
