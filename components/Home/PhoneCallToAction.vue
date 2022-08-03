@@ -1,5 +1,7 @@
 <template>
-    <div class="flex flex-wrap items-center justify-center w-full p-4">
+    <div
+        class="flex flex-wrap items-center justify-center w-full p-4 pb-12 border-b-2 border-white"
+    >
         <div
             class="flex flex-col items-center justify-center w-4/5 mt-5 lg:w-1/2 max-w-7xl"
         >
