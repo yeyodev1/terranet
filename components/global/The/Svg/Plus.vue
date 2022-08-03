@@ -1,4 +1,5 @@
 <template>
+    <!-- PLUS ICON -->
     <div class="w-full">
         <svg
             width="8"

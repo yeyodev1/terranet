@@ -1,4 +1,5 @@
 <template>
+    <!-- HOME WIFI ICON -->
     <div class="w-full">
         <svg
             width="44"
