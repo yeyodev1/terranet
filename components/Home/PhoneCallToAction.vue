@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-wrap items-center justify-center w-full p-4 pb-12 border-b-2 border-white"
+        class="flex flex-wrap items-center justify-center w-full p-4 background-phoneCallToAction pb-12 border-b-2 border-white"
     >
         <div
             class="flex flex-col items-center justify-center w-4/5 mt-5 lg:w-1/2 max-w-7xl"
@@ -60,5 +60,11 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+.background-phoneCallToAction {
+    background-image: url('@/static/Backgrounds/Background-3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 </style>

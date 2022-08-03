@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-col items-center justify-center w-full p-4 pb-12 lg:pb-20 sm:pb-10"
+        class="flex flex-col items-center justify-center w-full p-4 pb-12 background-ourplanes lg:pb-20 sm:pb-10"
     >
         <div class="w-4/5 pt-10 mx-auto">
             <p
@@ -72,6 +72,12 @@ export default {
 <style scoped>
 .bg-button {
     background-image: url('@/static/Backgrounds/Button/BackgroundPlanButton.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.background-ourplanes {
+    background-image: url('@/static/Backgrounds/Background-2.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
