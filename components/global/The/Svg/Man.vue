@@ -1,4 +1,5 @@
 <template>
+    <!-- MAN ICON -->
     <div class="w-full">
         <svg
             width="158"
