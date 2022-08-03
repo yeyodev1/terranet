@@ -12,3 +12,17 @@ export default {
     },
 }
 </script>
+
+<style>
+@font-face {
+    font-family: 'FontJek';
+    font-display: swap;
+    src: url('@/assets/fonts/Fontjek.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'FontJek';
+    font-display: swap;
+    src: url('@/assets/fonts/Fontjek.ttf') format('truetype');
+}
+</style>
