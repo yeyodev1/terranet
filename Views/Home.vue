@@ -11,6 +11,7 @@
 
         <Benefits />
         <PaymentsMethod />
+        <PhoneCallToAction />
     </div>
 </template>
 
