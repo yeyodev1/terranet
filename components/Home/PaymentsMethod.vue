@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-col items-center justify-center w-full border-b-2 border-white background-pay"
+        class="flex flex-col items-center justify-center w-full pb-20 border-b-2 border-white background-pay sm:pb-16 lg:pb-20"
     >
         <div class="w-4/5 pt-10 mx-auto lg:pt-24">
             <p
