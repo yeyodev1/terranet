@@ -22,7 +22,7 @@
                     <button
                         class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
-                        <div>
+                        <div class="pb-5">
                             <HomeWifi />
                         </div>
                         <div>
@@ -40,7 +40,7 @@
                     <button
                         class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
-                        <div>
+                        <div class="pb-5">
                             <Corporation />
                         </div>
                         <div>
