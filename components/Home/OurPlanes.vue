@@ -20,7 +20,7 @@
             <div class="w-4/5 sm:w-1/3">
                 <nuxt-link class="" to="/">
                     <button
-                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-lightBlue"
+                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
                         <div>
                             <HomeWifi />
@@ -38,7 +38,7 @@
             <div class="w-4/5 sm:w-1/3">
                 <nuxt-link class="" to="/">
                     <button
-                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg sm:py-5 bg-lightBlue"
+                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
                         <div>
                             <Corporation />
@@ -68,3 +68,12 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.bg-button {
+    background-image: url('@/static/Backgrounds/Button/BackgroundPlanButton.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+</style>
