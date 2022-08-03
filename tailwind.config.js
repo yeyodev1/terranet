@@ -18,7 +18,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 principal: ['Poppins', ...defaultTheme.fontFamily.sans],
-                secondary: ['Fontjek'],
+                secondary: ['FontJek'],
             },
         },
     },
