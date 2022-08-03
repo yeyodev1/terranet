@@ -1,5 +1,7 @@
 <template>
-    <div class="flex flex-col items-center justify-center w-full p-4">
+    <div
+        class="flex flex-col items-center justify-center w-full p-4 pb-12 lg:pb-20 sm:pb-10"
+    >
         <div class="w-4/5 pt-10 mx-auto">
             <p
                 class="text-2xl font-bold text-center text-white font-principal sm:text-5xl"
