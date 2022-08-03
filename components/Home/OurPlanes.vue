@@ -15,7 +15,7 @@
             </p>
         </div>
         <div
-            class="flex flex-wrap items-center justify-around w-full max-w-7xl"
+            class="flex flex-wrap items-center justify-around w-full mt-8 max-w-7xl sm:mt-12"
         >
             <div class="w-4/5 sm:w-1/3">
                 <nuxt-link class="" to="/">
