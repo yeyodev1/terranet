@@ -1,0 +1,68 @@
+<template>
+    <div class="flex flex-col items-center justify-center w-full p-4">
+        <div class="w-4/5 pt-10 mx-auto">
+            <p
+                class="text-2xl font-bold text-center text-white font-principal sm:text-5xl"
+            >
+                Nuestros planes
+            </p>
+            <p
+                class="text-base font-medium text-center text-white font-principal sm:text-2xl"
+            >
+                Qué tipo de plan necesitas?
+            </p>
+        </div>
+        <div
+            class="flex flex-wrap items-center justify-around w-full max-w-7xl"
+        >
+            <div class="w-4/5 sm:w-1/3">
+                <nuxt-link class="" to="/">
+                    <button
+                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-lightBlue"
+                    >
+                        <div>
+                            <HomeWifi />
+                        </div>
+                        <div>
+                            <p
+                                class="text-3xl sm:text-5xl font-secondary text-yellow"
+                            >
+                                Hogar
+                            </p>
+                        </div>
+                    </button>
+                </nuxt-link>
+            </div>
+            <div class="w-4/5 sm:w-1/3">
+                <nuxt-link class="" to="/">
+                    <button
+                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg sm:py-5 bg-lightBlue"
+                    >
+                        <div>
+                            <Corporation />
+                        </div>
+                        <div>
+                            <p
+                                class="text-3xl sm:text-5xl font-secondary text-yellow"
+                            >
+                                Corporativo
+                            </p>
+                        </div>
+                    </button>
+                </nuxt-link>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import HomeWifi from '../global/The/Svg/HomeWifi.vue'
+import Corporation from '../global/The/Svg/Corporation.vue'
+
+export default {
+    components: {
+        HomeWifi,
+        Corporation,
+    },
+}
+</script>
