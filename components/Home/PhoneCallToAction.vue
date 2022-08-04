@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex flex-wrap items-center justify-center w-full p-4 background-phoneCallToAction pb-12 border-b-2 border-white"
+        class="flex flex-wrap items-center justify-center w-full p-4 pb-12 border-b-2 border-white background-phoneCallToAction"
     >
         <div
             class="flex flex-col items-center justify-center w-4/5 mt-5 lg:w-1/2 max-w-7xl"
@@ -44,7 +44,9 @@
                 </div>
             </div>
             <div class="flex items-center justify-center w-full md:w-1/2">
-                <button class="p-4 rounded-md h-fit font-principal bg-yellow">
+                <button
+                    class="p-2 text-xs font-semibold rounded-md lg:px-6 lg:py-3 lg:text-base h-fit font-principal bg-yellow"
+                >
                     Llámenme
                 </button>
             </div>
