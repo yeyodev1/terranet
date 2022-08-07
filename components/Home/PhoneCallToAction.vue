@@ -28,7 +28,7 @@
                     </div>
                     <label for="cellphone-numer">
                         <input
-                            class="w-3/4 px-4 text-white lg:4/5 background"
+                            class="w-3/4 px-4 text-white lg:4/5 background focus:outline-none"
                             id="cellphone-numer"
                             type="number"
                             placeholder="_  _  _  _  _  _  _  _  _"
