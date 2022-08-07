@@ -20,17 +20,20 @@
                 </div>
             </div>
         </div>
+        <TestPlan />
     </div>
 </template>
 
 <script>
 import TheHeader from '~/components/global/The/Header.vue'
 import Plan from '../components/Plans/Plan.vue'
+import TestPlan from '~/components/Plans/TestPlan.vue'
 
 export default {
     components: {
         TheHeader,
         Plan,
+        TestPlan,
     },
     data: () => ({
         homePlans: [
