@@ -1,11 +1,11 @@
 <template>
     <footer class="w-full p-6 bg-white">
-        <div class="max-w-7xl mx-auto">
+        <div class="mx-auto max-w-7xl">
             <img src="@/static/Logos/LogoFooter.png" alt="" />
         </div>
 
         <div
-            class="flex flex-col md:flex-row justify-between lg:px-6 max-w-7xl mx-auto"
+            class="flex flex-col mx-auto sm:justify-between md:justify-evenly md:flex-row lg:px-6 max-w-7xl"
         >
             <!-- CALL CENTER -->
             <div>
