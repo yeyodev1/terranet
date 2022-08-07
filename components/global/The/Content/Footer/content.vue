@@ -1,9 +1,9 @@
 <template>
-    <div class="w-full flex flex-col justify-start items-center">
+    <div class="flex flex-col items-center justify-start w-full pl-4 lg:px-5">
         <p class="w-full text-xl font-bold text-blue">
             {{ linkSection.title }}
         </p>
-        <div class="w-full flex flex-col">
+        <div class="flex flex-col w-full">
             <a
                 v-for="(link, index) in linkSection.links"
                 :key="index"
