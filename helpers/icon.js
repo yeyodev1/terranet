@@ -1,5 +1,7 @@
 import {
     mdiAccountVoice,
+    mdiChevronUp,
+    mdiChevronDown,
     mdiGiftOpenOutline,
     mdiMenu,
     mdiPhoneOutline,
@@ -10,4 +12,6 @@ export default {
     accountVoice: mdiAccountVoice,
     phone: mdiPhoneOutline,
     TheMenu: mdiMenu,
+    arrowDown: mdiChevronDown,
+    arrowUp: mdiChevronUp,
 }
