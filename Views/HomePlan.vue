@@ -3,16 +3,16 @@
         <TheHeader />
         <div class="w-4/5 mx-auto max-w-7xl">
             <p
-                class="pt-8 text-2xl font-bold text-center text-white lg:pt-20 sm:text-5xl"
+                class="mt-8 text-2xl font-bold text-center text-white lg:pt-20 sm:text-5xl"
             >
                 Plan Hogar
             </p>
             <p class="text-base font-medium text-center text-white sm:text-2xl">
                 !Tenemos el plan que necesitas!
             </p>
-            <div class="flex flex-wrap justify-around">
+            <div class="flex flex-wrap w-full max-w-6xl justify-evenly">
                 <div
-                    class="w-full mt-6 sm:w-2/5 sm:mt-12"
+                    class="mx-5 mt-6 sm:w-2/6 sm:mt-12"
                     v-for="(homePlan, index) in homePlans"
                     :key="index"
                 >
