@@ -12,7 +12,7 @@
             </p>
             <div class="flex flex-wrap w-full max-w-6xl justify-evenly">
                 <div
-                    class="mx-5 mt-6 sm:w-2/6 sm:mt-12"
+                    class="w-full mt-6 sm:mt-12"
                     v-for="(homePlan, index) in homePlans"
                     :key="index"
                 >
