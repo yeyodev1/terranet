@@ -21,6 +21,7 @@
             </div>
         </div>
         <TestPlan />
+        <Benefits />
     </div>
 </template>
 
@@ -28,12 +29,14 @@
 import TheHeader from '~/components/global/The/Header.vue'
 import Plan from '../components/Plans/Plan.vue'
 import TestPlan from '~/components/Plans/TestPlan.vue'
+import Benefits from '~/components/Home/Benefits.vue'
 
 export default {
     components: {
         TheHeader,
         Plan,
         TestPlan,
+        Benefits,
     },
     data: () => ({
         homePlans: [
