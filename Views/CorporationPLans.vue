@@ -13,17 +13,20 @@
             ¡Déjanos tus datos y recibe asesoría para el plan ideal!
         </p>
         <CorporationForm />
+        <CorporationDevices />
     </div>
 </template>
 
 <script>
 import Header from '~/components/global/The/Header.vue'
 import CorporationForm from '../components/Forms/corporationForm.vue'
+import CorporationDevices from '../components/Plans/CorporationDevices.vue'
 
 export default {
     components: {
         Header,
         CorporationForm,
+        CorporationDevices,
     },
 }
 </script>
