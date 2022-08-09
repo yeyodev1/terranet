@@ -14,10 +14,19 @@
         >
             <Icons class="text-yellow" :name="isPresset" />
         </button>
-        <div class="px-2 py-2">
-            <form class="px-2 py-2">
-                <!-- NAME SECTION  -->
-                <div  class="w-full flex flex-col mb-"></div>
+        <div
+            class="flex flex-wrap items-center justify-center w-full px-2 py-2"
+        >
+            <form class="flex flex-wrap w-4/5 justify-evenly">
+                <div class="sm:w-2/5">
+                    <QuestionPlan :quiz="quiz" />
+                </div>
+                <div class="sm:w-2/5">
+                    <SecondQuestionPlan :quiz="quiz2" />
+                </div>
+                <div class="sm:w-2/5">
+                    <TestingCard />
+                </div>
             </form>
         </div>
     </div>
@@ -27,8 +36,60 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import Icons from '../global/Icons.vue'
+import QuestionPlan from '../Cards/QuestionPlan.vue'
+import Speedometer from '../global/The/Svg/Speedometer.vue'
+import TestingCard from './TestingCard.vue'
+import SecondQuestionPlan from '../Cards/SecondQuestionPlan.vue'
 export default {
-    components: { Icons },
+    components: {
+        Icons,
+        Speedometer,
+        TestingCard,
+        QuestionPlan,
+        SecondQuestionPlan,
+    },
+
+    data: () => ({
+        quiz: {
+            questionNumber: '1',
+            question: 'Cantidad de dispositivos que se conectan a tu red',
+            options: [
+                {
+                    option: '1 - 5',
+                },
+                {
+                    option: '6 - 10',
+                },
+                {
+                    option: '11 +',
+                },
+            ],
+        },
+        quiz2: {
+            questionNumber: '2',
+            question: 'Actividades realizas con tu internet.',
+            options: [
+                {
+                    option: 'Redes sociales',
+                },
+                {
+                    option: 'Juegos en línea',
+                },
+                {
+                    option: 'Música en línea',
+                },
+                {
+                    option: 'Videoconferencias',
+                },
+                {
+                    option: 'Streaming ',
+                },
+                {
+                    option: 'Otros',
+                },
+            ],
+        },
+    }),
 
     computed: {
         // GETTING STATE FROM FORM STORE
