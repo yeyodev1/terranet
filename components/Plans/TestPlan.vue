@@ -17,7 +17,10 @@
         <div
             class="flex flex-wrap items-center justify-center w-full px-2 py-2"
         >
-            <form class="flex flex-wrap w-4/5 justify-evenly">
+            <form
+                class="lg:mb-8 flex flex-wrap w-4/5 justify-evenly"
+                :class="getForm"
+            >
                 <div class="sm:w-2/5">
                     <QuestionPlan :quiz="quiz" />
                 </div>
@@ -100,6 +103,14 @@ export default {
                 return 'arrowDown'
             } else {
                 return 'arrowUp'
+            }
+        },
+        // OPEN FORM ACCORDING TO THE FORM STATE FROM STORE
+        getForm() {
+            if (this.showForm) {
+                return 'flex'
+            } else {
+                return 'hidden'
             }
         },
     },
