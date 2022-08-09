@@ -10,9 +10,11 @@
             <p class="text-base font-medium text-center text-white sm:text-2xl">
                 !Tenemos el plan que necesitas!
             </p>
-            <div class="flex flex-wrap w-full max-w-6xl justify-evenly">
+            <div
+                class="flex flex-wrap w-full max-w-7xl justify-between items-center"
+            >
                 <div
-                    class="w-full mt-6 sm:mt-12"
+                    class="w-full sm:w-2/5 mt-6 sm:mt-12"
                     v-for="(homePlan, index) in homePlans"
                     :key="index"
                 >
@@ -22,6 +24,8 @@
         </div>
         <TestPlan />
         <Benefits />
+        <PhoneCallToAction />
+        <Footer />
     </div>
 </template>
 
@@ -30,6 +34,8 @@ import TheHeader from '~/components/global/The/Header.vue'
 import Plan from '../components/Plans/Plan.vue'
 import TestPlan from '~/components/Plans/TestPlan.vue'
 import Benefits from '~/components/Home/Benefits.vue'
+import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
+import Footer from '~/components/global/The/Footer.vue'
 
 export default {
     components: {
@@ -37,6 +43,8 @@ export default {
         Plan,
         TestPlan,
         Benefits,
+        PhoneCallToAction,
+        Footer,
     },
     data: () => ({
         homePlans: [
