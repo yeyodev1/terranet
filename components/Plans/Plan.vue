@@ -7,12 +7,14 @@
         >
             {{ homePlan.title }}
         </p>
-        <div class="flex">
+        <div class="flex pt-3">
             <p class="text-4xl font-extrabold text-white font-principal">
                 ${{ getDollars }}
             </p>
             <div class="flex flex-col items-start justify-start">
-                <p class="text-white font-principal">.{{ getCents }}</p>
+                <p class="text-white font-principal font-extrabold text-2xl">
+                    .{{ getCents }}
+                </p>
                 <p class="text-xs font-semibold text-yellow">+IMP</p>
             </div>
         </div>

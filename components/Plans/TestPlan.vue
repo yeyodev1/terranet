@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center justify-center w-full pt-12">
         <p
-            class="px-4 text-2xl font-bold text-center text-white font-principal sm:text-3xl sm:px-0"
+            class="mt-12 sm:mt-20 px-4 text-2xl font-bold text-center text-white font-principal sm:text-3xl sm:px-0"
         >
             ¿Aún no sabes qué plan necesitas?
         </p>
@@ -9,7 +9,7 @@
             Te ayudamor a elegir tu plan ideal
         </p>
         <button
-            class="flex items-center justify-center w-12 h-12"
+            class="flex items-center justify-center w-12 h-12 mb-8"
             @click="showTestPlan"
         >
             <Icons class="text-yellow" :name="isPresset" />
