@@ -23,7 +23,7 @@
                 for="name"
                 class="text-base font-bold text-white font-principal"
             >
-                Name
+                Nombre
             </label>
             <input
                 id="name"
