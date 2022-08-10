@@ -5,6 +5,10 @@ import {
     mdiGiftOpenOutline,
     mdiMenu,
     mdiPhoneOutline,
+    mdiTabletCellphone,
+    mdiLaptop,
+    mdiTelevision,
+    mdiCctv,
 } from '@mdi/js'
 
 export default {
@@ -14,4 +18,8 @@ export default {
     TheMenu: mdiMenu,
     arrowDown: mdiChevronDown,
     arrowUp: mdiChevronUp,
+    tabletPhone: mdiTabletCellphone,
+    laptop: mdiLaptop,
+    television: mdiTelevision,
+    securityCamera: mdiCctv,
 }
