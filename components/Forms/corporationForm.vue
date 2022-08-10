@@ -1,10 +1,10 @@
 <template>
-    <form class="w-4/5 mx-auto max-w-7xl flex flex-wrap">
+    <form class="flex flex-wrap w-4/5 mx-auto max-w-7xl justify-evenly">
         <!-- RUC SECTION  -->
-        <div class="flex flex-col w-full sm:w-2/5 pt-6">
+        <div class="flex flex-col w-full pt-6 sm:w-2/5">
             <label
                 for="RUC"
-                class="text-white font-principal font-bold text-base"
+                class="text-base font-bold text-white font-principal"
             >
                 Ruc.
             </label>
@@ -13,15 +13,15 @@
                 type="number"
                 v-model="ruc"
                 required
-                class="py-3 px-3 border rounded-md text-white border-yellow placeholder:text-grey background outline-none"
+                class="px-3 py-3 text-white border rounded-md outline-none border-yellow placeholder:text-grey background"
                 placeholder="Número de Ruc."
             />
         </div>
         <!-- NAME SECITON  -->
-        <div class="flex flex-col w-full sm:w-2/5 pt-6">
+        <div class="flex flex-col w-full pt-6 sm:w-2/5">
             <label
                 for="name"
-                class="text-white font-principal font-bold text-base"
+                class="text-base font-bold text-white font-principal"
             >
                 Name
             </label>
@@ -30,15 +30,15 @@
                 type="text"
                 v-model="name"
                 required
-                class="py-3 px-3 border rounded-md text-white border-yellow placeholder:text-grey background outline-none"
+                class="px-3 py-3 text-white border rounded-md outline-none border-yellow placeholder:text-grey background"
                 placeholder="Nombre de contácto"
             />
         </div>
         <!-- EMAIL SECTION  -->
-        <div class="flex flex-col w-full sm:w-2/5 pt-6">
+        <div class="flex flex-col w-full pt-6 sm:w-2/5">
             <label
                 for="email"
-                class="text-white font-principal font-bold text-base"
+                class="text-base font-bold text-white font-principal"
             >
                 Email
             </label>
@@ -47,15 +47,15 @@
                 type="text"
                 v-model="email"
                 required
-                class="py-3 px-3 border rounded-md text-white border-yellow placeholder:text-grey background outline-none"
+                class="px-3 py-3 text-white border rounded-md outline-none border-yellow placeholder:text-grey background"
                 placeholder="Ejemplo@mail.com"
             />
         </div>
         <!-- CELLPHONE SECTION  -->
-        <div class="flex flex-col w-full sm:w-2/5 pt-6">
+        <div class="flex flex-col w-full pt-6 sm:w-2/5">
             <label
                 for="cellNumber"
-                class="text-white font-principal font-bold text-base"
+                class="text-base font-bold text-white font-principal"
             >
                 Télefono
             </label>
@@ -64,7 +64,7 @@
                 type="number"
                 v-model="cellNumber"
                 required
-                class="py-3 px-3 border rounded-md text-white border-yellow placeholder:text-grey background outline-none"
+                class="px-3 py-3 text-white border rounded-md outline-none border-yellow placeholder:text-grey background"
                 placeholder="Número de contácto"
             />
         </div>
