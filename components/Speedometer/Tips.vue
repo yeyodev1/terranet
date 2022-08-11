@@ -1,6 +1,6 @@
 <template>
     <div class="w-full">
-        <div class="w-4/5 max-w-6xl mx-auto mt-7">
+        <div class="w-4/5 max-w-6xl mx-auto mt-7 mb-11">
             <p class="text-base font-bold text-white font-principal">
                 Tips para antes de empezar:
             </p>
