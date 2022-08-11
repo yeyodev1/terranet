@@ -10,6 +10,9 @@
         </div>
         <Speedometer />
         <Tips />
+        <Benefits />
+        <PhoneCallToAction />
+        <Footer />
     </div>
 </template>
 
@@ -17,9 +20,19 @@
 import Header from '~/components/global/The/Header.vue'
 import Speedometer from '~/components/Speedometer/Speedometer.vue'
 import Tips from '../components/Speedometer/Tips.vue'
+import Footer from '~/components/global/The/Footer.vue'
+import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
+import Benefits from '~/components/Home/Benefits.vue'
 
 export default {
-    components: { Header, Speedometer, Tips },
+    components: {
+        Header,
+        Speedometer,
+        Tips,
+        Footer,
+        PhoneCallToAction,
+        Benefits,
+    },
 }
 </script>
 
