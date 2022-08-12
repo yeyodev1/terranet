@@ -23,8 +23,9 @@
 import Header from '~/components/global/The/Header.vue'
 import PayMethods from '~/components/Cards/PayMethods.vue'
 import Benefits from '~/components/Home/Benefits.vue'
+import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
 export default {
-    components: { Header, PayMethods, Benefits },
+    components: { Header, PayMethods, Benefits, PhoneCallToAction },
 }
 </script>
 
