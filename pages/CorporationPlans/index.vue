@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CorporationPLans from '~/Views/CorporationPLans.vue'
+import CorporationPLans from '~/pages/CorporationPlans/Components/CorporationPLans.vue'
 export default {
     components: {
         CorporationPLans,

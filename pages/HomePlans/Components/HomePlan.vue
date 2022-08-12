@@ -24,24 +24,23 @@
         <TestPlan />
         <Benefits />
         <PhoneCallToAction />
-        <Footer />
     </div>
 </template>
 
 <script>
-import Plan from '../components/Plans/Plan.vue'
 import TestPlan from '~/components/Plans/TestPlan.vue'
 import Benefits from '~/components/Home/Benefits.vue'
 import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
 import Footer from '~/components/global/The/Footer.vue'
+import Plan from '~/components/Plans/Plan.vue'
 
 export default {
     components: {
-        Plan,
         TestPlan,
         Benefits,
         PhoneCallToAction,
         Footer,
+        Plan,
     },
     data: () => ({
         homePlans: [
@@ -71,12 +70,6 @@ export default {
 </script>
 
 <style scoped>
-.background {
-    background-image: url('@/static/Backgrounds/Background-2.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 @font-face {
     font-family: 'FontJek';
     font-display: swap;
