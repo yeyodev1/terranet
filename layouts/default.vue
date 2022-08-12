@@ -20,22 +20,8 @@ export default {
     Footer,
   },
   data: () => ({
-    bgImages: [
-      require('@/static/Backgrounds/Background.png'),
-      require('@/static/Backgrounds/Background-2.png'),
-      require('@/static/Backgrounds/Background-3.png'),
-      require('@/static/Backgrounds/Background-4.png'),
-    ],
-    bgImage: '',
+    bgImage: require('@/static/Backgrounds/Background.png'),
   }),
-  mounted() {
-    if (this.$route.path === '/') {
-      this.bgImage = this.bgImages[1]
-    }
-    if (this.$route.path === '/waysToPay') {
-      this.bgImage = this.bgImages[3]
-    }
-  },
 }
 </script>
 
