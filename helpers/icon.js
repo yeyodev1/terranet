@@ -9,6 +9,14 @@ import {
     mdiLaptop,
     mdiTelevision,
     mdiCctv,
+    mdiBank,
+    mdiMicrophoneMessage,
+    mdiCreditCardFastOutline,
+    mdiTruckDeliveryOutline,
+    mdiAccountConvert,
+    mdiFileArrowLeftRight,
+    mdiClockFast,
+    mdiChartTimelineVariantShimmer
 } from '@mdi/js'
 
 export default {
@@ -22,4 +30,12 @@ export default {
     laptop: mdiLaptop,
     television: mdiTelevision,
     securityCamera: mdiCctv,
+    bank: mdiBank,
+    microphone: mdiMicrophoneMessage,
+    card: mdiCreditCardFastOutline,
+    truck: mdiTruckDeliveryOutline,
+    changeUser: mdiAccountConvert,
+    changeFile: mdiFileArrowLeftRight,
+    clockFast: mdiClockFast,
+    statistic: mdiChartTimelineVariantShimmer
 }
