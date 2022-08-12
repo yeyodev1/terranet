@@ -2,9 +2,9 @@
     <header class="w-full border-b-2 border-solid border-lightBlue">
         <!-- HEADER UNTIL BEFORE LG DEVICES -->
         <div class="w-full flex justify-between py-5 lg:hidden">
-            <div class="w-16 flex items-center justify-center px-5">
+            <nuxt-link to="/" class="w-16 flex items-center justify-center px-5">
                 <LogoHeader />
-            </div>
+            </nuxt-link>
             <div class="flex justify-center items-center pr-6">
                 <button class="w-6 h-6">
                     <Icons class="w-full h-6 text-white" :name="TheMenu" />
@@ -55,7 +55,7 @@ export default {
         menu: [
             {
                 name: 'Inicio',
-                link: '#',
+                link: '/',
             },
             {
                 name: 'Planes',
@@ -67,7 +67,7 @@ export default {
             },
             {
                 name: 'Atencion al cliente',
-                link: '#',
+                link: '/support',
             },
         ],
     }),
