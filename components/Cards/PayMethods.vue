@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col items-center justify-center w-full sm:flex-row">
+    <div class="flex flex-col items-center justify-center w-full">
         <div
-            class="flex flex-col items-center justify-center w-4/5 px-24 pt-8 mt-8 border-b sm:justify-evenly max-w-7xl background pb-7"
+            class="flex flex-col items-center justify-center w-4/5 px-24 pt-8 mt-8 border-b md:justify-evenly max-w-7xl background pb-7"
         >
             <!-- PICHINCHA BANK  -->
             <div
@@ -147,6 +147,14 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="w-4/5 mt-3 mb-10 max-w-7xl">
+            <p class="text-xs text-white font-principal sm:text-sm">
+                Envianos tu comprobante de pago por whatsapp
+            </p>
+            <p class="text-xs text-white font-principal sm:text-sm">
+                Realiza el pago de tus planes cada mes
+            </p>
         </div>
     </div>
 </template>
