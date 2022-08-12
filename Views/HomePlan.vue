@@ -1,6 +1,5 @@
 <template>
     <div class="background">
-        <TheHeader />
         <div class="w-4/5 mx-auto max-w-7xl">
             <p
                 class="mt-8 text-2xl font-bold text-center text-white lg:pt-20 sm:text-5xl"
@@ -11,10 +10,10 @@
                 !Tenemos el plan que necesitas!
             </p>
             <div
-                class="flex flex-wrap w-full max-w-7xl justify-between items-center"
+                class="flex flex-wrap items-center justify-between w-full max-w-7xl"
             >
                 <div
-                    class="w-full sm:w-2/5 mt-6 sm:mt-12"
+                    class="w-full mt-6 sm:w-2/5 sm:mt-12"
                     v-for="(homePlan, index) in homePlans"
                     :key="index"
                 >
@@ -30,7 +29,6 @@
 </template>
 
 <script>
-import TheHeader from '~/components/global/The/Header.vue'
 import Plan from '../components/Plans/Plan.vue'
 import TestPlan from '~/components/Plans/TestPlan.vue'
 import Benefits from '~/components/Home/Benefits.vue'
@@ -39,7 +37,6 @@ import Footer from '~/components/global/The/Footer.vue'
 
 export default {
     components: {
-        TheHeader,
         Plan,
         TestPlan,
         Benefits,
