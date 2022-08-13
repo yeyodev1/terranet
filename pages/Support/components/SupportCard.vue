@@ -1,7 +1,7 @@
 <template>
   <button
     class="
-      md:w-72 md:h-32
+      sm:w-72 sm:h-32
       w-32
       h-32
       flex flex-col

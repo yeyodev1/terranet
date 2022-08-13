@@ -21,13 +21,23 @@
         Selecciona la opción que necesitas
       </p>
     </div>
-    <div class="w-full flex flex-wrap justify-center items-center">
-      <support-card
+    <div
+      class="
+        w-full
+        mx-auto
+        max-w-4xl
+        flex flex-wrap
+        justify-center
+        items-center
+      "
+    >
+      <div
         v-for="(item, index) in support"
         :key="index"
-        :icon="item.icon"
-        :name="item.name"
-      />
+        class="w-1/2 lg:w-1/3 flex justify-center items-center p-5"
+      >
+        <support-card :icon="item.icon" :name="item.name" />
+      </div>
     </div>
   </div>
 </template>
