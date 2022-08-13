@@ -16,7 +16,8 @@ import {
     mdiAccountConvert,
     mdiFileArrowLeftRight,
     mdiClockFast,
-    mdiChartTimelineVariantShimmer
+    mdiChartTimelineVariantShimmer,
+    mdiChevronRight,
 } from '@mdi/js'
 
 export default {
@@ -37,5 +38,6 @@ export default {
     changeUser: mdiAccountConvert,
     changeFile: mdiFileArrowLeftRight,
     clockFast: mdiClockFast,
-    statistic: mdiChartTimelineVariantShimmer
+    statistic: mdiChartTimelineVariantShimmer,
+    arrowRight: mdiChevronRight
 }

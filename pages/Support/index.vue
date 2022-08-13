@@ -39,15 +39,32 @@
         <support-card :icon="item.icon" :name="item.name" />
       </div>
     </div>
+    <div class="w-full mx-auto my-20">
+      <p class="text-2xl lg:text-4xl font-semibold text-center text-white">
+        Alguien ya hizo esa pregunta:
+      </p>
+      <div class="flex justify-center items-center mt-3">
+        <p class="text-base font-medium text-center text-white">
+          Consulta las preguntas frecuentas aquí
+        </p>
+        <div class="w-6 h-6 flex justify-center items-center">
+          <icons name="arrowRight" class="text-yellow" />
+        </div>
+      </div>
+    </div>
+    <HomeBenefits />
+    <HomePhoneCallToAction />
   </div>
 </template>
 
 <script>
+import Icons from '~/components/global/Icons.vue'
 import SupportCard from './components/SupportCard.vue'
 
 export default {
   components: {
     SupportCard,
+    Icons,
   },
   data: () => ({
     support: [
