@@ -20,8 +20,15 @@ export default {
     Footer,
   },
   data: () => ({
-    bgImage: require('@/static/Backgrounds/Background.png'),
+    bgImage: '',
+    bgImages: [require('@/static/Backgrounds/Background.png')],
   }),
+  mounted() {
+    console.log(this.$route)
+    if (this.$route.path === '/WaysToPay') {
+      this.bgImage = this.bgImages[0]
+    }
+  },
 }
 </script>
 
