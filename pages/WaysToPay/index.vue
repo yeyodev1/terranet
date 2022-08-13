@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import WaysToPay from '~/Views/WaysToPay.vue'
+import WaysToPay from '~/pages/WaysToPay/components/WaysToPay.vue'
 export default {
     components: { WaysToPay },
 }

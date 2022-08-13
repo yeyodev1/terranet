@@ -1,7 +1,6 @@
 <template>
     <div class="w-full">
         <div class="background">
-            <Header />
             <p
                 class="pt-8 text-2xl font-bold text-center text-white font-principal sm:text-5xl"
             >
@@ -14,6 +13,8 @@
                 piensa en tu comodidad
             </p>
             <PayMethods />
+            <Benefits />
+            <PhoneCallToAction />
         </div>
     </div>
 </template>
@@ -21,8 +22,10 @@
 <script>
 import Header from '~/components/global/The/Header.vue'
 import PayMethods from '~/components/Cards/PayMethods.vue'
+import Benefits from '~/components/Home/Benefits.vue'
+import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
 export default {
-    components: { Header, PayMethods },
+    components: { Header, PayMethods, Benefits, PhoneCallToAction },
 }
 </script>
 

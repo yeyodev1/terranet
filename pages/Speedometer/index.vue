@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Speedometer from '~/Views/Speedometer.vue'
+import Speedometer from './components/Speedometer.vue'
 export default {
     components: { Speedometer },
 }

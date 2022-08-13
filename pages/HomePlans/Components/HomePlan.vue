@@ -1,6 +1,5 @@
 <template>
     <div class="background">
-        <TheHeader />
         <div class="w-4/5 mx-auto max-w-7xl">
             <p
                 class="mt-8 text-2xl font-bold text-center text-white lg:pt-20 sm:text-5xl"
@@ -11,10 +10,10 @@
                 !Tenemos el plan que necesitas!
             </p>
             <div
-                class="flex flex-wrap w-full max-w-7xl justify-between items-center"
+                class="flex flex-wrap items-center justify-between w-full max-w-7xl"
             >
                 <div
-                    class="w-full sm:w-2/5 mt-6 sm:mt-12"
+                    class="w-full mt-6 sm:w-2/5 sm:mt-12"
                     v-for="(homePlan, index) in homePlans"
                     :key="index"
                 >
@@ -25,26 +24,23 @@
         <TestPlan />
         <Benefits />
         <PhoneCallToAction />
-        <Footer />
     </div>
 </template>
 
 <script>
-import TheHeader from '~/components/global/The/Header.vue'
-import Plan from '../components/Plans/Plan.vue'
 import TestPlan from '~/components/Plans/TestPlan.vue'
 import Benefits from '~/components/Home/Benefits.vue'
 import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
 import Footer from '~/components/global/The/Footer.vue'
+import Plan from '~/components/Plans/Plan.vue'
 
 export default {
     components: {
-        TheHeader,
-        Plan,
         TestPlan,
         Benefits,
         PhoneCallToAction,
         Footer,
+        Plan,
     },
     data: () => ({
         homePlans: [
@@ -74,12 +70,6 @@ export default {
 </script>
 
 <style scoped>
-.background {
-    background-image: url('@/static/Backgrounds/Background-2.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 @font-face {
     font-family: 'FontJek';
     font-display: swap;

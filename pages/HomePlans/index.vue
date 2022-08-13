@@ -1,12 +1,12 @@
 <template>
-    <homePlan />
+    <HomePlan1 />
 </template>
 
 <script>
-import homePlan from '@/Views/HomePlan.vue'
+import HomePlan1 from './Components/HomePlan.vue'
 export default {
     components: {
-        homePlan,
+        HomePlan1,
     },
 }
 </script>
