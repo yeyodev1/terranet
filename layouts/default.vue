@@ -1,10 +1,11 @@
 <template>
-    <div class="w-full flex flex-col">
+    <div class="flex flex-col w-full">
         <div
-            class="background w-full"
+            class="w-full background"
             :style="{ backgroundImage: 'url(' + bgImage + ')' }"
         >
             <Header />
+            <Menu />
             <nuxt />
         </div>
         <Footer />
@@ -14,10 +15,12 @@
 <script>
 import Header from '~/components/global/The/Header.vue'
 import Footer from '~/components/global/The/Footer.vue'
+import Menu from '~/components/global/The/Menu.vue'
 export default {
     components: {
         Header,
         Footer,
+        Menu,
     },
     data: () => ({
         bgImage: require('@/static/Backgrounds/Background.png'),
