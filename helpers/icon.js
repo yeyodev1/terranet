@@ -18,6 +18,10 @@ import {
     mdiClockFast,
     mdiChartTimelineVariantShimmer,
     mdiChevronRight,
+    mdiMessageReplyTextOutline,
+    mdiFacebookMessenger,
+    mdiInstagram,
+    mdiWhatsapp,
 } from '@mdi/js'
 
 export default {
@@ -39,5 +43,9 @@ export default {
     changeFile: mdiFileArrowLeftRight,
     clockFast: mdiClockFast,
     statistic: mdiChartTimelineVariantShimmer,
-    arrowRight: mdiChevronRight
+    arrowRight: mdiChevronRight,
+    message: mdiMessageReplyTextOutline,
+    messenger: mdiFacebookMessenger,
+    instagram: mdiInstagram,
+    whatsapp: mdiWhatsapp,
 }

@@ -20,20 +20,23 @@
             </div>
         </div>
         <div class="mx-auto w-4/5 flex justify-between max-w-7xl">
-            <div>
+            <div class="flex flex-col">
                 <div
                     v-for="(trait, index) in traits"
                     :key="index"
                     class="flex flex-col"
                 >
-                    <div class="flex justify-center items-center">
-                        <Plus class="pr-1" />
+                    <div class="flex justify-start items-center">
+                        <Plus class="w-3 h-3 sm:w-5 sm:h-5 pr-1" />
                         <p
                             class="font-principal text-xs sm:text-3xl text-white"
                         >
                             {{ trait.name }}
                         </p>
                     </div>
+                </div>
+                <div>
+                    <PromotionButton />
                 </div>
             </div>
             <div class="">
@@ -51,11 +54,13 @@
 <script>
 import Man from '../global/The/Svg/Man.vue'
 import Plus from '../global/The/Svg/Plus.vue'
+import PromotionButton from './PromotionButton.vue'
 
 export default {
     components: {
         Man,
         Plus,
+        PromotionButton,
     },
     data: () => ({
         traits: [

@@ -28,16 +28,6 @@
                     >
                         Código: 74801
                     </p>
-                    <p
-                        class="font-semibold text-center text-white font-principal"
-                    >
-                        Roxana Torres Terranova
-                    </p>
-                    <p
-                        class="font-semibold text-center text-white font-principal"
-                    >
-                        Ci. transferencia: 0915776264
-                    </p>
                 </div>
             </div>
             <!-- BOLIVARIANO BANK -->
@@ -70,17 +60,7 @@
                     <p
                         class="font-semibold text-center text-white font-principal"
                     >
-                        Cuenta ahorros: 1056182376
-                    </p>
-                    <p
-                        class="font-semibold text-center text-white font-principal"
-                    >
-                        Roxana Torres Terranova
-                    </p>
-                    <p
-                        class="font-semibold text-center text-white font-principal"
-                    >
-                        Ci. transferencia: 0915776264
+                        Cuenta corriente: 0065061860
                     </p>
                 </div>
             </div>
@@ -108,7 +88,7 @@
                     <p
                         class="font-semibold text-center text-white font-principal"
                     >
-                        Cuenta <br />
+                        Cuenta <br class="sm:hidden" />
                         corriente: 02011019065
                     </p>
                 </div>
