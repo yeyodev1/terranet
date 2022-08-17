@@ -18,7 +18,7 @@
             class="flex flex-wrap items-center justify-around w-full mt-8 sm:justify-evenly max-w-7xl sm:mt-12"
         >
             <div class="w-4/5 sm:w-1/3">
-                <nuxt-link class="" to="/">
+                <nuxt-link class="" to="/homeplans">
                     <button
                         class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
@@ -36,7 +36,7 @@
                 </nuxt-link>
             </div>
             <div class="w-4/5 sm:w-1/3">
-                <nuxt-link class="" to="/">
+                <nuxt-link class="" to="/corporationplans">
                     <button
                         class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
