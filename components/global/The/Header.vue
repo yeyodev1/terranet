@@ -21,10 +21,36 @@
         />
       </div>
       <div class="flex w-5/6 justify-between mx-11 items-center">
-        <nuxt-link :to="item.link" v-for="(item, index) in menu" :key="index">
+        <button
+          v-for="(item, index) in menu"
+          :key="index"
+          class="relative"
+          @click="redirection(item)"
+        >
           <TheTextStyle class="font-principal" :name="item.name">
           </TheTextStyle>
-        </nuxt-link>
+          <div
+            class="
+              flex flex-col
+              justify-center
+              items-center
+              py-3
+              px-6
+              bg-lightBlue
+              absolute
+              top-full
+              left-0
+            "
+            v-if="plansOpen"
+          >
+            <nuxt-link to="/HomePlans" class="text-white w-full text-left"
+              >Hogar</nuxt-link
+            >
+            <nuxt-link to="/CorporationPlans" class="text-white w-full mt-7"
+              >Corporativo</nuxt-link
+            >
+          </div>
+        </button>
       </div>
       <div class="flex justify-center items-center pr-3">
         <button
@@ -73,6 +99,16 @@ export default {
         link: '/support',
       },
     ],
+    plansOpen: false,
   }),
+  methods: {
+    redirection(item) {
+      if (item.name === 'Planes') {
+        this.plansOpen = true
+      } else {
+        this.$router.push(`${item.link}`)
+      }
+    },
+  },
 }
 </script>
