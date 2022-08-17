@@ -22,6 +22,7 @@ import {
     mdiFacebookMessenger,
     mdiInstagram,
     mdiWhatsapp,
+    mdiWindowClose,
 } from '@mdi/js'
 
 export default {
@@ -48,4 +49,5 @@ export default {
     messenger: mdiFacebookMessenger,
     instagram: mdiInstagram,
     whatsapp: mdiWhatsapp,
+    close: mdiWindowClose,
 }
