@@ -26,7 +26,7 @@
             >
                 <nuxt-link :to="item.link">
                     <button
-                        class="pt-12 text-white font-principal"
+                        class="pt-12 text-base text-white font-principal sm:text-3xl"
                         @click="closeMenu"
                     >
                         {{ item.name }}
