@@ -1,5 +1,6 @@
 <template>
     <div
+        id="plans"
         class="flex flex-col items-center justify-center w-full p-4 pb-12 background-ourplanes lg:pb-20 sm:pb-10"
     >
         <div class="w-4/5 pt-10 mx-auto">
