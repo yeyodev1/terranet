@@ -24,7 +24,7 @@
                     sin salir de casa!
                 </p>
                 <div class="mt-6">
-                    <nuxt-link to="/">
+                    <nuxt-link to="/waystopay">
                         <button
                             class="w-full max-w-screen-lg py-3 text-base font-semibold text-white border rounded-md font-principal border-yellow px-14"
                         >
