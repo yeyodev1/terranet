@@ -50,11 +50,13 @@
                 </button>
             </div>
             <div class="flex items-center justify-center pr-3">
-                <button
-                    class="py-3 text-lg text-white border rounded-md font-principal border-yellow w-52"
-                >
-                    Contrata tu servicio
-                </button>
+                <nuxt-link to="/hireservice">
+                    <button
+                        class="py-3 text-lg text-white border rounded-md font-principal border-yellow w-52"
+                    >
+                        Contrata tu servicio
+                    </button>
+                </nuxt-link>
             </div>
         </div>
     </header>
