@@ -26,10 +26,20 @@
             >
                 <nuxt-link :to="item.link">
                     <button
-                        class="pt-12 text-base text-white font-principal sm:text-3xl"
+                        class="pt-12 text-base text-white font-principal sm:text-2xl"
                         @click="closeMenu"
                     >
                         {{ item.name }}
+                    </button>
+                </nuxt-link>
+            </div>
+            <div class="mt-16">
+                <nuxt-link to="/hireservice">
+                    <button
+                        class="px-6 py-3 text-base font-bold text-white border rounded-md sm:text-2xl font-principal border-yellow"
+                        @click="closeMenu"
+                    >
+                        Contrata tu servicio
                     </button>
                 </nuxt-link>
             </div>
