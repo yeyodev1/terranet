@@ -14,7 +14,7 @@
             >
                 <div
                     class="w-full mt-6 sm:w-2/5 sm:mt-12"
-                    v-for="(homePlan, index) in homePlans"
+                    v-for="(homePlan, index) in getPlans"
                     :key="index"
                 >
                     <Plan :homePlan="homePlan" />
@@ -33,7 +33,7 @@ import Benefits from '~/components/Home/Benefits.vue'
 import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
 import Footer from '~/components/global/The/Footer.vue'
 import Plan from '~/components/Plans/Plan.vue'
-
+import { mapGetters } from 'vuex'
 export default {
     components: {
         TestPlan,
@@ -42,30 +42,9 @@ export default {
         Footer,
         Plan,
     },
-    data: () => ({
-        homePlans: [
-            {
-                title: 'Plan Mítico',
-                price: '44.65',
-                mbps: '120',
-            },
-            {
-                title: 'Plan Élite',
-                price: '35.71',
-                mbps: '80',
-            },
-            {
-                title: 'Plan Máster',
-                price: '31.25',
-                mbps: '70',
-            },
-            {
-                title: 'Plan basic',
-                price: '31.25',
-                mbps: '50',
-            },
-        ],
-    }),
+    computed: {
+        ...mapGetters('plans', ['getPlans']),
+    },
 }
 </script>
 
