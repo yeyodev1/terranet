@@ -8,11 +8,12 @@
             </h4>
             <form class="max-w-2xl mx-auto mt-11">
                 <div class="flex flex-wrap items-center">
-                    <p
+                    <label
+                        for="plan"
                         class="w-full mb-3 text-base font-bold text-white sm:text-center sm:w-1/5 font-principal sm:mb-0"
                     >
                         Plan ideal:
-                    </p>
+                    </label>
                     <div
                         class="w-full px-3 py-3 border rounded-md sm:w-4/5 border-lightBlue"
                     >
@@ -56,6 +57,85 @@
                         </div>
                     </div>
                 </div>
+                <!-- NUMBER ID OF THE USERS -->
+                <div class="mt-6 sm:mt-0">
+                    <label
+                        for="userId"
+                        class="w-full mb-3 text-base font-bold text-white sm:text-center sm:w-1/5 font-principal sm:mb-0"
+                    >
+                        Cédula
+                    </label>
+                    <input
+                        type="number"
+                        id="userId"
+                        v-model="userId"
+                        placeholder="Número de cédula"
+                        class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal sm:w-4/5 border-lightBlue background-input"
+                    />
+                </div>
+                <!-- USER'S NAME -->
+                <div class="mt-6 sm:mt-0">
+                    <label
+                        for="userName"
+                        class="w-full mb-3 text-base font-bold text-white sm:text-center sm:w-1/5 font-principal sm:mb-0"
+                    >
+                        Nombre
+                    </label>
+                    <input
+                        type="text"
+                        id="userName"
+                        v-model="userName"
+                        placeholder="Nombre completo"
+                        class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal sm:w-4/5 border-lightBlue background-input"
+                    />
+                </div>
+                <!-- USER'S EMAIL -->
+                <div class="mt-6 sm:mt-0">
+                    <label
+                        for="userEmail"
+                        class="w-full mb-3 text-base font-bold text-white sm:text-center sm:w-1/5 font-principal sm:mb-0"
+                    >
+                        Correo
+                    </label>
+                    <input
+                        type="email"
+                        id="userEmail"
+                        v-model="userEmail"
+                        placeholder="ejemplo@nmail.com"
+                        class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal sm:w-4/5 border-lightBlue background-input"
+                    />
+                </div>
+                <!-- USER'S PHONE -->
+                <div class="mt-6 sm:mt-0">
+                    <label
+                        for="userPhone"
+                        class="w-full mb-3 text-base font-bold text-white sm:text-center sm:w-1/5 font-principal sm:mb-0"
+                    >
+                        Télefono
+                    </label>
+                    <input
+                        type="number"
+                        id="userPhone"
+                        v-model="userPhone"
+                        placeholder="Número de télefono"
+                        class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal sm:w-4/5 border-lightBlue background-input"
+                    />
+                </div>
+                <!-- USERS ADRESS -->
+                <div class="mt-6 sm:mt-0">
+                    <label
+                        for="userAdress"
+                        class="w-full mb-3 text-base font-bold text-white sm:text-center sm:w-1/5 font-principal sm:mb-0"
+                    >
+                        Cédula
+                    </label>
+                    <input
+                        type="number"
+                        id="userAdress"
+                        placeholder="Dirección de domicilio"
+                        class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal sm:w-4/5 border-lightBlue background-input"
+                    />
+                </div>
             </form>
         </div>
     </div>
@@ -70,6 +150,12 @@ export default {
     },
     data: () => ({
         arrowDown: 'arrowDown',
+        //CAPTURING USER INFORMATION
+        userId: '',
+        userName: '',
+        userEmail: '',
+        userPhone: '',
+        userAdress: '',
     }),
     computed: {
         ...mapGetters('plans', ['getPlans']),
@@ -94,3 +180,9 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.background-input {
+    background: none;
+}
+</style>
