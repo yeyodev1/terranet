@@ -37,7 +37,7 @@
                                     />
                                 </button>
                             </div>
-                            <div class="flex flex-col" :class="getHomePlans">
+                            <div class="flex flex-col" :class="homePlans">
                                 <div
                                     class="flex w-full"
                                     v-for="(homeplan, index) in getPlans"
@@ -155,19 +155,80 @@
                             class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
                         />
                     </div>
+                    <!-- DETAIL ADRESS   -->
+                    <div
+                        class="flex flex-col items-start justify-start w-full mt-6 sm:mt-8"
+                    >
+                        <label
+                            for="adressDetail"
+                            class="w-full mb-3 text-base font-bold text-white font-principal sm:mb-0"
+                        >
+                            Detalle de domicilio
+                        </label>
+                        <input
+                            type="text"
+                            id="adressDetail"
+                            placeholder="Casa amarilla, frente al parque."
+                            required
+                            class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
+                        />
+                    </div>
+                    <!-- REFERENCIES SECTION     -->
+                    <div
+                        class="flex flex-wrap items-start justify-start w-full mt-6 sm:justify-between sm:mt-8"
+                    >
+                        <P
+                            class="w-full text-base font-bold text-white border-b font-principal sm:text-2xl border-lightBlue"
+                        >
+                            Referencia
+                        </P>
+                        <!-- NAME SECTION  -->
+                        <div class="w-full mt-7 sm:w-2/5">
+                            <label
+                                for="userName"
+                                class="w-full mb-3 text-base font-bold text-white font-principal sm:mb-0"
+                            >
+                                Nombre
+                            </label>
+                            <input
+                                type="text"
+                                id="userName"
+                                placeholder="Casa amarilla, frente al parque."
+                                required
+                                class="w-full px-3 py-3 mt-1 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
+                            />
+                        </div>
+                        <!-- PHONE SECTION -->
+                        <div class="w-full mt-7 sm:w-2/5">
+                            <label
+                                for="userPhone"
+                                class="w-full mb-3 text-base font-bold text-white font-principal sm:mb-0"
+                            >
+                                Teléfono
+                            </label>
+                            <input
+                                type="number"
+                                id="userPhone"
+                                placeholder="Número de teléfono"
+                                required
+                                class="w-full px-3 py-3 mt-1 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
+                            />
+                        </div>
+                    </div>
                 </div>
             </form>
+            <div>
+                <ButtonForm />
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import Icons from '../global/Icons.vue'
+import ButtonForm from './buttonForm.vue'
 export default {
-    components: {
-        Icons,
-    },
+    components: { ButtonForm },
     data: () => ({
         arrowDown: 'arrowDown',
         //CAPTURING USER INFORMATION
@@ -180,7 +241,7 @@ export default {
     computed: {
         ...mapGetters('plans', ['getPlans']),
         ...mapGetters('form', ['showForm']),
-        getHomePlans() {
+        homePlans() {
             if (this.showForm) {
                 return 'flex'
             } else {
