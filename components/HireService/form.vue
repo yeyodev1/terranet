@@ -232,6 +232,7 @@ export default {
     data: () => ({
         arrowDown: 'arrowDown',
         //CAPTURING USER INFORMATION
+
         userId: '',
         userName: '',
         userEmail: '',

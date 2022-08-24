@@ -29,11 +29,13 @@
             />
         </div>
         <div class="flex items-center justify-center mt-10 mb-6">
-            <button
-                class="px-6 py-3 text-base text-white border rounded-md hover:text-black hover:bg-yellow border-yellow font-principal"
-            >
-                Enviar
-            </button>
+            <nuxt-link to="/datasent">
+                <button
+                    class="px-6 py-3 text-base text-white border rounded-md hover:text-black hover:bg-yellow border-yellow font-principal"
+                >
+                    Enviar
+                </button>
+            </nuxt-link>
         </div>
     </div>
 </template>
