@@ -25,6 +25,15 @@
                     <ThanksLaptop class="hidden lg:flex" />
                 </div>
             </div>
+            <div class="flex items-center justify-center w-full">
+                <nuxt-link to="/hireservice">
+                    <button
+                        class="px-6 py-3 text-xs font-bold text-white border rounded-md hover:bg-yellow border-yellow hover:text-black"
+                    >
+                        Volver
+                    </button>
+                </nuxt-link>
+            </div>
         </div>
     </div>
 </template>
