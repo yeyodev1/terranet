@@ -137,7 +137,7 @@
                             class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
                         />
                     </div>
-                    <!-- USERS ADRESS -->
+                    <!-- USERS ADDRESS -->
                     <div
                         class="flex flex-col items-start justify-start w-full mt-6 sm:mt-8"
                     >
@@ -150,6 +150,7 @@
                         <input
                             type="text"
                             id="userAdress"
+                            v-model="userAdress"
                             placeholder="Dirección de domicilio"
                             required
                             class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
@@ -167,6 +168,7 @@
                         </label>
                         <input
                             type="text"
+                            v-model="userDetailAdress"
                             id="adressDetail"
                             placeholder="Casa amarilla, frente al parque."
                             required
@@ -193,8 +195,9 @@
                             <input
                                 type="text"
                                 id="userName"
-                                placeholder="Casa amarilla, frente al parque."
+                                placeholder="Nombre Completo"
                                 required
+                                v-model="contactUser"
                                 class="w-full px-3 py-3 mt-1 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
                             />
                         </div>
@@ -211,6 +214,7 @@
                                 id="userPhone"
                                 placeholder="Número de teléfono"
                                 required
+                                v-model="contactPhone"
                                 class="w-full px-3 py-3 mt-1 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input"
                             />
                         </div>
@@ -254,7 +258,11 @@
                 <div class="flex items-center justify-center mt-10 mb-6">
                     <nuxt-link to="/datasent">
                         <button
-                            class="px-6 py-3 text-base text-white border rounded-md hover:text-black hover:bg-yellow border-yellow font-principal"
+                            type="submit"
+                            class="px-6 py-3 text-base border rounded-md font-principal"
+                            @click="sentData"
+                            :disabled="!formIsValid"
+                            :class="isButtonActive"
                         >
                             Enviar
                         </button>
@@ -280,6 +288,9 @@ export default {
         userEmail: '',
         userPhone: '',
         userAdress: '',
+        contactUser: '',
+        contactPhone: '',
+        userDetailAdress: '',
     }),
     computed: {
         ...mapGetters('plans', ['getPlans']),
@@ -306,6 +317,24 @@ export default {
                 return 'hidden'
             }
         },
+        // Validating form has information fron sending
+        formIsValid() {
+            return (
+                this.userId != '' &&
+                this.userName != '' &&
+                this.userEmail != '' &&
+                this.userPhone != '' &&
+                this.userAdress != '' &&
+                this.contactUser != '' &&
+                this.contactPhone != ''
+            )
+        },
+        // VALIDATING FORM WITH CLASSES
+        isButtonActive() {
+            return this.formIsValid === true
+                ? 'border-yellow text-white hover:text-black hover:bg-yellow'
+                : 'border-gray text-gray'
+        },
     },
     methods: {
         ...mapActions('form', ['activeForm']),
@@ -324,6 +353,17 @@ export default {
                 this.activeCoupon(true)
                 console.log('hola')
             }
+        },
+        sentData() {
+            console.log(
+                this.userId,
+                this.userName,
+                this.userEmail,
+                this.userPhone,
+                this.userAdress,
+                this.contactUser,
+                this.contactPhone
+            )
         },
     },
 }

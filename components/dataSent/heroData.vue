@@ -18,7 +18,7 @@
                 <div
                     class="items-center justify-center w-full md:justify-start md:w-1/4 hidden md:flex mt-12"
                 >
-                    <nuxt-link to="/hireservice">
+                    <nuxt-link to="/">
                         <button
                             class="px-6 py-3 sm:text-base text-xs font-bold text-white border rounded-md hover:bg-yellow border-yellow hover:text-black"
                         >
@@ -39,7 +39,7 @@
             <div
                 class="flex items-center justify-center w-full md:justify-start md:w-1/4 md:hidden"
             >
-                <nuxt-link to="/hireservice">
+                <nuxt-link to="/">
                     <button
                         class="px-6 py-3 text-xs font-bold text-white border rounded-md hover:bg-yellow border-yellow hover:text-black"
                     >
