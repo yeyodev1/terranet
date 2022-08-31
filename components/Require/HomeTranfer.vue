@@ -71,9 +71,11 @@
                     class="p-3 border border-lightBlue rounded-md background-input outline-none text-white"
                 />
             </div>
-            <div>
+            <div class="mt-14">
                 <button
-                    class="border border-lightBlue rounded-md p-3 text-white"
+                    class="px-6 py-3 text-base border rounded-md font-principal"
+                    :disabled="!validateTraslade"
+                    :class="isButtonActive"
                 >
                     Enviar
                 </button>
@@ -90,6 +92,22 @@ export default {
         newAddress: '',
         referenceNewAdress: '',
     }),
+    computed: {
+        validateTraslade() {
+            return (
+                this.numberIdentification != '' &&
+                this.currentAddress != '' &&
+                this.newAddress != '' &&
+                this.referenceNewAdress != ''
+            )
+        },
+        // VALIDATING TRASLADE WITH CLASSES
+        isButtonActive() {
+            return this.validateTraslade === true
+                ? 'border-yellow text-white hover:text-black hover:bg-yellow'
+                : 'border-gray text-gray'
+        },
+    },
 }
 </script>
 
