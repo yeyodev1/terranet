@@ -69,7 +69,7 @@
             <button
                 class="px-6 py-3 text-base border rounded-md font-principal"
                 :class="isButtonActive"
-                :disabled="!validChangeOwner"
+                :disabled="!validOpinion"
             >
                 Enviar
             </button>
