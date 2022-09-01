@@ -187,6 +187,7 @@ export default {
         // NEW DATA
         newAddress: '',
         newName: '',
+        newIdentification: '',
         newEmail: '',
         newPhoneNumber: '',
         newAddress: '',
