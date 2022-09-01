@@ -44,7 +44,7 @@
             </label>
             <input
                 id="email"
-                type="text"
+                type="email"
                 v-model="email"
                 required
                 class="px-3 py-3 text-white border rounded-md outline-none border-yellow placeholder:text-grey background"
