@@ -158,14 +158,14 @@
                         type="text"
                         class="w-full p-3 text-white border rounded-md outline-none border-lightBlue background-input font-principal"
                         placeholder="Dirección de domicilio"
-                        v-model="newEmail"
+                        v-model="newAddress"
                     />
                 </div>
                 <div class="flex items-center justify-center w-full mt-9">
                     <button
                         class="px-6 py-3 text-base border rounded-md font-principal"
                         :class="isButtonActive"
-                        :disabled="!validChangeOwner"
+                        :disabled="!validNewInfo"
                     >
                         Enviar
                     </button>
@@ -193,7 +193,7 @@ export default {
         newAddress: '',
     }),
     computed: {
-        validChangeOwner() {
+        validNewInfo() {
             return (
                 this.oldIdentification != '' &&
                 this.oldName != '' &&
@@ -208,7 +208,7 @@ export default {
             )
         },
         isButtonActive() {
-            return this.validChangeOwner === true
+            return this.validNewInfo === true
                 ? 'border-yellow text-white hover:text-black hover:bg-yellow'
                 : 'border-gray text-gray'
         },
