@@ -23,7 +23,11 @@
                 :key="index"
                 class="flex items-center justify-center w-1/2 p-5 lg:w-1/3"
             >
-                <support-card :icon="item.icon" :name="item.name" />
+                <support-card
+                    :icon="item.icon"
+                    :name="item.name"
+                    :path="item.path"
+                />
             </div>
         </div>
         <div class="w-full mx-auto my-20">
@@ -59,38 +63,47 @@ export default {
         support: [
             {
                 icon: 'bank',
+                path: '/waystopay',
                 name: 'Medio de pago',
             },
             {
                 icon: 'microphone',
+                path: '/',
                 name: 'Soporte técnico',
             },
             {
                 icon: 'card',
+                path: '/payplan',
                 name: 'Pago en línea',
             },
             {
                 icon: 'truck',
+                path: '/requesttransfers',
                 name: 'Solicitar traslado',
             },
             {
                 icon: 'changeUser',
+                path: '/changeownership',
                 name: 'Cambio de titular',
             },
             {
                 icon: 'changeFile',
+                path: '/updatedata',
                 name: 'Actualizar Datos',
             },
             {
                 icon: 'accountVoice',
+                path: '/youropinion',
                 name: 'Tú opinión',
             },
             {
                 icon: 'clockFast',
+                path: '/speedometer',
                 name: 'Velocímetro',
             },
             {
                 icon: 'statistic',
+                path: '/checkcapacity',
                 name: 'Consultar capacidad',
             },
         ],
