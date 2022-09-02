@@ -21,7 +21,7 @@
             <div
                 v-for="(item, index) in support"
                 :key="index"
-                class="flex items-center justify-center w-1/2 p-5 lg:w-1/3"
+                class="flex items-center justify-center w-1/2 p-5 sm:w-auto lg:w-1/3"
             >
                 <support-card
                     :icon="item.icon"
@@ -68,7 +68,8 @@ export default {
             },
             {
                 icon: 'microphone',
-                path: '/',
+                path: '/support',
+                number: 'tel:+593991005007',
                 name: 'Soporte técnico',
             },
             {
