@@ -9,7 +9,7 @@
                 :key="index"
                 target="_blank"
                 :href="link.url"
-                class="w-full mt-3 text-xl text-black transition-border"
+                class="w-full mt-3 text-base text-black transition-border"
             >
                 {{ link.name }}
             </a>

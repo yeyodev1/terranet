@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full">
+    <nuxt-link to="/" class="w-full">
         <svg
             width="133"
             height="64"
@@ -29,5 +29,5 @@
                 />
             </defs>
         </svg>
-    </div>
+    </nuxt-link>
 </template>
