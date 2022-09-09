@@ -1,5 +1,12 @@
 <template>
-  <div class="w-40 lg:w-64 border-r border-lightBlue p-4 min-h-screen">
+  <div 
+    class="w-64 bg-appBackground fixed top-0 bottom-0 right-0 border-r border-lightBlue p-4 min-h-screen transition-all"
+    :class="{ 'left-0': isMenuOpen, '-left-64':!isMenuOpen }">
+    <div class="w-full py-1 px-2 flex justify-end items-center mb-2">
+      <button @click="closeMenu" class="w-8 h-8">
+        <icons name="close" class="text-white" />
+      </button>
+    </div>
     <div class="flex flex-col justify-start items-center">
       <menu-toggle v-for="(item, i) in menu" :key="i" :itemMenu="item" />
     </div>
@@ -8,9 +15,12 @@
 
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import MenuToggle from '@/components/App/components/MenuToggle.vue'
+import Icons from '../global/Icons.vue'
+
 export default {
-  components: { MenuToggle },
+  components: { MenuToggle, Icons },
   data: () => ({
     menu: [
       {
@@ -74,6 +84,15 @@ export default {
         ]
       }, 
     ]
-  })
+  }),
+  computed: {
+    ...mapGetters('appMenu', ['isMenuOpen'])
+  },
+  methods: {
+    ...mapActions('appMenu', ['showMenu']),
+    closeMenu() {
+      this.showMenu(false)
+    }
+  }
 }
 </script>

@@ -13,7 +13,7 @@
         <p class="font-principal">
           {{ itemMenu.name }}
         </p>
-        <div class="w-4 h-4 flex justify-center items-center">
+        <div class="w-5 h-5 flex justify-center items-center">
           <icons
             :name="arrowDisplay" class="text-white font-principal"
             :class="{ 'bg-white rounded-lg text-appBackground': isOpen}"/>
