@@ -25,11 +25,11 @@ export default {
     menu: [
       {
         name: 'Contratación y pagos',
-        link: '/'
+        link: '/payments'
       }, 
       {
         name: 'Comunicación',
-        link: '/',
+        link: '/communications',
         items: [
           { 
             name: 'Atención al cliente',
@@ -55,11 +55,11 @@ export default {
       }, 
       {
         name: 'Trabaja con nosotros',
-        link: '/'
+        link: '/admin/workwithus'
       }, 
       {
         name: 'Configuración',
-        link: '/',
+        link: '/settings',
         items: [
           { 
             name: 'Normativas',
@@ -67,7 +67,7 @@ export default {
           },
           { 
             name: 'Planes',
-            link: 'newplans'
+            link: '/admin/settings/newplans'
           },
           { 
             name: 'Cupón de descuento',
