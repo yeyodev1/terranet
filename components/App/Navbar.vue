@@ -57,7 +57,7 @@ export default {
           },
           { 
             name: 'Planes',
-            link: '/'
+            link: 'newplans'
           },
           { 
             name: 'Cupón de descuento',
