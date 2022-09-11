@@ -1,15 +1,13 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="relative flex flex-col items-center">
     <div
       class="
         flex flex-col
         items-center
         justify-center
         w-full
-        mt-6
         rounded-md
         background-plans
-        sm:mt-20
       "
     >
       <p
@@ -54,13 +52,33 @@
     >
       Editar
     </button>
+    <button
+      v-if="isInAdmin"
+      @click="deleteSelectedPlan"
+      class="
+        w-5
+        h-5
+        flex
+        justify-center
+        items-center
+        rounded-full
+        bg-red
+        absolute
+        top-0
+        right-0
+      "
+    >
+      <icons name="close" class="text-white" />
+    </button>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import Icons from '../global/Icons.vue'
 import Speedometer from '../global/The/Svg/Speedometer.vue'
 export default {
-  components: { Speedometer },
+  components: { Speedometer, Icons },
   props: {
     homePlan: {
       type: Object,
@@ -87,8 +105,12 @@ export default {
     },
   },
   methods: {
+    ...mapActions('plans', ['deletePlan']),
     getPlanId() {
       this.$emit('edit-plan', this.homePlan)
+    },
+    deleteSelectedPlan() {
+      this.deletePlan(this.homePlan._id)
     },
   },
 }

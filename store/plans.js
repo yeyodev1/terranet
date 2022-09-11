@@ -25,6 +25,10 @@ const mutations = {
         const id = state.plans.findIndex(plan => plan._id === payload.id)
         state.plans[id] = payload
     },
+    ERASE_PLAN(state, payload) {
+        const id = state.plans.findIndex(plan => plan._id === payload)
+        state.plans.splice(id, 1)
+    },
     SET_ERROR(state) {
         state.error = 'Uuups tuvimos un problema'
     },
@@ -48,6 +52,7 @@ const actions = {
     },
     async  createPlan({commit}, payload) {
         try {
+            console.log(payload)
             const response = await axios.post(`${process.env.NUXT_API}api/plansBoard`, payload, {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem('token'))
@@ -76,6 +81,19 @@ const actions = {
                 commit('CLEAR_ERROR')
             }, 1500);
             console.error(e)
+        }
+    },
+    async deletePlan({commit}, payload) {
+        try {
+            console.log(payload)
+            const response = await axios.delete(`${process.env.NUXT_API}api/plansBoard/${payload}`, {
+                headers: {
+                    Authorization: JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            commit('ERASE_PLAN', payload)
+        } catch(e) {
+
         }
     }
 }

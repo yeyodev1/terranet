@@ -13,7 +13,7 @@
       </p>
       <div v-if="isEditing" class="w-full flex justify-end items-center my-3">
         <button
-          @click="createPlan"
+          @click="createNewPlan"
           class="
             w-28
             rounded-lg
@@ -152,7 +152,11 @@
       Aún no se han creado planes
     </p>
     <div v-else class="w-full mx-auto flex flex-wrap justify-evenly">
-      <div v-for="(plan, i) in getPlans" :key="i" class="w-full sm:w-2/5 mr-4">
+      <div
+        v-for="(plan, i) in getPlans"
+        :key="i"
+        class="w-full sm:w-2/5 md:mr-4 mt-6 px-2"
+      >
         <plan :homePlan="plan" @edit-plan="edit" />
       </div>
     </div>
@@ -222,11 +226,11 @@ export default {
         this.editPlan({ id, ...plan })
         this.resetForm()
         this.selectedPlan = {}
-        return
+      } else {
+        this.createPlan(plan)
       }
-      this.createPlan(plan)
     },
-    createPlan() {
+    createNewPlan() {
       this.isEditing = false
       this.selectedPlan = {}
       this.resetForm()
