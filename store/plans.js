@@ -1,49 +1,65 @@
+import axios from 'axios';
+
 const state = () => ({
-    plans: [
-        {
-            title: 'Plan Mítico',
-            price: '44.65',
-            mbps: '120',
-        },
-        {
-            title: 'Plan Élite',
-            price: '35.71',
-            mbps: '80',
-        },
-        {
-            title: 'Plan Máster',
-            price: '31.25',
-            mbps: '70',
-        },
-        {
-            title: 'Plan basic',
-            price: '31.25',
-            mbps: '50',
-        },
-    ],
+    plans: [],
+    error: ""
 })
 
 const getters = {
     getPlans(state) {
         return state.plans
     },
+    getError(state) {
+        return state.error
+    }
 }
 
 const mutations = {
     SET_PLANS(state, payload) {
         state.plans = payload
     },
+    SET_PLAN(state, payload) {
+        state.plans.push(payload)
+    },
+    SET_ERROR(state) {
+        state.error = 'Uuups tuvimos un problema'
+    },
+    CLEAR_ERROR(state) {
+        state.error = ''
+    }
 }
 
 const actions = {
-    async fetchPlans() {
+    async fetchPlans({commit}) {
         try {
-            const plans = await fjksdahfjdhsjfka
-            commit('SET_PLANS', plans)
+            console.log('estamos inicializados')
+            const plans = await axios.get(`${process.env.NUXT_API}api/plansBoard`)
+            commit('SET_PLANS', plans.data.data)
         } catch (e) {
             console.error('CANNOT_GET_PLANS', e)
+            commit('SET_ERROR')
+            setTimeout(() => {
+                commit('CLEAR_ERROR')
+            }, 1500);
         }
     },
+    async  createPlan({commit, rootState}, payload) {
+        try {
+            console.log(localStorage.getItem('token'))
+            const response = await axios.post(`${process.env.NUXT_API}api/plansBoard`, payload, {
+                headers: {
+                    Authorization: JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            commit('SET_PLAN', payload)
+        } catch (e) {
+            commit('SET_ERROR')
+            setTimeout(() => {
+                commit('CLEAR_ERROR')
+            }, 1500);
+            console.error(e)
+        }
+    }
 }
 
 export default {

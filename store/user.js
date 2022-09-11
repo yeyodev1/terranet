@@ -28,9 +28,8 @@ const mutations = {
 const actions = {
   async login ({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await axios.post(`${process.env.NUXT_API}api/login`, payload)
-      console.log(response)
+      localStorage.setItem('token', JSON.stringify(response.data.data.token))
       commit('SET_USER', response.data.data)
     } catch (e) {
       commit('SET_ERROR_MESSAGE')
