@@ -11,12 +11,32 @@
       >
         Planes
       </p>
+      <div v-if="isEditing" class="w-full flex justify-end items-center my-3">
+        <button
+          @click="createPlan"
+          class="
+            w-28
+            rounded-lg
+            flex
+            justify-center
+            items-center
+            text-appBackground
+            py-1
+            mt-4
+            bg-yellow
+          "
+        >
+          Crear Plan
+        </button>
+      </div>
       <div class="border border-lightBlue rounded-lg mt-6 p-6">
         <button
           class="w-full flex justify-between items-center"
           @click="showCard"
         >
-          <p class="text-lg font-bold font-primary text-white">Crear Planes</p>
+          <p class="text-lg font-bold font-primary text-white">
+            {{ isPlanSelected }}
+          </p>
           <div class="w-5 h-5 flex justify-center items-center">
             <icons :name="arrowDisplay" class="text-yellow font-principal" />
           </div>
@@ -133,7 +153,7 @@
     </p>
     <div v-else class="w-full mx-auto flex flex-wrap justify-evenly">
       <div v-for="(plan, i) in getPlans" :key="i" class="w-full sm:w-2/5 mr-4">
-        <plan :homePlan="plan" />
+        <plan :homePlan="plan" @edit-plan="edit" />
       </div>
     </div>
   </div>
@@ -153,9 +173,11 @@ export default {
   },
   data: () => ({
     isOpen: false,
+    isEditing: false,
     namePlan: '',
     pricePlan: '',
     speedPlan: '',
+    selectedPlan: {},
   }),
   mounted() {
     if (!this.getPlans.length) {
@@ -173,9 +195,19 @@ export default {
         this.namePlan !== '' && this.pricePlan !== '' && this.speedPlan !== ''
       )
     },
+    isPlanSelected() {
+      return Object.keys(this.selectedPlan).length
+        ? 'Editar Plan'
+        : 'Crear Plan'
+    },
   },
   methods: {
-    ...mapActions('plans', ['createPlan', 'fetchPlans']),
+    ...mapActions('plans', ['createPlan', 'fetchPlans', 'editPlan']),
+    resetForm() {
+      this.namePlan = ''
+      this.pricePlan = ''
+      this.speedPlan = ''
+    },
     showCard() {
       this.isOpen = !this.isOpen
     },
@@ -185,7 +217,26 @@ export default {
         price: Number(this.pricePlan),
         speed: Number(this.speedPlan),
       }
+      if (this.isEditing) {
+        const id = this.selectedPlan.id
+        this.editPlan({ id, ...plan })
+        this.resetForm()
+        this.selectedPlan = {}
+        return
+      }
       this.createPlan(plan)
+    },
+    createPlan() {
+      this.isEditing = false
+      this.selectedPlan = {}
+      this.resetForm()
+    },
+    edit(value) {
+      this.selectedPlan = JSON.parse(JSON.stringify(value))
+      this.namePlan = this.selectedPlan.planName
+      this.pricePlan = this.selectedPlan.price
+      this.speedPlan = this.selectedPlan.speed
+      this.isEditing = true
     },
   },
 }

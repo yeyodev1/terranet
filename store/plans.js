@@ -21,6 +21,10 @@ const mutations = {
     SET_PLAN(state, payload) {
         state.plans.push(payload)
     },
+    EDIT_PLAN(state, payload) {
+        const id = state.plans.findIndex(plan => plan._id === payload.id)
+        state.plans[id] = payload
+    },
     SET_ERROR(state) {
         state.error = 'Uuups tuvimos un problema'
     },
@@ -32,7 +36,6 @@ const mutations = {
 const actions = {
     async fetchPlans({commit}) {
         try {
-            console.log('estamos inicializados')
             const plans = await axios.get(`${process.env.NUXT_API}api/plansBoard`)
             commit('SET_PLANS', plans.data.data)
         } catch (e) {
@@ -43,15 +46,30 @@ const actions = {
             }, 1500);
         }
     },
-    async  createPlan({commit, rootState}, payload) {
+    async  createPlan({commit}, payload) {
         try {
-            console.log(localStorage.getItem('token'))
             const response = await axios.post(`${process.env.NUXT_API}api/plansBoard`, payload, {
                 headers: {
                     Authorization: JSON.parse(localStorage.getItem('token'))
                 }
             })
             commit('SET_PLAN', payload)
+        } catch (e) {
+            commit('SET_ERROR')
+            setTimeout(() => {
+                commit('CLEAR_ERROR')
+            }, 1500);
+            console.error(e)
+        }
+    },
+    async editPlan({commit}, payload) {
+        try {
+            const response = await axios.put(`${process.env.NUXT_API}api/plansBoard/${payload.id}`, payload, {
+                headers: {
+                    Authorization: JSON.parse(localStorage.getItem('token'))
+                }
+            })
+            commit('EDIT_PLAN', payload)
         } catch (e) {
             commit('SET_ERROR')
             setTimeout(() => {
