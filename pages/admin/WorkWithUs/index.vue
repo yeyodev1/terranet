@@ -67,7 +67,7 @@
           </div>
           <button
             @click="saveVacancy"
-            class="w-28 rounded-lg flex justify-center items-center text-appBackground py-1 mt-6"
+            class="w-28 rounded-lg py-1 px-2 flex justify-center items-center text-appBackground mt-6"
             :class="{ 'bg-yellow': isFormValid, 'bg-grey': !isFormValid }">
             Guardar
           </button>
@@ -126,7 +126,7 @@ export default {
       const vacancy = {
         jobVacancy: this.jobTitle,
         jobDescription: this.jobDescription,
-        jobRequirements: this.jobRequirements
+        jobRequirements: this.requirements
       }
       console.log(vacancy)
       const response = await axios.post(`${process.env.NUXT_API}api/jobVacs`, vacancy)
