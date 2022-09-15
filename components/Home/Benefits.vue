@@ -60,6 +60,9 @@
                 <p class="text-center text-white font-principal">
                     Gratis e inmediata
                 </p>
+                <p class="text-xs text-white font-principal">
+                    Aplican condiciones
+                </p>
             </div>
         </div>
     </div>
