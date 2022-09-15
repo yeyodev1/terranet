@@ -2,9 +2,7 @@
     <header class="w-full border-b-2 border-solid border-lightBlue">
         <!-- HEADER UNTIL BEFORE LG DEVICES -->
         <div class="flex justify-between w-full py-5 lg:hidden">
-            <div
-                class="flex items-center justify-center w-16 px-5"
-            >
+            <div class="flex items-center justify-center w-16 px-5">
                 <LogoHeader />
             </div>
             <div class="flex items-center justify-center pr-6">
@@ -15,10 +13,13 @@
         </div>
         <!-- HEADER SINCE LG DEVICES -->
         <div class="justify-between hidden w-full max-w-6xl mx-auto lg:flex">
-            <nuxt-link to="/" class="flex items-center justify-center w-32 pt-6 pb-5">
+            <nuxt-link
+                to="/"
+                class="flex items-center justify-center w-32 pt-6 pb-5"
+            >
                 <img
                     class=""
-                    src="@/static/Logos/LogoHeader.png"
+                    src="~/static/Logos/LogoHeader.png"
                     alt="Super logo de la muerte"
                 />
             </nuxt-link>
@@ -93,7 +94,7 @@ export default {
         },
         goToHome() {
             this.$router.push('/')
-        }
+        },
     },
 }
 </script>
