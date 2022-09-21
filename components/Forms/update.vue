@@ -287,16 +287,29 @@
             class="px-6 py-3 text-base border rounded-md font-principal"
             :class="isButtonActive"
             :disabled="!validNewInfo"
+            @click="sendUpdateData"
           >
             Enviar
           </button>
         </div>
       </div>
     </div>
+    <warning
+      :isOpen="errorOpen"
+      :getError="errorMessage"
+      @close-warning="errorOpen = false"
+    />
+    <success
+      :isOpen="successOpen"
+      :getSuccess="successMessage"
+      @close-success="successOpen = false"
+    />
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data: () => ({
     // OLD DATA
@@ -312,6 +325,11 @@ export default {
     newEmail: '',
     newPhoneNumber: '',
     newAddress: '',
+    errorOpen: false,
+    errorMessage:
+      'Por favor, comprueba que tu email, número de cédula sea el correcto ó tu número telefónico',
+    successOpen: false,
+    successMessage: 'Tú solicitud ha sido enviada con éxito',
   }),
   computed: {
     validNewInfo() {
@@ -331,7 +349,50 @@ export default {
     isButtonActive() {
       return this.validNewInfo === true
         ? 'border-yellow text-white hover:text-black hover:bg-yellow'
-        : 'border-gray text-gray'
+        : 'border-grey text-grey'
+    },
+  },
+  methods: {
+    resetValues() {
+      this.oldIdentification = ''
+      this.oldName = ''
+      this.oldEmail = ''
+      this.oldPhoneNumber = ''
+      this.oldAddress = ''
+      this.newIdentification = ''
+      this.newName = ''
+      this.newEmail = ''
+      this.newPhoneNumber = ''
+      this.newAddress = ''
+    },
+    async sendUpdateData() {
+      try {
+        const request = {
+          previousData: {
+            id: this.oldIdentification,
+            names: this.oldName,
+            phoneNumber: this.oldPhoneNumber,
+            email: this.oldEmail,
+            address: this.oldAddress,
+          },
+          newData: {
+            id: this.newIdentification,
+            names: this.newName,
+            phoneNumber: this.newPhoneNumber,
+            email: this.newEmail,
+            address: this.newAddress,
+          },
+        }
+        const response = await axios.post(
+          `${process.env.NUXT_API}api/updateData`,
+          request
+        )
+        this.successOpen = true
+        this.resetValues()
+      } catch (e) {
+        this.errorOpen = true
+        console.log(e)
+      }
     },
   },
 }
