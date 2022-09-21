@@ -13,6 +13,8 @@
         Nos gustaria conocer tu opinion
       </p>
     </div>
+    <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
+    <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
     <div
       class="flex flex-wrap justify-between w-4/5 mx-auto max-w-7xl lg:px-14"
     >
@@ -122,7 +124,7 @@
       <button
         class="px-6 py-3 text-base border rounded-md font-principal"
         :class="isButtonActive"
-        :disabled="validOpinion"
+        :disabled="!validOpinion"
         @click="sendSupportRequest"
       >
         Enviar
@@ -133,14 +135,21 @@
 
 <script>
 import axios from 'axios'
+import Warning from '~/components/global/Warning.vue'
+import Success from '~/components/global/Success.vue'
 
 export default {
+  components: { Warning, Success },
   data: () => ({
     ci: '',
     name: '',
     userEmail: '',
     userPhoneNumber: '',
     userOpinion: '',
+    errorOpen: false,
+    errorMessage: "Por favor, comprueba que tu email, número de cédula sea el correcto ó tu número telefónico",
+    successOpen: false,
+    successMessage: "Tú solicitud ha sido enviada con éxito"
   }),
   computed: {
     validOpinion() {
@@ -157,19 +166,33 @@ export default {
         ? 'border-yellow text-white hover:text-black hover:bg-yellow'
         : 'border-grey text-grey'
     },
+  },
+  methods: {
+    resetValues() {
+      this.ci = ''
+      this.name = ''
+      this.userEmail = ''
+      this.userPhoneNumber = ''
+      this.userOpinion = ''
+    },
     async sendSupportRequest() {
-      const request = {
-        userId: this.ci,
-        name: this.name,
-        phone: this.userPhoneNumber,
-        email: this.email,
-        message: this.userOpinion,
+      try {
+        const request = {
+          idUser: this.ci,
+          name: this.name,
+          phone: this.userPhoneNumber,
+          email: this.userEmail,
+          message: this.userOpinion,
+        }
+        const response = await axios.post(
+          `${process.env.NUXT_API}api/contactUs`,
+          request
+        )
+        this.successOpen = true
+        this.resetValues()
+      } catch (e) {
+        this.errorOpen = true
       }
-      const response = await axios.post(
-        `${process.env.NUXT_API}api/contactUs`,
-        request
-      )
-      console.log(response)
     },
   },
 }
