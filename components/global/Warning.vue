@@ -1,6 +1,18 @@
 <template>
   <div class="w-full">
-    <span v-if="isOpen" class="w-full flex justify-center items-center py-2 bg-red text-white my-4">
+    <span
+      v-if="isOpen"
+      class="
+        w-full
+        flex
+        justify-center
+        items-center
+        py-2
+        bg-red
+        text-white
+        my-4
+      "
+    >
       {{ getError }}
     </span>
   </div>
@@ -11,26 +23,26 @@ export default {
   props: {
     getError: {
       type: String,
-      required: true
+      required: true,
     },
     isOpen: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     closeWarning() {
       setTimeout(() => {
         this.$emit('close-warning')
-      }, 2500);
-    }
+      }, 3500)
+    },
   },
   watch: {
     isOpen(value) {
-      if(value) {
+      if (value) {
         this.closeWarning()
       }
-    }
-  }
+    },
+  },
 }
 </script>
