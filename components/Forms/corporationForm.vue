@@ -374,7 +374,6 @@ export default {
             otherDevices: this.userCameras,
           },
         }
-        console.log(request)
         const response = await axios.post(
           `${process.env.NUXT_API}api/businessPlan`,
           request
