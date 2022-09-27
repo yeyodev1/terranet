@@ -44,6 +44,9 @@
             <div class="mt-12 md:mt-0">
                 <Content :linkSection="linkSection4" />
             </div>
+            <div class="mt-12 md:mt-0">
+                <Content :linkSection="linkSection5"></Content>
+            </div>
         </div>
     </footer>
 </template>
@@ -63,11 +66,11 @@ export default {
             links: [
                 {
                     name: 'Hogar',
-                    url: 'https://localhost:3000/hola2',
+                    url: '/homeplans',
                 },
                 {
                     name: 'Coorporativo',
-                    url: 'https://localhost:3000/hola2',
+                    url: '/corporationplans',
                 },
             ],
         },
@@ -77,19 +80,19 @@ export default {
             links: [
                 {
                     name: 'Test de velocidad',
-                    url: 'https://localhost:3000/hola',
+                    url: '/speedometer',
                 },
                 {
                     name: '¿Cuál es mi plan ideal',
-                    url: 'https://localhost:3000/hola',
+                    url: '/homeplans#testplan',
                 },
                 {
                     name: 'Formas de pago',
-                    url: 'https://localhost:3000/hola',
+                    url: '/waystopay',
                 },
                 {
                     name: 'Preguntas frecuentes',
-                    url: 'https://localhost:3000/hola',
+                    url: 'frequentQuestions',
                 },
             ],
         },
@@ -102,16 +105,16 @@ export default {
                 },
             ],
         },
-        linkSection3: {
+        linkSection4: {
             title: 'Tu opinión nos importa',
             links: [
                 {
                     name: 'Sugerencias y Recomendaciones',
-                    url: 'https://localhost:3000/hola2',
+                    url: 'youropinion',
                 },
             ],
         },
-        linkSection4: {
+        linkSection5: {
             title: 'Normativas y regulaciones',
             links: [
                 {
