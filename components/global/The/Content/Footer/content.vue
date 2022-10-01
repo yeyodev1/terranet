@@ -4,15 +4,15 @@
             {{ linkSection.title }}
         </p>
         <div class="flex flex-col w-full">
-            <a
+            <nuxt-link
                 v-for="(link, index) in linkSection.links"
                 :key="index"
                 target="_blank"
-                :href="link.url"
+                :to="link.url"
                 class="w-full mt-3 text-base text-black transition-border"
             >
                 {{ link.name }}
-            </a>
+            </nuxt-link>
         </div>
     </div>
 </template>

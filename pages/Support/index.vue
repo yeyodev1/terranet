@@ -1,15 +1,7 @@
 <template>
   <div class="w-full mx-auto">
     <div
-      class="
-        flex flex-col
-        items-center
-        justify-center
-        w-full
-        xl:mt-24 xl:mb-20
-        md:mt-16 md:mb-12
-        my-7
-      "
+      class="flex flex-col items-center justify-center w-full  xl:mt-24 xl:mb-20 md:mt-16 md:mb-12 my-7"
     >
       <p class="text-base font-medium text-center text-white sm:text-3xl">
         Atención al cliente
@@ -22,14 +14,7 @@
       </p>
     </div>
     <div
-      class="
-        flex flex-wrap
-        items-center
-        justify-center
-        w-full
-        max-w-4xl
-        mx-auto
-      "
+      class="flex flex-wrap items-center justify-center w-full max-w-4xl mx-auto "
     >
       <div
         v-for="(item, index) in support"
@@ -47,9 +32,12 @@
         <p class="text-base font-medium text-center text-white">
           Consulta las preguntas frecuentas aquí
         </p>
-        <div class="flex items-center justify-center w-6 h-6">
-          <icons name="arrowRight" class="text-yellow" />
-        </div>
+        <nuxt-link to="/frequentquestions">
+
+          <div class="flex items-center justify-center w-6 h-6">
+            <icons name="arrowRight" class="text-yellow" />
+          </div>
+        </nuxt-link>
       </div>
     </div>
     <HomeBenefits />

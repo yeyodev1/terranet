@@ -1,7 +1,7 @@
 <template>
-    <div class="flex flex-col items-center justify-center w-full pt-12">
+    <div id="testplan" class="flex flex-col items-center justify-center w-full pt-12">
         <p
-            class="mt-12 sm:mt-20 px-4 text-2xl font-bold text-center text-white font-principal sm:text-3xl sm:px-0"
+            class="px-4 mt-12 text-2xl font-bold text-center text-white sm:mt-20 font-principal sm:text-3xl sm:px-0"
         >
             ¿Aún no sabes qué plan necesitas?
         </p>
@@ -18,7 +18,7 @@
             class="flex flex-wrap items-center justify-center w-full px-2 py-2"
         >
             <form
-                class="lg:mb-8 flex flex-wrap w-4/5 justify-evenly"
+                class="flex flex-wrap w-4/5 lg:mb-8 justify-evenly"
                 :class="getForm"
             >
                 <div class="sm:w-2/5">
