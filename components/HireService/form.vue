@@ -40,7 +40,7 @@
                   class="flex justify-between text-white items-center w-full"
                 >
                   <p>{{ plan.planName }}</p>
-                  <p>{{ plan.price }}</p>
+                  <p>$ {{ plan.price }}</p>
                 </option>
               </select>
             </div>
@@ -71,7 +71,6 @@
               Cédula
             </label>
             <input
-              type="number"
               id="userId"
               v-model="userId"
               required
@@ -320,7 +319,7 @@
             />
           </div>
           <!-- REFERENCIES SECTION     -->
-          <div
+          <!-- <div
             class="
               flex flex-wrap
               items-start
@@ -330,7 +329,7 @@
               sm:justify-between sm:mt-8
             "
           >
-            <P
+            <p
               class="
                 w-full
                 text-base
@@ -343,9 +342,9 @@
               "
             >
               Referencia
-            </P>
+            </p>
             <!-- NAME SECTION  -->
-            <div class="w-full mt-7 sm:w-2/5">
+          <!-- <div class="w-full mt-7 sm:w-2/5">
               <label
                 for="userName"
                 class="
@@ -383,9 +382,9 @@
                   background-input
                 "
               />
-            </div>
-            <!-- PHONE SECTION -->
-            <div class="w-full mt-7 sm:w-2/5">
+            </div> -->
+          <!-- PHONE SECTION -->
+          <!-- <div class="w-full mt-7 sm:w-2/5">
               <label
                 for="userPhone"
                 class="
@@ -423,8 +422,8 @@
                   background-input
                 "
               />
-            </div>
-          </div>
+            </div> -->
+          <!-- </div> -->
         </div>
       </form>
       <div class="w-full">
@@ -495,17 +494,15 @@
           />
         </div>
         <div class="flex items-center justify-center mt-10 mb-6">
-          <nuxt-link to="/datasent">
-            <button
-              type="submit"
-              class="px-6 py-3 text-base border rounded-md font-principal"
-              @click="sentData"
-              :disabled="!formIsValid"
-              :class="isButtonActive"
-            >
-              Enviar
-            </button>
-          </nuxt-link>
+          <button
+            type="submit"
+            class="px-6 py-3 text-base border rounded-md font-principal"
+            @click="sentData"
+            :disabled="!formIsValid"
+            :class="isButtonActive"
+          >
+            Enviar
+          </button>
         </div>
       </div>
     </div>
@@ -572,7 +569,7 @@ export default {
     isButtonActive() {
       return this.formIsValid === true
         ? 'border-yellow text-white hover:text-black hover:bg-yellow'
-        : 'border-gray text-gray'
+        : 'border-grey text-grey'
     },
   },
   methods: {
@@ -590,19 +587,38 @@ export default {
         this.activeCoupon(false)
       } else {
         this.activeCoupon(true)
-        console.log('hola')
       }
     },
-    sentData() {
-      console.log(
-        this.userId,
-        this.userName,
-        this.userEmail,
-        this.userPhone,
-        this.userAdress,
-        this.contactUser,
-        this.contactPhone
-      )
+    async sentData() {
+      try {
+        console.log(
+          this.userId,
+          this.userName,
+          this.userEmail,
+          this.userPhone,
+          this.userAdress,
+          this.contactUser,
+          this.contactPhone
+        )
+        const request = {
+          plan: {
+            name: 'Super Plan',
+            price: 35.9,
+            speed: 60,
+          },
+          discountCode: '',
+          ci: '0845621783',
+          name: 'Roberto Sola',
+          email: 'robertsol@gmail.com',
+          phone: '0989347458',
+          address: 'Coop. Los Vergeles',
+        }
+        const response = await axios.post()
+        console.log(response.data.data)
+        this.$router.push('/datasent')
+      } catch (e) {
+        console.error(e)
+      }
     },
   },
 }
