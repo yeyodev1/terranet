@@ -35,17 +35,22 @@
               font-principal
               border-lightBlue
             "
+            @click="getCustomer"
           >
             buscar
           </button>
         </div>
-        <div v-else class="mt-12 flex flex-col justify-center items-center">
+        <div
+          v-else
+          class="mt-12 w-72 mx-auto flex flex-col justify-center items-start"
+        >
           <p class="text-white font-principal">
-            <strong> Nombre: </strong> {{ customer.name }}
+            <strong class="mr-2 mb-2"> Nombre: </strong> {{ customer.name }}
+            {{ customer.lastNames }}
           </p>
           <p class="text-white font-principal">
-            <strong> Valor pendiente de pago: </strong>
-            {{ customer.pendingValue }}
+            <strong class="mr-2"> Valor pendiente de pago: </strong>
+            {{ customer.value }}
           </p>
           <button
             class="
@@ -62,20 +67,58 @@
             Botón de pago
           </button>
         </div>
+        <warning
+          :isOpen="errorOpen"
+          :getError="errorMessage"
+          @close-warning="errorOpen = false"
+        />
+        <success
+          :isOpen="successOpen"
+          :getSuccess="successMessage"
+          @close-success="successOpen = false"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data: () => ({
     userIdentification: '',
     customer: {},
+    errorOpen: false,
+    errorMessage:
+      'Por favor, comprueba que hayas llenado todos los campos por favor',
+    successOpen: false,
+    successMessage: 'Tú solicitud ha sido enviada con éxito',
   }),
   computed: {
     isCustomer() {
       return Object.keys(this.customer).length === 0
+    },
+    formIsValid() {
+      return this.userIdentification.length > 9
+    },
+  },
+  methods: {
+    async getCustomer() {
+      try {
+        const request = { ci: this.userIdentification }
+        console.log(
+          `${process.env.NUXT_API}api/payment/${this.userIdentification}`
+        )
+        console.log(request)
+        const response = await axios.get(
+          `${process.env.NUXT_API}api/payment/${this.userIdentification}`
+        )
+        console.log(response)
+        this.customer = response.data.data
+      } catch (e) {
+        console.log(e)
+      }
     },
   },
 }
