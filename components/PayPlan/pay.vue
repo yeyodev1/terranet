@@ -42,30 +42,38 @@
         </div>
         <div
           v-else
-          class="mt-12 w-72 mx-auto flex flex-col justify-center items-start"
+          class="mt-12 w-full mx-auto flex flex-col justify-center items-start"
         >
           <p class="text-white font-principal">
-            <strong class="mr-2 mb-2"> Nombre: </strong> {{ customer.name }}
+            <strong class="mr-2 mb-4"> Nombre: </strong> {{ customer.name }}
             {{ customer.lastNames }}
           </p>
           <p class="text-white font-principal">
             <strong class="mr-2"> Valor pendiente de pago: </strong>
-            {{ customer.value }}
+            $ {{ customer.value }}
           </p>
-          <button
-            class="
-              p-3
-              text-sm text-white
-              border
-              rounded-md
-              font-principal
-              border-lightBlue
-              mt-12
-              mb-10
-            "
-          >
-            Botón de pago
-          </button>
+          <p class="text-white font-principal">
+            <strong class="mr-2"> Fecha de corte: </strong>
+            {{ getDate }}
+          </p>
+          <div class="w-full flex justify-center">
+            <button
+              class="
+                p-3
+                text-sm text-white
+                border
+                rounded-md
+                font-principal
+                border-lightBlue
+                mt-12
+                mb-10
+                mx-auto
+              "
+              @click="pay"
+            >
+              Botón de pago
+            </button>
+          </div>
         </div>
         <warning
           :isOpen="errorOpen"
@@ -102,22 +110,34 @@ export default {
     formIsValid() {
       return this.userIdentification.length > 9
     },
+    getDate() {
+      return this.customer?.cutOffDate.split(' ').splice(0, 3).join(' ')
+    },
   },
   methods: {
     async getCustomer() {
       try {
         const request = { ci: this.userIdentification }
-        console.log(
-          `${process.env.NUXT_API}api/payment/${this.userIdentification}`
-        )
-        console.log(request)
         const response = await axios.get(
           `${process.env.NUXT_API}api/payment/${this.userIdentification}`
         )
-        console.log(response)
         this.customer = response.data.data
       } catch (e) {
         console.log(e)
+        this.errorOpen = true
+      }
+    },
+    async pay() {
+      try {
+        const request = this.customer
+        request.paymentDone = true
+        console.log(request)
+        const response = await axios.put(
+          `${process.env.NUXT_API}api/payment/${request._id}`
+        )
+        console.log(response.data)
+      } catch (e) {
+        console.error(e)
       }
     },
   },
