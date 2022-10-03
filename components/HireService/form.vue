@@ -32,7 +32,7 @@
               Plan ideal:
             </label>
             <div class="w-full px-3 py-3 border rounded-md border-lightBlue">
-              <select required class="w-full select">
+              <select v-model="plan" required class="w-full select">
                 <option class="text-white">Seleccion tú plan</option>
                 <option
                   v-for="(plan, index) in getPlans"
@@ -319,7 +319,7 @@
             />
           </div>
           <!-- REFERENCIES SECTION     -->
-          <!-- <div
+          <div
             class="
               flex flex-wrap
               items-start
@@ -344,7 +344,7 @@
               Referencia
             </p>
             <!-- NAME SECTION  -->
-          <!-- <div class="w-full mt-7 sm:w-2/5">
+            <div class="w-full mt-7 sm:w-2/5">
               <label
                 for="userName"
                 class="
@@ -382,9 +382,9 @@
                   background-input
                 "
               />
-            </div> -->
-          <!-- PHONE SECTION -->
-          <!-- <div class="w-full mt-7 sm:w-2/5">
+            </div>
+            <!-- PHONE SECTION -->
+            <div class="w-full mt-7 sm:w-2/5">
               <label
                 for="userPhone"
                 class="
@@ -422,8 +422,8 @@
                   background-input
                 "
               />
-            </div> -->
-          <!-- </div> -->
+            </div>
+          </div>
         </div>
       </form>
       <div class="w-full">
@@ -477,6 +477,7 @@
           <input
             type="text"
             placeholder="CÓDIGO"
+            v-model="coupon"
             class="
               py-3
               pl-3
@@ -518,7 +519,7 @@ export default {
     arrowDown: 'arrowDown',
     arrowUp: 'arrowUp',
     //CAPTURING USER INFORMATION
-
+    plan: '',
     userId: '',
     userName: '',
     userEmail: '',
@@ -527,6 +528,7 @@ export default {
     contactUser: '',
     contactPhone: '',
     userDetailAdress: '',
+    coupon: '',
   }),
   computed: {
     ...mapGetters('plans', ['getPlans']),
@@ -592,7 +594,6 @@ export default {
     async sentData() {
       try {
         console.log(
-          this.userId,
           this.userName,
           this.userEmail,
           this.userPhone,
@@ -601,17 +602,13 @@ export default {
           this.contactPhone
         )
         const request = {
-          plan: {
-            name: 'Super Plan',
-            price: 35.9,
-            speed: 60,
-          },
-          discountCode: '',
-          ci: '0845621783',
-          name: 'Roberto Sola',
-          email: 'robertsol@gmail.com',
-          phone: '0989347458',
-          address: 'Coop. Los Vergeles',
+          plan: this.plan,
+          discountCode: this.coupon,
+          ci: this.userId,
+          name: this.userName,
+          email: this.userEmail,
+          phone: this.userPhone,
+          address: this.userAddress,
         }
         const response = await axios.post()
         console.log(response.data.data)

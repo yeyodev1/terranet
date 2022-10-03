@@ -1,7 +1,20 @@
 <template>
-  <div 
-    class="w-64 bg-appBackground fixed top-0 bottom-0 right-0 border-r border-lightBlue p-4 min-h-screen transition-all"
-    :class="{ 'left-0': isMenuOpen, '-left-64':!isMenuOpen }">
+  <div
+    class="
+      w-64
+      bg-appBackground
+      fixed
+      top-0
+      bottom-0
+      right-0
+      z-50
+      border-r border-lightBlue
+      p-4
+      min-h-screen
+      transition-all
+    "
+    :class="{ 'left-0': isMenuOpen, '-left-64': !isMenuOpen }"
+  >
     <div class="w-full py-1 px-2 flex justify-end items-center mb-2">
       <button @click="closeMenu" class="w-8 h-8">
         <icons name="close" class="text-white" />
@@ -15,7 +28,7 @@
 
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex'
 import MenuToggle from '@/components/App/components/MenuToggle.vue'
 import Icons from '../global/Icons.vue'
 
@@ -25,74 +38,74 @@ export default {
     menu: [
       {
         name: 'Contratación y pagos',
-        link: '/payments'
-      }, 
+        link: '/payments',
+      },
       {
         name: 'Comunicación',
         link: '/communications',
         items: [
-          { 
+          {
             name: 'Atención al cliente',
-            link: '/'
+            link: '/',
           },
-          { 
+          {
             name: 'Cambio de titular',
-            link: '/'
+            link: '/',
           },
-          { 
+          {
             name: 'Actualización de datos',
-            link: '/'
+            link: '/',
           },
-          { 
+          {
             name: 'Traslados',
-            link: '/'
+            link: '/',
           },
-          { 
+          {
             name: 'Sugerencias',
-            link: '/'
+            link: '/',
           },
-        ]
-      }, 
+        ],
+      },
       {
         name: 'Trabaja con nosotros',
-        link: '/admin/workwithus'
-      }, 
+        link: '/admin/workwithus',
+      },
       {
         name: 'Configuración',
         link: '/settings',
         items: [
-          { 
+          {
             name: 'Normativas',
-            link: '/'
+            link: '/',
           },
-          { 
+          {
             name: 'Planes',
-            link: '/admin/settings/newplans'
+            link: '/admin/settings/newplans',
           },
-          { 
+          {
             name: 'Cupón de descuento',
-            link: '/'
+            link: '/admin/settings/Coupon',
           },
-          { 
+          {
             name: 'Preguntas frecuentes',
-            link: '/'
+            link: '/',
           },
-          { 
+          {
             name: 'Capacidad',
-            link: '/'
+            link: '/',
           },
-        ]
-      }, 
-    ]
+        ],
+      },
+    ],
   }),
   computed: {
-    ...mapGetters('appMenu', ['isMenuOpen'])
+    ...mapGetters('appMenu', ['isMenuOpen']),
   },
   methods: {
     ...mapActions('appMenu', ['showMenu']),
     closeMenu() {
       this.showMenu(false)
-    }
-  }
+    },
+  },
 }
 </script>
