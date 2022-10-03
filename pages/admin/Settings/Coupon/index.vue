@@ -96,6 +96,18 @@
             </button>
           </div>
         </div>
+        <div
+          v-if="getPromotion"
+          class="w-full mt-8 flex justiify-center items-center"
+        >
+          <Coupon
+            class="mx-auto"
+            :name="promotionCode.promotionCode"
+            :discount="promotionCode.discountPercentage"
+            :id="promotionCode._id"
+            @delete-coupon="deleteCoupon(promotionCode._id)"
+          />
+        </div>
       </div>
     </template>
   </app-layout>
@@ -123,6 +135,9 @@ export default {
     isFormValid() {
       return this.name !== '' && this.discount !== ''
     },
+    getPromotion() {
+      return Object.keys(this.promotionCode).length
+    },
   },
   mounted() {
     if (!Object.keys(this.promotionCode).length) {
@@ -147,6 +162,9 @@ export default {
             },
           }
         )
+        if (!response.data.data.length) {
+          return (this.promotionCode = {})
+        }
         this.promotionCode = response.data.data[0]
       } catch (e) {
         console.error(e)
@@ -157,6 +175,13 @@ export default {
         const request = {
           promotionCode: this.name,
           discountPercentage: this.discount,
+        }
+        if (
+          this.promotionCode !== undefined &&
+          Object.keys(this.promotionCode).length
+        ) {
+          const id = this.promotionCode._id
+          this.deleteCoupon(id)
         }
         const response = await axios.post(
           `${process.env.NUXT_API}api/promotionCode`,
@@ -173,18 +198,20 @@ export default {
         console.error(e)
       }
     },
-    async deleteCoupon() {
-      const id = this.promotionCode?._id
-      const response = await axios.delete(
-        `${process.env.NUXT_API}api/promotionCode`,
-        request,
-        {
-          headers: {
-            Authorization: JSON.parse(localStorage.getItem('token')),
-          },
-        }
-      )
-      console.log(response)
+    async deleteCoupon(id) {
+      try {
+        const response = await axios.delete(
+          `${process.env.NUXT_API}api/promotionCode/${id}`,
+          {
+            headers: {
+              Authorization: JSON.parse(localStorage.getItem('token')),
+            },
+          }
+        )
+        this.promotionCode = {}
+      } catch (e) {
+        console.error(e)
+      }
     },
   },
 }
