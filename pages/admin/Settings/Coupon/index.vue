@@ -79,7 +79,7 @@
               </div>
             </div>
             <button
-              @click="saveCoupon"
+              @click="setCoupon"
               class="
                 w-28
                 rounded-lg
@@ -97,15 +97,15 @@
           </div>
         </div>
         <div
-          v-if="getPromotion"
+          v-if="Object.keys(showCoupon).length"
           class="w-full mt-8 flex justiify-center items-center"
         >
           <Coupon
             class="mx-auto"
-            :name="promotionCode.promotionCode"
-            :discount="promotionCode.discountPercentage"
-            :id="promotionCode._id"
-            @delete-coupon="deleteCoupon(promotionCode._id)"
+            :name="showCoupon.promotionCode"
+            :discount="showCoupon.discountPercentage"
+            :id="showCoupon._id"
+            @delete-coupon="removeCoupon(showCoupon._id)"
           />
         </div>
       </div>
@@ -115,6 +115,7 @@
 
 <script>
 import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex'
 import AppLayout from '~/components/App/components/AppLayout.vue'
 import AppTitle from '~/components/App/components/AppTitle.vue'
 import icons from '@/components/global/Icons.vue'
@@ -129,6 +130,7 @@ export default {
     promotionCode: {},
   }),
   computed: {
+    ...mapGetters('coupon', ['showCoupon']),
     arrowDisplay() {
       return !this.isOpen ? 'arrowDown' : 'close'
     },
@@ -145,6 +147,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions('coupon', ['saveCoupon', 'getCoupon', 'deleteCoupon']),
     resetValues() {
       this.name = ''
       this.discount = ''
@@ -152,53 +155,26 @@ export default {
     showCard() {
       this.isOpen = !this.isOpen
     },
-    async getCoupon() {
-      try {
-        const response = await axios.get(
-          `${process.env.NUXT_API}api/promotionCode`,
-          {
-            headers: {
-              Authorization: JSON.parse(localStorage.getItem('token')),
-            },
-          }
-        )
-        if (!response.data.data.length) {
-          return (this.promotionCode = {})
-        }
-        this.promotionCode = response.data.data[0]
-      } catch (e) {
-        console.error(e)
-      }
-    },
-    async saveCoupon() {
+    async setCoupon() {
       try {
         const request = {
           promotionCode: this.name,
           discountPercentage: this.discount,
         }
         if (
-          this.promotionCode !== undefined &&
-          Object.keys(this.promotionCode).length
+          this.showCoupon !== undefined &&
+          Object.keys(this.showCoupon).length
         ) {
-          const id = this.promotionCode._id
+          const id = this.showCoupon._id
           this.deleteCoupon(id)
         }
-        const response = await axios.post(
-          `${process.env.NUXT_API}api/promotionCode`,
-          request,
-          {
-            headers: {
-              Authorization: JSON.parse(localStorage.getItem('token')),
-            },
-          }
-        )
-        this.promotionCode = response.data.data
+        this.saveCoupon(request)
         this.resetValues()
       } catch (e) {
         console.error(e)
       }
     },
-    async deleteCoupon(id) {
+    async removeCoupon(id) {
       try {
         const response = await axios.delete(
           `${process.env.NUXT_API}api/promotionCode/${id}`,
@@ -208,7 +184,7 @@ export default {
             },
           }
         )
-        this.promotionCode = {}
+        this.deleteCoupon()
       } catch (e) {
         console.error(e)
       }

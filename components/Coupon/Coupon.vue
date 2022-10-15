@@ -87,7 +87,7 @@ export default {
       required: true,
     },
     discount: {
-      type: String,
+      type: Number,
       required: true,
     },
     id: {
