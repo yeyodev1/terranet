@@ -21,7 +21,12 @@
       </button>
     </div>
     <div class="flex flex-col justify-start items-center">
-      <menu-toggle v-for="(item, i) in menu" :key="i" :itemMenu="item" />
+      <menu-toggle
+        v-for="(item, i) in menu"
+        :key="i"
+        :itemMenu="item"
+        @close-menu="closeMenu"
+      />
     </div>
   </div>
 </template>
