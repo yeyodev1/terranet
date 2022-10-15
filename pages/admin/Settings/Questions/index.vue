@@ -106,6 +106,7 @@
         class="flex w-full"
         :key="index"
         :question="question"
+        @delete-question="removeQuestion(question._id)"
       />
     </div>
   </app-layout>
@@ -157,6 +158,7 @@ export default {
       'setQuestion',
       'fetchQuestions',
       'updateQuestion',
+      'deleteQuestion',
     ]),
     showCard() {
       this.isOpen = !this.isOpen
@@ -172,7 +174,9 @@ export default {
       }
       this.setQuestion(request)
     },
-    updateQuestion() {},
+    removeQuestion(id) {
+      this.deleteQuestion(id)
+    },
   },
 }
 </script>

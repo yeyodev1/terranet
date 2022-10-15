@@ -17,9 +17,9 @@ const mutations = {
   SET_QUESTION(state, payload) {
     state.frequentQuestions.push(payload)
   },
-  REMOVE_QUESTIONS(state, payload) {
-    // const idx = state.frequentQuestions.findIndex()
-    console.log(payload)
+  REMOVE_QUESTION(state, payload) {
+    const idx = state.frequentQuestions.findIndex(question => question._id === payload)
+    state.frequentQuestions.splice(idx, 1)
   }
 }
 
@@ -39,7 +39,6 @@ const actions = {
   },
   async setQuestion({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await axios.post(`${process.env.NUXT_API}api/FAQ`,
         payload,
         {
@@ -53,8 +52,19 @@ const actions = {
       console.error(e)
     }
   },
-  deleteQuestion({ commit }, payload) {
-    console.log(payload)
+  async deleteQuestion({ commit }, payload) {
+    try {
+      const response = await axios.delete(`${process.env.NUXT_API}api/FAQ/${payload}`,
+        {
+          headers: {
+              Authorization: JSON.parse(localStorage.getItem('token'))
+          }
+        }
+      )
+      commit('REMOVE_QUESTION', payload)
+    } catch (e) {
+      console.error(e)
+    }
   }
 }
 
