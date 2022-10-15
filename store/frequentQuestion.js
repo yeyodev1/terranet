@@ -1,41 +1,61 @@
+import axios from 'axios'
+
 const state = () => ({
-    frequentQuestions: [
-        {
-            question: '¿Necesitas trasladar tu servicio a otro lugar?',
-            answer: 'El costo aproximado de traslado es de $80 + IVA. Si tienes más de 12 meses con nosotros podrás acceder a un traslado sin costo por una sola ocasión.Para solicitar el traslado puedes hacerlo ingresando a nuestro Portal de autoservicio, al correo atencionalcliente@puntonet.ec, desde nuestro Asistente Virtual CELTY al WhatsApp +593 980 828 349. Por favor especifica claramente la dirección, numeración y referencias, si cuentas con las coordenadas exactas nos ayudarías mucho con el proceso. Celerity EC, te entrega una cantidad de 350 metros de cable para la instalación en tu nuevo domicilio si tu plan es de Fibra, si la distancia es mayor, la instalación no será posible.',
-        },
-        {
-            question: '¿Necesitas trasladar tu servicio a otro lugar?',
-            answer: 'El costo aproximado de traslado es de $80 + IVA. Si tienes más de 12 meses con nosotros podrás acceder a un traslado sin costo por una sola ocasión.Para solicitar el traslado puedes hacerlo ingresando a nuestro Portal de autoservicio, al correo atencionalcliente@puntonet.ec, desde nuestro Asistente Virtual CELTY al WhatsApp +593 980 828 349. Por favor especifica claramente la dirección, numeración y referencias, si cuentas con las coordenadas exactas nos ayudarías mucho con el proceso. Celerity EC, te entrega una cantidad de 350 metros de cable para la instalación en tu nuevo domicilio si tu plan es de Fibra, si la distancia es mayor, la instalación no será posible.',
-        },
-        {
-            question: '¿Necesitas trasladar tu servicio a otro lugar?',
-            answer: 'El costo aproximado de traslado es de $80 + IVA. Si tienes más de 12 meses con nosotros podrás acceder a un traslado sin costo por una sola ocasión.Para solicitar el traslado puedes hacerlo ingresando a nuestro Portal de autoservicio, al correo atencionalcliente@puntonet.ec, desde nuestro Asistente Virtual CELTY al WhatsApp +593 980 828 349. Por favor especifica claramente la dirección, numeración y referencias, si cuentas con las coordenadas exactas nos ayudarías mucho con el proceso. Celerity EC, te entrega una cantidad de 350 metros de cable para la instalación en tu nuevo domicilio si tu plan es de Fibra, si la distancia es mayor, la instalación no será posible.',
-        },
-    ],
+  frequentQuestions: [],
 })
 
 const getters = {
-    getFrequentQuestion(state) {
-        return state.frequentQuestions
-    },
+  getFrequentQuestion(state) {
+    return state.frequentQuestions
+  },
 }
 
 const mutations = {
-    SET_QUESTION(state, payload) {
-        state.frequentQuestions = payload
-    },
+  SET_QUESTIONS(state, payload) {
+    state.frequentQuestions = payload
+  },
+  SET_QUESTION(state, payload) {
+    state.frequentQuestions.push(payload)
+  },
+  REMOVE_QUESTIONS(state, payload) {
+    // const idx = state.frequentQuestions.findIndex()
+    console.log(payload)
+  }
 }
 
 const actions = {
-    async fetchQuestions() {
-        try {
-            const frequentQuestions = await aksfjdakljsf
-            commit('SET_QUESTION', frequentQuestions)
-        } catch (e) {
-            console.error('CANNOT_GET_QUESTIONS')
+  async fetchQuestions({ commit }) {
+    try {
+      const response = await axios.get(`${process.env.NUXT_API}api/FAQ`,
+      {
+        headers: {
+            Authorization: JSON.parse(localStorage.getItem('token'))
         }
-    },
+      })
+      commit('SET_QUESTIONS', response.data.data)
+    } catch (e) {
+      console.error('CANNOT_GET_QUESTIONS', e)
+    }
+  },
+  async setQuestion({ commit }, payload) {
+    try {
+      console.log(payload)
+      const response = await axios.post(`${process.env.NUXT_API}api/FAQ`,
+        payload,
+        {
+          headers: {
+              Authorization: JSON.parse(localStorage.getItem('token'))
+          }
+        }
+      )
+      commit('SET_QUESTION', response.data.data)
+    } catch (e) {
+      console.error(e)
+    }
+  },
+  deleteQuestion({ commit }, payload) {
+    console.log(payload)
+  }
 }
 
 export default {

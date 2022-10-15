@@ -88,7 +88,7 @@ export default {
           },
           {
             name: 'Preguntas frecuentes',
-            link: '/',
+            link: '/admin/settings/Questions',
           },
           {
             name: 'Capacidad',
