@@ -26,7 +26,6 @@ const mutations = {
 const actions = {
   async fetchRules({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await axios.get(
         `${process.env.NUXT_API}api/footerLinks`,
         {
@@ -45,7 +44,6 @@ const actions = {
   },
   async setRule({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await axios.post(
         `${process.env.NUXT_API}api/footerLinks`,
         payload,
