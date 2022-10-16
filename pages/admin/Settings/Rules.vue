@@ -32,9 +32,7 @@
             />
           </div>
           <div class="w-full flex justify-start items-start mt-6">
-            <label class="text-white font-primary text-lg mr-1"
-              >Respuesta:
-            </label>
+            <label class="text-white font-primary text-lg mr-1">URL: </label>
             <input
               v-model="url"
               placeholder="Escribe tu respuesta"
@@ -46,13 +44,12 @@
                 px-1
                 bg-appBackground
                 w-full
-                h-14
               "
             />
           </div>
         </div>
         <button
-          @click="saveQuestion"
+          @click="saveRule"
           class="
             w-28
             rounded-lg
@@ -63,16 +60,61 @@
             py-1
             mt-4
           "
+          :disabled="!isFormValid"
           :class="{ 'bg-yellow': isFormValid, 'bg-grey': !isFormValid }"
         >
           Guardar
         </button>
       </div>
     </div>
+    <div
+      v-if="getRules.length"
+      class="
+        w-full
+        flex flex-col
+        justify-center
+        items-center
+        mt-4
+        p-4
+        border border-lightBlue
+      "
+    >
+      <div
+        class="flex justify-between items-center w-full border-b border-grey"
+      >
+        <p class="text-white text-sm md:text-base font-bold">Documento</p>
+        <div class="flex justify-center items-center">
+          <p class="text-white font-bold text-sm md:text-base mr-4">
+            Enlace Web
+          </p>
+          <p class="text-white font-bold text-sm md:text-base mr-4">Acciones</p>
+        </div>
+      </div>
+      <div
+        v-for="(rule, index) in getRules"
+        :key="index"
+        class="mt-4 mb-2 flex justify-between items-center w-full"
+      >
+        <p class="text-white text-sm text-left break-normal">{{ rule.name }}</p>
+        <div class="flex justify-center items-center w-2/5 md:w-1/5">
+          <button
+            target="_blank"
+            class="w-5 h-5 mx-auto mr-8"
+            @click="goTo(rule.url)"
+          >
+            <icons name="link" class="text-yellow" />
+          </button>
+          <button class="w-5 h-5 mx-auto" @click="deleteRule(rule._id)">
+            <icons name="delete" class="text-yellow" />
+          </button>
+        </div>
+      </div>
+    </div>
   </app-layout>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import AppLayout from '~/components/App/components/AppLayout.vue'
 import AppTitle from '~/components/App/components/AppTitle.vue'
 import Icons from '@/components/global/Icons.vue'
@@ -85,10 +127,12 @@ export default {
     Icons,
   },
   data: () => ({
+    isOpen: false,
     linkName: '',
     url: '',
   }),
   computed: {
+    ...mapGetters('rulesLinks', ['getRules']),
     arrowDisplay() {
       return !this.isOpen ? 'arrowDown' : 'close'
     },
@@ -96,10 +140,33 @@ export default {
       return this.linkName !== '' && this.url !== ''
     },
   },
-  mounted() {},
+  mounted() {
+    if (!this.getRules.length) {
+      this.fetchRules()
+    }
+  },
   methods: {
+    ...mapActions('rulesLinks', ['setRule', 'fetchRules', 'removeRule']),
     showCard() {
       this.isOpen = !this.isOpen
+    },
+    resetValues() {
+      this.url = ''
+      this.linkName = ''
+    },
+    saveRule() {
+      const request = {
+        url: this.url,
+        name: this.linkName,
+      }
+      this.setRule(request)
+      this.resetValues()
+    },
+    deleteRule(id) {
+      this.removeRule(id)
+    },
+    goTo(link) {
+      window.open(link, '_blank')
     },
   },
 }

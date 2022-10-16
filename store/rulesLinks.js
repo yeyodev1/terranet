@@ -35,6 +35,9 @@ const actions = {
           },
         }
       )
+      if (!response.data.data.length) {
+        return (commit('SET_RULES', []))
+      }
       commit('SET_RULES', response.data.data)
     } catch (e) {
       console.error(e)
@@ -52,25 +55,22 @@ const actions = {
           },
         }
       )
-      if (!response.data.data.length) {
-        return (commit('SET_COUPON', []))
-      }
-      commit('SET_COUPON', response.data.data[0])  
+      commit('SET_RULE', response.data.data)  
     } catch (e) {
       console.error(e)
     }
   },
-  async deleteRule({ commit },payload) {
+  async removeRule({ commit }, payload) {
     try {
       const response = await axios.delete(
-        `${process.env.NUXT_API}api/footerLinks`,
+        `${process.env.NUXT_API}api/footerLinks/${payload}`,
         {
           headers: {
             Authorization: JSON.parse(localStorage.getItem('token')),
           },
         }
       )
-      commit('REMOVE_RULE', {})
+      commit('REMOVE_RULE', payload)
     } catch (e) {
       console.error(e)
     }

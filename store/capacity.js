@@ -26,14 +26,13 @@ const actions = {
         }
       })
       console.log(response)
-      commit('SET_CAPACITY', response.data.data[0].url)
+      commit('SET_CAPACITY', response.data.data[1].url)
     } catch (e) {
       console.error('CANNOT_GET_IMAGE', e)
     }
   },
   async setCapacity({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await axios.post(`${process.env.NUXT_API}api/capacity`,
         payload,
         {

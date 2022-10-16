@@ -23,7 +23,9 @@ import {
     mdiInstagram,
     mdiWhatsapp,
     mdiWindowClose,
-    mdiTrayArrowUp
+    mdiTrayArrowUp,
+    mdiDelete,
+    mdiLink
 } from '@mdi/js'
 
 export default {
@@ -51,5 +53,7 @@ export default {
     instagram: mdiInstagram,
     whatsapp: mdiWhatsapp,
     close: mdiWindowClose,
-    upload: mdiTrayArrowUp
+    upload: mdiTrayArrowUp,
+    delete: mdiDelete,
+    link: mdiLink
 }
