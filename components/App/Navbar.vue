@@ -97,7 +97,7 @@ export default {
           },
           {
             name: 'Capacidad',
-            link: '/',
+            link: '/admin/settings/Capacity',
           },
         ],
       },
