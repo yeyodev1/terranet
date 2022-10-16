@@ -17,9 +17,6 @@ const mutations = {
 }
 
 const actions = {
-  saveCoupon({ commit }, payload) {
-    commit('SHOW_COUPON', payload)
-  },
   async saveCoupon({ commit }, payload) {
     try {
       console.log(payload)
@@ -50,7 +47,6 @@ const actions = {
       if (!response.data.data.length) {
         return (commit('SET_COUPON', {}))
       }
-      console.log(response.data)
       commit('SET_COUPON', response.data.data[0])  
     } catch (e) {
       console.error(e)

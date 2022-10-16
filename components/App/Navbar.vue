@@ -81,7 +81,7 @@ export default {
         items: [
           {
             name: 'Normativas',
-            link: '/',
+            link: '/admin/settings/Rules',
           },
           {
             name: 'Planes',
