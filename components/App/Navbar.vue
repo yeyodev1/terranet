@@ -51,7 +51,7 @@ export default {
         items: [
           {
             name: 'Atención al cliente',
-            link: '/',
+            link: '/admin/communications/Support',
           },
           {
             name: 'Cambio de titular',
