@@ -41,7 +41,7 @@
             <div class="flex items-center justify-center pr-3">
                 <nuxt-link to="/hireservice">
                     <button
-                        class="hover:bg-yellow hover:text-black py-3 text-lg text-white border rounded-md font-principal border-yellow w-52"
+                        class="hover:bg-yellow hover:text-black py-3 text-lg text-white border rounded-md font-principal border-yellow w-52 text-bold"
                     >
                         Contrata tu servicio
                     </button>
