@@ -21,7 +21,7 @@
             <div class="w-4/5 sm:w-1/3">
                 <nuxt-link class="" to="/homeplans">
                     <button
-                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
+                        class="opacity-50 hover:opacity-100 flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
                         <div class="pb-5">
                             <HomeWifi />
@@ -39,7 +39,7 @@
             <div class="w-4/5 sm:w-1/3">
                 <nuxt-link class="" to="/corporationplans">
                     <button
-                        class="flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
+                        class="opacity-50 hover:opacity-100 flex flex-col items-center justify-center w-full py-4 mt-8 rounded-lg bg-button sm:py-6"
                     >
                         <div class="pb-5">
                             <Corporation />
