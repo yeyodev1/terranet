@@ -43,7 +43,7 @@ export default {
     menu: [
       {
         name: 'Contratación y pagos',
-        link: '/payments',
+        link: '/admin/Payments',
       },
       {
         name: 'Comunicación',
