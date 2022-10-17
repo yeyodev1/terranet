@@ -15,7 +15,7 @@ const mutations = {
     state.support = payload
   },
   REMOVE_SUPPORT(state, payload) {
-    const idx = state.support.findIndex(message => message._id === payload)
+    const idx = state.support.findIndex(s => s._id === payload)
     state.support.splice(idx, 1)
   }
 }

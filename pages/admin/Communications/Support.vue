@@ -21,6 +21,11 @@
               my-3
             "
           >
+            <deleting-modal
+              :isOpen="isOpen"
+              @close-modal="closeModal(support._id)"
+              @deleting-selected-comment="deleteComment()"
+            />
             <p class="w-full md:w-1/2 lg:w-1/4 text-white font-bold mt-2">
               Cédula
             </p>
@@ -55,7 +60,7 @@
         </div>
         <button
           class="border border-yellow rounded-md px-2 py-1 text-white mt-3"
-          @click="deleteComment(id)"
+          @click="openModal(support._id)"
         >
           Eliminar
         </button>
@@ -68,13 +73,19 @@
 import { mapGetters, mapActions } from 'vuex'
 import AppLayout from '~/components/App/components/AppLayout.vue'
 import AppTitle from '~/components/App/components/AppTitle.vue'
+import DeletingModal from '~/components/App/components/DeletingModal.vue'
 
 export default {
   layout: 'app',
   components: {
     AppLayout,
     AppTitle,
+    DeletingModal,
   },
+  data: () => ({
+    isOpen: false,
+    deletingId: null,
+  }),
   computed: {
     ...mapGetters('support', ['getSupport']),
   },
@@ -85,8 +96,21 @@ export default {
   },
   methods: {
     ...mapActions('support', ['fetchSupport', 'deleteSupport']),
-    deleteComment(id) {
-      this.deleteSupport(id)
+    openModal(id) {
+      console.log(id)
+      this.isOpen = true
+      this.deletingId = id
+      console.log('id', this.deletingId)
+    },
+    deleteComment() {
+      this.deleteSupport(this.deletingId)
+      this.closeModal()
+    },
+    closeModal() {
+      this.isOpen = false
+      if (this.deletingId !== null) {
+        this.deletingId = null
+      }
     },
   },
 }
