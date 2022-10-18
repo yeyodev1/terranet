@@ -44,4 +44,9 @@ export default {
     font-display: swap;
     src: url('@/assets/fonts/Fontjek.ttf') format('truetype');
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 </style>
