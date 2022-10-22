@@ -30,7 +30,6 @@ const actions = {
   },
   async getCoupon({ commit }) {
     try {
-      console.log(JSON.parse(localStorage.getItem('token')))
       const response = await axios.get(
         `${process.env.NUXT_API}api/promotionCode`,
         {
