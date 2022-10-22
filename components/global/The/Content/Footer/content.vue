@@ -9,7 +9,7 @@
                 :key="index"
                 target="_blank"
                 :to="link.url"
-                class="w-full mt-3 text-base text-black transition-border"
+                class="hover:text-lightBlue w-full mt-3 text-base text-black transition-border"
             >
                 {{ link.name }}
             </nuxt-link>

@@ -31,14 +31,17 @@
                     class="relative"
                     @click="redirection(item)"
                 >
-                    <TheTextStyle class="font-principal" :name="item.name">
+                    <TheTextStyle
+                        class="font-principal hover:text-yellow"
+                        :name="item.name"
+                    >
                     </TheTextStyle>
                 </nuxt-link>
             </div>
             <div class="flex items-center justify-center pr-3">
                 <nuxt-link to="/hireservice">
                     <button
-                        class="py-3 text-lg text-white border rounded-md font-principal border-yellow w-52"
+                        class="hover:bg-yellow hover:text-black py-3 text-lg text-white border rounded-md font-principal border-yellow w-52 font-bold"
                     >
                         Contrata tu servicio
                     </button>

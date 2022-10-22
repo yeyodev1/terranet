@@ -26,7 +26,7 @@
                 <div class="mt-6">
                     <nuxt-link to="/waystopay">
                         <button
-                            class="w-full max-w-screen-lg py-3 text-base font-semibold text-white border rounded-md font-principal border-yellow px-14"
+                            class="hover:bg-yellow hover:text-black w-full max-w-screen-lg py-3 text-base font-semibold text-white border rounded-md font-principal border-yellow px-14"
                         >
                             Conócelos aquí
                         </button>
