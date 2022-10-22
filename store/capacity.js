@@ -36,8 +36,7 @@ const actions = {
         payload,
         {
           headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-              'Content-Type': "multipart/form-data"
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
           }
         }
       )

@@ -117,7 +117,13 @@ export default {
       this.image.object = imageObject
     },
     setImage() {
-      this.setCapacity(this.image.object)
+      const fd = new FormData()
+      fd.append('capacity', this.image.object)
+      this.setCapacity(fd)
+      this.image =  {
+        url: '',
+        object: '',
+      }
     },
   },
 }
