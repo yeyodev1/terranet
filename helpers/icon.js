@@ -25,7 +25,9 @@ import {
     mdiWindowClose,
     mdiTrayArrowUp,
     mdiDelete,
-    mdiLink
+    mdiLink,
+    mdiMagnify,
+    mdiFileExcel
 } from '@mdi/js'
 
 export default {
@@ -55,5 +57,7 @@ export default {
     close: mdiWindowClose,
     upload: mdiTrayArrowUp,
     delete: mdiDelete,
-    link: mdiLink
+    link: mdiLink,
+    search: mdiMagnify,
+    excel: mdiFileExcel
 }
