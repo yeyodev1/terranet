@@ -55,7 +55,7 @@ const actions = {
             console.log(payload)
             const response = await axios.post(`${process.env.NUXT_API}api/plansBoard`, payload, {
                 headers: {
-                    Authorization: JSON.parse(localStorage.getItem('token'))
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
             })
             commit('SET_PLAN', payload)
@@ -71,7 +71,7 @@ const actions = {
         try {
             const response = await axios.put(`${process.env.NUXT_API}api/plansBoard/${payload.id}`, payload, {
                 headers: {
-                    Authorization: JSON.parse(localStorage.getItem('token'))
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
             })
             commit('EDIT_PLAN', payload)
@@ -88,7 +88,7 @@ const actions = {
             console.log(payload)
             const response = await axios.delete(`${process.env.NUXT_API}api/plansBoard/${payload}`, {
                 headers: {
-                    Authorization: JSON.parse(localStorage.getItem('token'))
+                    Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
                 }
             })
             commit('ERASE_PLAN', payload)

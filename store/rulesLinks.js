@@ -30,7 +30,7 @@ const actions = {
         `${process.env.NUXT_API}api/footerLinks`,
         {
           headers: {
-            Authorization: JSON.parse(localStorage.getItem('token')),
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
           },
         }
       )
@@ -49,7 +49,7 @@ const actions = {
         payload,
         {
           headers: {
-            Authorization: JSON.parse(localStorage.getItem('token')),
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
           },
         }
       )
@@ -64,7 +64,7 @@ const actions = {
         `${process.env.NUXT_API}api/footerLinks/${payload}`,
         {
           headers: {
-            Authorization: JSON.parse(localStorage.getItem('token')),
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
           },
         }
       )

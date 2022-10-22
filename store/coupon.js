@@ -19,15 +19,9 @@ const mutations = {
 const actions = {
   async saveCoupon({ commit }, payload) {
     try {
-      console.log(payload)
       const response = await axios.post(
         `${process.env.NUXT_API}api/promotionCode`,
-        payload,
-        {
-          headers: {
-            Authorization: JSON.parse(localStorage.getItem('token')),
-          },
-        }
+        payload
       )
       commit('SET_COUPON', response.data.data)
     } catch (e) {
@@ -36,11 +30,12 @@ const actions = {
   },
   async getCoupon({ commit }) {
     try {
+      console.log(JSON.parse(localStorage.getItem('token')))
       const response = await axios.get(
         `${process.env.NUXT_API}api/promotionCode`,
         {
           headers: {
-            Authorization: JSON.parse(localStorage.getItem('token')),
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
           },
         }
       )

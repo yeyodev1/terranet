@@ -26,7 +26,7 @@ const actions = {
       const response = await axios.get(`${process.env.NUXT_API}api/contactUs`,
       {
         headers: {
-            Authorization: JSON.parse(localStorage.getItem('token'))
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
       commit('SET_SUPPORTS', response.data.data)
@@ -39,7 +39,7 @@ const actions = {
       const response = await axios.delete(`${process.env.NUXT_API}api/contactUs/${payload}`,
         {
           headers: {
-              Authorization: JSON.parse(localStorage.getItem('token'))
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
           }
         }
       )

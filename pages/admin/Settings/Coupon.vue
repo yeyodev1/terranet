@@ -180,7 +180,7 @@ export default {
           `${process.env.NUXT_API}api/promotionCode/${id}`,
           {
             headers: {
-              Authorization: JSON.parse(localStorage.getItem('token')),
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
             },
           }
         )

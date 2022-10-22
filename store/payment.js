@@ -26,7 +26,7 @@ const actions = {
       const response = await axios.get(`${process.env.NUXT_API}api/payment`,
       {
         headers: {
-            Authorization: JSON.parse(localStorage.getItem('token'))
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
       commit('SET_CUSTOMERS', response.data.data)
@@ -39,7 +39,7 @@ const actions = {
       const response = await axios.patch(`${process.env.NUXT_API}api/payment/${payload}`,
         {
           headers: {
-              Authorization: JSON.parse(localStorage.getItem('token'))
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
           }
         }
       )

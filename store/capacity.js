@@ -22,7 +22,7 @@ const actions = {
       const response = await axios.get(`${process.env.NUXT_API}api/capacity`,
       {
         headers: {
-            Authorization: JSON.parse(localStorage.getItem('token'))
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
       console.log(response.data)
@@ -37,7 +37,7 @@ const actions = {
         payload,
         {
           headers: {
-              Authorization: JSON.parse(localStorage.getItem('token')),
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
               'Content-Type': "multipart/form-data"
           }
         }
@@ -52,7 +52,7 @@ const actions = {
       const response = await axios.delete(`${process.env.NUXT_API}api/FAQ/${payload}`,
         {
           headers: {
-              Authorization: JSON.parse(localStorage.getItem('token'))
+              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
           }
         }
       )
