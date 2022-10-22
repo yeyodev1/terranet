@@ -123,7 +123,6 @@ export default {
         )
         this.customer = response.data.data
       } catch (e) {
-        console.log(e)
         this.errorOpen = true
       }
     },
@@ -131,11 +130,9 @@ export default {
       try {
         const request = this.customer
         request.paymentDone = true
-        console.log(request)
         const response = await axios.put(
           `${process.env.NUXT_API}api/payment/${request._id}`
         )
-        console.log(response.data)
       } catch (e) {
         console.error(e)
       }

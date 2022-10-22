@@ -128,9 +128,7 @@ export default {
         jobDescription: this.jobDescription,
         jobRequirements: this.requirements
       }
-      console.log(vacancy)
       const response = await axios.post(`${process.env.NUXT_API}api/jobVacs`, vacancy)
-      console.log(response)
       this.resetValues()
     }
   }

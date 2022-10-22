@@ -97,10 +97,8 @@ export default {
   methods: {
     ...mapActions('support', ['fetchSupport', 'deleteSupport']),
     openModal(id) {
-      console.log(id)
       this.isOpen = true
       this.deletingId = id
-      console.log('id', this.deletingId)
     },
     deleteComment() {
       this.deleteSupport(this.deletingId)

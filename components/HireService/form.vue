@@ -593,14 +593,6 @@ export default {
     },
     async sentData() {
       try {
-        console.log(
-          this.userName,
-          this.userEmail,
-          this.userPhone,
-          this.userAdress,
-          this.contactUser,
-          this.contactPhone
-        )
         const request = {
           plan: this.plan,
           discountCode: this.coupon,
@@ -611,7 +603,6 @@ export default {
           address: this.userAddress,
         }
         const response = await axios.post()
-        console.log(response.data.data)
         this.$router.push('/datasent')
       } catch (e) {
         console.error(e)

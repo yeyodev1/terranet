@@ -197,7 +197,6 @@ export default {
         this.resetValues()
       } catch (e) {
         this.errorOpen = true
-        console.log(e)
       }
     },
   },
