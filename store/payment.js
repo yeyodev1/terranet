@@ -3,7 +3,8 @@ import axios from 'axios'
 const state = () => ({
   customers: [],
   pagination: {},
-  isLoading: false
+  isLoading: false,
+  customerResult: {}
 })
 
 const getters = {
@@ -15,6 +16,9 @@ const getters = {
   },
   getLoading(state) {
     return state.isLoading
+  },
+  getCustomerResult(state) {
+    return state.customerResult
   }
 }
 
@@ -31,6 +35,9 @@ const mutations = {
   },
   SET_LOADING(state, payload) {
     state.isLoading = payload
+  },
+  SET_CUSTOMER_RESULT(state, payload) {
+    state.customerResult = payload
   }
 }
 
@@ -68,8 +75,7 @@ const actions = {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
-      const data = response.data.data
-      commit('SET_CUSTOMERS', data.docs)
+      commit('SET_CUSTOMER_RESULT', response.data.data || {})
     } catch (e) {
       console.error('CANNOT_GET_CUSTOMERS', e)
     }
@@ -86,7 +92,6 @@ const actions = {
         }
       }
       )
-      console.log(response)
       dispatch('payment/fetchCutomers', 1)
       commit('SET_LOADING', false)
     } catch (e) {

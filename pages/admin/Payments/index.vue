@@ -236,7 +236,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions('payment', ['fetchCustomers', 'uploadExcel']),
+    ...mapActions('payment', [
+      'fetchCustomers',
+      'uploadExcel',
+      'fetchCustomersByCi',
+    ]),
     hasPayed(paymentDone) {
       return paymentDone ? 'Pagado' : 'No pagado'
     },
