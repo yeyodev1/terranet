@@ -83,7 +83,6 @@ const actions = {
   async uploadExcel({ commit, dispatch }, payload) {
     try {
       commit('SET_LOADING', true)
-      console.log()
       const response = await axios.post(`${process.env.NUXT_API}api/excelFile`,
       payload,
       {
@@ -92,7 +91,7 @@ const actions = {
         }
       }
       )
-      dispatch('payment/fetchCutomers', 1)
+      dispatch('payment/fetchCustomers', 1, { root: true })
       commit('SET_LOADING', false)
     } catch (e) {
       console.error(e)
