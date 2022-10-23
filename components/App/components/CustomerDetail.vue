@@ -9,8 +9,7 @@
       class="
         relative
         top-64
-        left-1/3
-        w-1/3
+        modal-position
         h-72
         rounded-lg
         z-20
@@ -28,44 +27,31 @@
             <icons name="close" class="text-yellow" />
           </button>
         </div>
-        <div
-          class="
-            w-full
-            h-60
-            flex flex-col
-            justify-between
-            pt-16
-            pb-10
-            px-3
-            items-end
-          "
-        >
+        <div class="w-full h-60 flex flex-col justify-between items-end">
           <p class="w-full text-white text-center font-bold">
             {{ customer.names }} {{ customer.lastNames }}
           </p>
-          <div class="w-full flex justify-start items-center mt-2">
-            <p class="w-full text-white text-center font-bold mr-2">Cédula:</p>
-            <p class="w-full text-white text-center font-light">
+          <div class="w-full flex justify-center items-center mt-2">
+            <p class="text-white text-center font-bold mr-2">Cédula:</p>
+            <p class="text-white text-center font-light">
               {{ customer.ci }}
             </p>
           </div>
-          <div class="w-full flex justify-start items-center mt-2">
-            <p class="w-full text-white text-center font-bold mr-2">
-              Fecha de corte:
-            </p>
-            <p class="w-full text-white text-center font-light">
+          <div class="w-full flex justify-center items-center mt-2">
+            <p class="text-white text-center font-bold mr-2">Fecha de corte:</p>
+            <p class="text-white text-center font-light">
               {{ customer.cutOffDate }}
             </p>
           </div>
-          <div class="w-full flex justify-start items-center mt-2">
-            <p class="w-full text-white text-center font-bold mr-2">Valor:</p>
-            <p class="w-full text-white text-center font-light">
+          <div class="w-full flex justify-center items-center mt-2">
+            <p class="text-white text-center font-bold mr-2">Valor:</p>
+            <p class="text-white text-center font-light">
               {{ customer.value }}
             </p>
           </div>
-          <div class="w-full flex justify-start items-center mt-2">
-            <p class="w-full text-white text-center font-bold mr-2">Estado:</p>
-            <p class="w-full text-white text-center font-light">
+          <div class="w-full flex justify-center items-center mt-2">
+            <p class="text-white text-center font-bold mr-2">Estado:</p>
+            <p class="text-white text-center font-light">
               {{ hasPayed(customer.paymentDone) }}
             </p>
           </div>
@@ -108,3 +94,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.modal-position {
+  left: 10%;
+  width: 80%;
+}
+</style>
