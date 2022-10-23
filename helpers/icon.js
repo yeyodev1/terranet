@@ -27,7 +27,9 @@ import {
     mdiDelete,
     mdiLink,
     mdiMagnify,
-    mdiFileExcel
+    mdiFileExcel,
+    mdiChevronDoubleRight,
+    mdiChevronDoubleLeft
 } from '@mdi/js'
 
 export default {
@@ -59,5 +61,7 @@ export default {
     delete: mdiDelete,
     link: mdiLink,
     search: mdiMagnify,
-    excel: mdiFileExcel
+    excel: mdiFileExcel,
+    nextPage: mdiChevronDoubleRight,
+    previousPage: mdiChevronDoubleLeft
 }
