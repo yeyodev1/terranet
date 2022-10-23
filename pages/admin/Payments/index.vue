@@ -121,7 +121,7 @@
                 lg:table-cell
               "
             >
-              {{ dateFormat(customer.cutOffDate) }}
+              {{ formattingDate(customer.cutOffDate) }}
             </th>
             <th
               class="
@@ -139,7 +139,10 @@
               {{ hasPayed(customer.paymendDone) }}
             </th>
             <th class="text-white table-cell md:hidden">
-              <button class="w-5 h-5 rounded-full bg-appBackground">
+              <button
+                class="w-5 h-5 rounded-full bg-appBackground"
+                @click="getSelectedCustomer(customer)"
+              >
                 <icons name="edit" class="text-yellow" />
               </button>
             </th>
@@ -201,6 +204,11 @@
       </button>
     </div>
     <loading :isOpen="getLoading" />
+    <customer-detail
+      :isOpen="openDetail"
+      :customer="selectedCustomer"
+      @close-modal="closeOpenDetail"
+    />
   </app-layout>
 </template>
 
@@ -208,6 +216,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import AppLayout from '~/components/App/components/AppLayout.vue'
 import AppTitle from '~/components/App/components/AppTitle.vue'
+import CustomerDetail from '~/components/App/components/CustomerDetail.vue'
 import Loading from '~/components/App/components/Loading.vue'
 import Icons from '~/components/global/Icons.vue'
 
@@ -218,11 +227,14 @@ export default {
     AppTitle,
     Icons,
     Loading,
+    CustomerDetail,
   },
   data: () => ({
     ci: '',
     file: '',
     filename: '',
+    openDetail: false,
+    selectedCustomer: {},
   }),
   computed: {
     ...mapGetters('payment', ['getCustomers', 'getPagination', 'getLoading']),
@@ -254,8 +266,21 @@ export default {
       fd.append('excel', this.file)
       this.uploadExcel(fd)
     },
-    dateFormat(date) {
-      return new Date(date)
+    formattingDate(date) {
+      let utc_days = Math.floor(date - 25569)
+      let utc_value = utc_days * 86400
+      let date_info = new Date(utc_value * 1000)
+      let fractional_day = date - Math.floor(date) + 0.0000001
+      let total_seconds = Math.floor(86400 * fractional_day)
+      let seconds = total_seconds % 60
+      total_seconds -= seconds
+      let hours = Math.floor(total_seconds / (60 * 60))
+      let minutes = Math.floor(total_seconds / 60) % 60
+      return new Date(
+        date_info.getFullYear(),
+        date_info.getMonth(),
+        date_info.getDate()
+      )
     },
     prevOrNext(page) {
       if (page === null) {
@@ -265,6 +290,13 @@ export default {
     },
     searchByCi(ci) {
       this.fetchCustomersByCi(ci)
+    },
+    getSelectedCustomer(customer) {
+      this.selectedCustomer = customer
+      this.openDetail = true
+    },
+    closeOpenDetail() {
+      this.openDetail = false
     },
   },
 }
