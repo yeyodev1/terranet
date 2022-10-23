@@ -37,6 +37,8 @@
             rounded-lg
             flex
             items-center
+            w-full
+            max-w-xs
           "
         >
           <div class="mock flex justify-start items-center">
@@ -47,7 +49,7 @@
           </div>
           <input
             type="file"
-            class="opacity-0 input-scale"
+            class="opacity-0 input-scale w-full"
             @change="onFileChange"
           />
         </button>
@@ -81,10 +83,11 @@
         <thead class="border-b border-lightBlue mb-2">
           <tr>
             <th class="text-white">Cédula</th>
-            <th class="text-white">Cliente</th>
-            <th class="text-white">Fecha de corte</th>
-            <th class="text-white">Valor</th>
+            <th class="text-white hidden md:table-cell">Cliente</th>
+            <th class="text-white hidden lg:table-cell">Fecha de corte</th>
+            <th class="text-white hidden md:table-cell">Valor</th>
             <th class="text-white">Estado</th>
+            <th class="text-white table-cell md:hidden">Detalle</th>
           </tr>
         </thead>
         <tbody>
@@ -93,16 +96,52 @@
             :key="index"
             class="mb-4"
           >
-            <th class="text-white text-sm font-light">{{ customer.ci }}</th>
-            <th class="text-white text-sm font-light">
+            <th class="text-white text-sm font-light py-3 px-1">
+              {{ customer.ci }}
+            </th>
+            <th
+              class="
+                text-white text-sm
+                font-light
+                py-3
+                px-1
+                hidden
+                md:table-cell
+              "
+            >
               {{ customer.names }} {{ customer.lastNames }}
             </th>
-            <th class="text-white text-sm font-light">
-              {{ customer.cutOffDate }}
+            <th
+              class="
+                text-white text-sm
+                font-light
+                py-3
+                px-1
+                hidden
+                lg:table-cell
+              "
+            >
+              {{ dateFormat(customer.cutOffDate) }}
             </th>
-            <th class="text-white text-sm font-light">{{ customer.value }}</th>
-            <th class="text-white text-sm font-light">
+            <th
+              class="
+                text-white text-sm
+                font-light
+                py-3
+                px-1
+                hidden
+                md:table-cell
+              "
+            >
+              {{ customer.value }}
+            </th>
+            <th class="text-white text-sm font-light py-3 px-1">
               {{ hasPayed(customer.paymendDone) }}
+            </th>
+            <th class="text-white table-cell md:hidden">
+              <button class="w-5 h-5 rounded-full bg-appBackground">
+                <icons name="edit" class="text-yellow" />
+              </button>
             </th>
           </tr>
         </tbody>
@@ -210,6 +249,9 @@ export default {
       const fd = new FormData()
       fd.append('excel', this.file)
       this.uploadExcel(fd)
+    },
+    dateFormat(date) {
+      return new Date(date)
     },
     prevOrNext(page) {
       if (page === null) {

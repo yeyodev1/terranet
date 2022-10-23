@@ -29,7 +29,8 @@ import {
     mdiMagnify,
     mdiFileExcel,
     mdiChevronDoubleRight,
-    mdiChevronDoubleLeft
+    mdiChevronDoubleLeft,
+    mdiPencil
 } from '@mdi/js'
 
 export default {
@@ -63,5 +64,6 @@ export default {
     search: mdiMagnify,
     excel: mdiFileExcel,
     nextPage: mdiChevronDoubleRight,
-    previousPage: mdiChevronDoubleLeft
+    previousPage: mdiChevronDoubleLeft,
+    edit: mdiPencil
 }
