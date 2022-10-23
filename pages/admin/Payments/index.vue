@@ -75,6 +75,15 @@
         Cargar archivo
       </button>
     </div>
+    <div class="w-full flex my-2 justify-end items-center">
+      <button
+        v-if="Object.keys(getCustomerResult).length"
+        class="bg-red rounded-lg text-white py-1 px-2"
+        @click="clearSearch"
+      >
+        Limpiar búsqueda
+      </button>
+    </div>
     <div
       v-if="Object.keys(getCustomers).length"
       class="w-full mt-6 border border-lightBlue rounded-lg py-2"
@@ -90,7 +99,7 @@
             <th class="text-white table-cell md:hidden">Detalle</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody v-if="!Object.keys(getCustomerResult).length">
           <tr
             v-for="(customer, index) in getCustomers"
             :key="index"
@@ -142,6 +151,60 @@
               <button
                 class="w-5 h-5 rounded-full bg-appBackground"
                 @click="getSelectedCustomer(customer)"
+              >
+                <icons name="edit" class="text-yellow" />
+              </button>
+            </th>
+          </tr>
+        </tbody>
+        <tbody v-else>
+          <tr class="mb-4">
+            <th class="text-white text-sm font-light py-3 px-1">
+              {{ getCustomerResult.ci }}
+            </th>
+            <th
+              class="
+                text-white text-sm
+                font-light
+                py-3
+                px-1
+                hidden
+                md:table-cell
+              "
+            >
+              {{ getCustomerResult.names }} {{ getCustomerResult.lastNames }}
+            </th>
+            <th
+              class="
+                text-white text-sm
+                font-light
+                py-3
+                px-1
+                hidden
+                lg:table-cell
+              "
+            >
+              {{ formattingDate(getCustomerResult.cutOffDate) }}
+            </th>
+            <th
+              class="
+                text-white text-sm
+                font-light
+                py-3
+                px-1
+                hidden
+                md:table-cell
+              "
+            >
+              {{ getCustomerResult.value }}
+            </th>
+            <th class="text-white text-sm font-light py-3 px-1">
+              {{ hasPayed(getCustomerResult.paymendDone) }}
+            </th>
+            <th class="text-white table-cell md:hidden">
+              <button
+                class="w-5 h-5 rounded-full bg-appBackground"
+                @click="getSelectedCustomer(getCustomerResult)"
               >
                 <icons name="edit" class="text-yellow" />
               </button>
@@ -237,7 +300,12 @@ export default {
     selectedCustomer: {},
   }),
   computed: {
-    ...mapGetters('payment', ['getCustomers', 'getPagination', 'getLoading']),
+    ...mapGetters('payment', [
+      'getCustomers',
+      'getPagination',
+      'getLoading',
+      'getCustomerResult',
+    ]),
     isFileValid() {
       return this.file !== String
     },
@@ -252,6 +320,7 @@ export default {
       'fetchCustomers',
       'uploadExcel',
       'fetchCustomersByCi',
+      'clearCustomerResult',
     ]),
     hasPayed(paymentDone) {
       return paymentDone ? 'Pagado' : 'No pagado'
@@ -297,6 +366,9 @@ export default {
     },
     closeOpenDetail() {
       this.openDetail = false
+    },
+    clearSearch() {
+      this.clearCustomerResult()
     },
   },
 }

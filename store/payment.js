@@ -38,6 +38,9 @@ const mutations = {
   },
   SET_CUSTOMER_RESULT(state, payload) {
     state.customerResult = payload
+  },
+  CLEAR_CUSTOMER_RESULT(state) {
+    state.customerResult = {}
   }
 }
 
@@ -75,6 +78,7 @@ const actions = {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
+      console.log(response)
       commit('SET_CUSTOMER_RESULT', response.data.data || {})
     } catch (e) {
       console.error('CANNOT_GET_CUSTOMERS', e)
@@ -97,19 +101,8 @@ const actions = {
       console.error(e)
     }
   },
-  async customerPayed({ commit }, payload) {
-    try {
-      const response = await axios.patch(`${process.env.NUXT_API}api/payment/${payload}`,
-        {
-          headers: {
-              Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
-          }
-        }
-      )
-      commit('CUSTOMER_PAYED', payload)
-    } catch (e) {
-      console.error(e)
-    }
+  clearCustomerResult({ commit }) {
+    commit('CLEAR_CUSTOMER_RESULT')
   }
 }
 
