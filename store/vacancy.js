@@ -39,11 +39,24 @@ const actions = {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
-      dispatch('workWithUs/fetchVacancies')
+      dispatch('vacancy/fetchVacancies', null, { root: true })
     } catch (e) {
       console.error('CANNOT_POST_VACANCY', e)
     }
   },
+  async removeVacancy({ commit, dispatch }, payload) {
+    try {
+      const reponse = await axios.delete(`${process.env.NUXT_API}api/jobVacs/${payload}`,
+      {
+        headers: {
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
+        }
+      })
+      dispatch('vacancy/fetchVacancies', null, { root: true })
+    } catch(e) {
+      console.error('CANNOT_DELETE_VACANCY', e)
+    }
+  }
 }
 
 export default {

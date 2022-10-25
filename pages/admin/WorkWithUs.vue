@@ -111,6 +111,15 @@
         </button>
       </div>
     </div>
+    <div v-if="getVacancies.length" class="mt-4">
+      <vacancy-card
+        v-for="(vacancy, index) in getVacancies"
+        :key="index"
+        :vacancy="vacancy"
+        @delete-vacancy="removeJob"
+        class="mb-4"
+      />
+    </div>
   </app-layout>
 </template>
 
@@ -119,6 +128,7 @@ import { mapActions, mapGetters } from 'vuex'
 import icons from '@/components/global/Icons.vue'
 import AppTitle from '~/components/App/components/AppTitle.vue'
 import AppLayout from '@/components/App/components/AppLayout.vue'
+import VacancyCard from '~/components/Cards/VacancyCard.vue'
 
 export default {
   layout: 'app',
@@ -126,6 +136,7 @@ export default {
     icons,
     AppTitle,
     AppLayout,
+    VacancyCard,
   },
   data: () => ({
     isOpen: false,
@@ -145,8 +156,13 @@ export default {
       )
     },
   },
+  mounted() {
+    if (!this.getVacancies.length) {
+      this.fetchVacancies()
+    }
+  },
   methods: {
-    ...mapActions('vacancy', ['setVacancy', 'fetchVacancy']),
+    ...mapActions('vacancy', ['setVacancy', 'fetchVacancies', 'removeVacancy']),
     showCard() {
       this.isOpen = !this.isOpen
     },
@@ -171,6 +187,9 @@ export default {
       }
       this.setVacancy(vacancy)
       this.resetValues()
+    },
+    removeJob(value) {
+      this.removeVacancy(value)
     },
   },
 }
