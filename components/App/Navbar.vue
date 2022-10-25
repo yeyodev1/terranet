@@ -55,7 +55,7 @@ export default {
           },
           {
             name: 'Cambio de titular',
-            link: '/',
+            link: '/admin/communications/ChangeOwner',
           },
           {
             name: 'Actualización de datos',
@@ -63,7 +63,7 @@ export default {
           },
           {
             name: 'Traslados',
-            link: '/',
+            link: '/admin/communications/ChangeLocation',
           },
           {
             name: 'Sugerencias',
