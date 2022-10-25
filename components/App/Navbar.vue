@@ -59,7 +59,7 @@ export default {
           },
           {
             name: 'Actualización de datos',
-            link: '/',
+            link: '/admin/communications/UpdateOwner',
           },
           {
             name: 'Traslados',
