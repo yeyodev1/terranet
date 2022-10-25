@@ -156,10 +156,11 @@
       </div>
     </div>
     <div class="w-4/5 mt-3 mb-10 max-w-7xl">
-      <p class="text-xs text-white font-principal sm:text-sm">
-        Envianos tu comprobante de pago por whatsapp
+      <p class="text-yellow text-lg lg:text-xl">Importante</p>
+      <p class="text-base text-white font-principal">
+        Envíanos tu comprobante de pago al WhatsApp +593969001683
       </p>
-      <p class="text-xs text-white font-principal sm:text-sm">
+      <p class="text-base text-white font-principal">
         Realiza el pago de tus planes cada mes
       </p>
     </div>
