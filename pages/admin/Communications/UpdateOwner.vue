@@ -1,6 +1,6 @@
 <template>
   <app-layout>
-    <app-title title="Cambio de titular" class="mt-4" />
+    <app-title title="Actualización de datos" class="mt-4" />
     <div
       v-if="getRequestedUpdates.length"
       class="w-full flex flex-col justify-center items-center mt-4"

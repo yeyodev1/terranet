@@ -67,7 +67,7 @@ export default {
           },
           {
             name: 'Sugerencias',
-            link: '/',
+            link: '/admin/communications/Suggestions',
           },
         ],
       },

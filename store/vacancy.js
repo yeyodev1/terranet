@@ -6,7 +6,7 @@ const state = () => ({
 
 const getters = {
   getVacancies(state) {
-    return state.vacancies || []
+    return state.vacancies
   },
 }
 
