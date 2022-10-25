@@ -19,7 +19,7 @@ const mutations = {
 const actions = {
   async fetchRequestedUpdates({ commit }) {
     try {
-      const response = await axios.get(`${process.env.NUXT_API}api/changeOwner`,
+      const response = await axios.get(`${process.env.NUXT_API}api/updateData`,
       {
         headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
@@ -32,14 +32,14 @@ const actions = {
   },
   async deleteRequestedUpdates({ commit, dispatch }, payload) {
     try {
-      const response = await axios.delete(`${process.env.NUXT_API}api/changeOwner/${payload}`,
+      const response = await axios.delete(`${process.env.NUXT_API}api/updateData/${payload}`,
         {
           headers: {
               Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
           }
         }
       )
-      dispatch('changeOwner/fetchChangeOwners', null, { root: true })
+      dispatch('updateOwner/fetchRequestedUpdates', null, { root: true })
     } catch (e) {
       console.error(e)
     }
