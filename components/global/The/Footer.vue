@@ -17,7 +17,7 @@
       <!-- CALL CENTER -->
       <div>
         <p class="text-xl font-bold text-blue">Atención al cliente</p>
-        <a href="tel:+593991005007">
+        <a href="tel:+593939329000">
           <button
             class="
               flex
@@ -35,7 +35,7 @@
           </button>
         </a>
         <p class="text-xl font-bold text-blue">Ventas</p>
-        <a href="tel:+593967375007">
+        <a href="tel:+593967377000">
           <button
             class="
               flex
