@@ -31,7 +31,7 @@
             "
           >
             <icons class="h-6 pr-2" :name="phone" />
-            0991005007
+            0939329000
           </button>
         </a>
         <p class="text-xl font-bold text-blue">Ventas</p>
@@ -49,7 +49,7 @@
             "
           >
             <icons class="h-6 pr-2" :name="phone" />
-            0967375007
+            0967377000
           </button>
         </a>
       </div>
