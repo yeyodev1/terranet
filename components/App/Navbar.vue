@@ -99,6 +99,10 @@ export default {
             name: 'Capacidad',
             link: '/admin/settings/Capacity',
           },
+          {
+            name: 'Portada',
+            link: '/admin/settings/Hero',
+          },
         ],
       },
     ],
