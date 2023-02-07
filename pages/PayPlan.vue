@@ -1,7 +1,6 @@
 <template>
     <div class="w-full">
       <Pay />
-      <Benefits />
     </div>
   </template>
   

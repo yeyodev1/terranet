@@ -18,8 +18,6 @@
         piensa en tu comodidad
       </p>
       <PayMethods />
-      <Benefits />
-      <PhoneCallToAction />
     </div>
   </div>
 </template>

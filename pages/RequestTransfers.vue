@@ -1,8 +1,6 @@
 <template>
     <div class="w-full">
         <HomeTranfer />
-        <Benefits />
-        <PhoneCallToAction />
     </div>
 </template>
 
