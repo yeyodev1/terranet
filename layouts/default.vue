@@ -8,6 +8,8 @@
       <Menu />
       <nuxt />
     </div>
+    <Benefits />
+    <PhoneCallToAction />
     <Footer />
   </div>
 </template>
@@ -17,11 +19,16 @@ import { mapGetters, mapActions } from 'vuex'
 import Header from '~/components/global/The/Header.vue'
 import Footer from '~/components/global/The/Footer.vue'
 import Menu from '~/components/global/The/Menu.vue'
+import Benefits from '~/components/Home/Benefits.vue'
+import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
+
 export default {
   components: {
     Header,
     Footer,
     Menu,
+    Benefits,
+    PhoneCallToAction
   },
   data: () => ({
     bgImage: require('@/static/Backgrounds/Background.png'),

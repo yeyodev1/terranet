@@ -40,8 +40,6 @@
         </nuxt-link>
       </div>
     </div>
-    <HomeBenefits />
-    <HomePhoneCallToAction />
   </div>
 </template>
 

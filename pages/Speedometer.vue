@@ -9,22 +9,16 @@
         </div>
         <Speedometer />
         <Tips />
-        <Benefits />
-        <PhoneCallToAction />
     </div>
 </template>
 
 <script>
-import PhoneCallToAction from '~/components/Home/PhoneCallToAction.vue'
-import Benefits from '~/components/Home/Benefits.vue'
 import Tips from '~/components/Speedometer/Tips.vue'
 import Speedometer from '@/components/Speedometer/Speedometer.vue'
 
 export default {
     components: {
         Tips,
-        PhoneCallToAction,
-        Benefits,
         Tips,
         Speedometer,
     },

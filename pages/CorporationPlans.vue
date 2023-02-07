@@ -29,13 +29,11 @@
   
   <script>
   import CorporationForm from '~/components/Forms/corporationForm.vue'
-  import Benefits from '~/components/Home/Benefits.vue'
   import Footer from '~/components/global/The/Footer.vue'
   
   export default {
     components: {
       CorporationForm,
-      Benefits,
       Footer,
     },
   }
