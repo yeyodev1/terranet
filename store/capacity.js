@@ -25,7 +25,8 @@ const actions = {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
-      commit('SET_CAPACITY', response.data.data[0].url)
+      const image = response.data.data[0].url
+      commit('SET_CAPACITY', image)
     } catch (e) {
       console.error('CANNOT_GET_IMAGE', e)
     }

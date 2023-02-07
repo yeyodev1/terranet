@@ -78,7 +78,6 @@ const actions = {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
         }
       })
-      console.log(response)
       commit('SET_CUSTOMER_RESULT', response.data.data || {})
     } catch (e) {
       console.error('CANNOT_GET_CUSTOMERS', e)
