@@ -21,7 +21,7 @@
         :key="index"
         class="flex items-center justify-center w-1/2 p-5 sm:w-auto lg:w-1/3"
       >
-        <support-card :icon="item.icon" :name="item.name" :path="item.path" />
+        <SupportCard :icon="item.icon" :name="item.name" :path="item.path" />
       </div>
     </div>
     <div class="w-full mx-auto my-20">
