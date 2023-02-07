@@ -8,8 +8,8 @@
       <Menu />
       <nuxt />
     </div>
-    <Benefits />
-    <PhoneCallToAction />
+    <Benefits v-if="!isHome" />
+    <PhoneCallToAction v-if="!isHome" />
     <Footer />
   </div>
 </template>
@@ -52,6 +52,9 @@ export default {
     getRoute() {
       return this.$route.path
     },
+    isHome() {
+      return this.$route.name === 'index';
+    }
   },
   watch: {
     getRoute(value) {
