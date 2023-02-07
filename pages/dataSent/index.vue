@@ -1,12 +1,16 @@
 <template>
     <div class="w-full">
-        <DataSent />
+        <HeroData />
+        <div>
+            <Footer />
+        </div>
     </div>
 </template>
 
 <script>
-import DataSent from './components/dataSent.vue'
+import Footer from '~/components/global/The/Footer.vue'
+import HeroData from '~/components/dataSent/heroData.vue'
 export default {
-    components: { DataSent },
+    components: { Footer, HeroData },
 }
 </script>
