@@ -1,5 +1,5 @@
 <template>
-    <div class="message fixed right-5 sm:right-16 -bottom-40 rounded-lg">
+    <div class="message fixed z-50 right-5 sm:right-16 -bottom-40 rounded-lg">
         <div
             class="p-4 rounded-lg message-button bg-yellow flex justify-center items-center mb-3"
         >
