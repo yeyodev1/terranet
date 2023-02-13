@@ -34,6 +34,7 @@
     <div class="w-full flex justify-between items-center mt-4 mb-2">
       <button
         v-if="!isInAdmin"
+        @click="openCloseApplication"
         class="px-2 py-1 border border-grey rounded text-white"
       >
         Enviar CV
@@ -46,26 +47,40 @@
         Eliminar
       </button>
     </div>
+    <div v-if="formIsOpen" class="w-full flex justify-start items-center mt-4 mb-2">
+      <VacancyForm
+        @close-form="openCloseApplication"
+        @applicant-form="$emit('applicant-form')" />
+    </div>
   </div>
 </template>
 
 <script>
+import VacancyForm from '../Forms/VacancyForm.vue';
+
 export default {
+  components: { VacancyForm },
   props: {
     vacancy: {
-      type: Object,
-      required: true,
+        type: Object,
+        required: true,
     },
   },
+  data: () => ({
+    formIsOpen: false
+  }),
   computed: {
-    isInAdmin() {
-      return this.$route.fullPath.includes('/admin')
-    },
+      isInAdmin() {
+          return this.$route.fullPath.includes("/admin");
+      },
   },
   methods: {
     deleteVacancy() {
-      this.$emit('delete-vacancy', this.vacancy._id)
+      this.$emit("delete-vacancy", this.vacancy._id);
     },
+    openCloseApplication() {
+      this.formIsOpen = !this.formIsOpen
+    }
   },
 }
 </script>

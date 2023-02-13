@@ -126,7 +126,7 @@ export default {
       links: [
         {
           name: 'Trabaja con nosotros',
-          url: 'https://localhost:3000/hola2',
+          url: '/WorkWithUs',
         },
       ],
     },
@@ -135,7 +135,7 @@ export default {
       links: [
         {
           name: 'Sugerencias y Recomendaciones',
-          url: 'youropinion',
+          url: '/youropinion',
         },
       ],
     },
