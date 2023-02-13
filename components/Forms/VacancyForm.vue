@@ -7,7 +7,7 @@
         </label>
         <input
           id="name"
-          type="number"
+          type="text"
           v-model="applicant.name"
           required
           class="
@@ -112,11 +112,11 @@
           class="mt-12 rounded-lg py-1 px-2 text-appBackground"
           :class="{'bg-yellow': formIsValid, 'bg-grey': !formIsValid}"
           :disabled="!formIsValid"
-          @prevent.click="sendApplications">
+          @click.prevent="sendApplications">
           Enviar 
         </button>
       </div>
-  </form>
+    </form>
 </template>
 
 <script>
@@ -133,7 +133,7 @@ export default {
   }),
   computed: {
     formIsValid() {
-      return !this.applicant.name.length && !this.applicant.lastname.length && !this.emailIsValid.length && !this.applicant.address.length
+      return this.applicant.name.length && this.applicant.lastname.length && !this.emailIsValid.length && this.applicant.address.length
     },
     emailIsValid() {
       return this.applicant.email.length ? this.validatingEmail() : ''
