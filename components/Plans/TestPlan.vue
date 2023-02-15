@@ -1,5 +1,8 @@
 <template>
-    <div id="testplan" class="flex flex-col items-center justify-center w-full pt-12">
+    <div
+        id="testplan"
+        class="flex flex-col items-center justify-center w-full pt-12"
+    >
         <p
             class="px-4 mt-12 text-2xl font-bold text-center text-white sm:mt-20 font-principal sm:text-3xl sm:px-0"
         >

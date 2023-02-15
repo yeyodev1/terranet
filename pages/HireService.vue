@@ -1,16 +1,16 @@
 <template>
     <div class="w-full">
-      <Form />
-      <Benefits />
-      <PhoneCallToAction />
+        <Form />
+        <Benefits />
+        <PhoneCallToAction />
     </div>
-  </template>
-  
+</template>
+
 <script>
 import Form from '~/components/HireService/form.vue'
 export default {
-  components: {
-    Form,
-  },
+    components: {
+        Form,
+    },
 }
 </script>
