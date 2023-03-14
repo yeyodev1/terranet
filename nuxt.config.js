@@ -60,4 +60,8 @@ export default {
     // router: {
     //     middleware: 'admin',
     // },
+
+    env: {
+        NUXT_API: process.env.NUXT_API
+    }
 }
