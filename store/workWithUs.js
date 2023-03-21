@@ -32,11 +32,10 @@ const actions = {
   },
   async postApplication({ commit }, payload) {
     try {
-      const response = await axios.post(
+      await axios.post(
         `${process.env.NUXT_API}api/workWUs`,
         payload
       )
-      console.log('response', response.data)
     } catch (error) {
       console.error('CANNOT_SEND_CV')
     }

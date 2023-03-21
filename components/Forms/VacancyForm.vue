@@ -99,7 +99,8 @@ export default {
 				this.applicant.lastname.length &&
 				!this.emailIsValid.length &&
 				this.applicant.address.length) &&
-				this.applicant.fileUrl.length
+				this.applicant.fileUrl.length &&
+				this.applicant.ci.length
 		},
 		emailIsValid() {
 			return this.applicant.email.length ? this.validatingEmail() : '';
@@ -124,7 +125,6 @@ export default {
 				: "";
 		},
 		sendApplications() {
-			console.log(this.applicant);
 			const dataForm = {
 				name: this.applicant.name,
 				lastName: this.applicant.lastname,
@@ -138,6 +138,7 @@ export default {
 			this.postApplication(dataForm)
 
 			this.$emit("close-form");
+			this.$emit('vacant-sent')
 			this.resetValues()
 		},
 		getCvFile(event) {

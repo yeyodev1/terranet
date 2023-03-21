@@ -1,5 +1,6 @@
 <template>
   <div class="w-full flex flex-col justify-center items-center rounded-lg py-4 px-8 bg-blue">
+    <Success :get-success="message" :is-open="sent" @close-success="sent = false" />
     <div class="w-full flex flex-wrap justify-between items-center">
       <div class="w-full md:w-2/5 flex flex-col items-start">
         <p class="text-white text-xl font-bold">
@@ -26,16 +27,17 @@
       </button>
     </div>
     <div v-if="formIsOpen" class="w-full flex justify-start items-center mt-4 mb-2">
-      <VacancyForm :vacant="vacancy.jobVacancy" @close-form="openCloseApplication" />
+      <VacancyForm :vacant="vacancy.jobVacancy" @close-form="openCloseApplication" @vacant-sent="vacantSent" />
     </div>
   </div>
 </template>
 
 <script>
 import VacancyForm from '../Forms/VacancyForm.vue'
+import Success from '../global/Success.vue'
 
 export default {
-  components: { VacancyForm },
+  components: { VacancyForm, Success },
   props: {
     vacancy: {
       type: Object,
@@ -44,6 +46,8 @@ export default {
   },
   data: () => ({
     formIsOpen: false,
+    sent: false,
+    message: 'Tu solicitud fue enviada existosamente'
   }),
   computed: {
     isInAdmin() {
@@ -57,6 +61,9 @@ export default {
     openCloseApplication() {
       this.formIsOpen = !this.formIsOpen
     },
+    vacantSent(event) {
+      this.sent = true
+    }
   },
 }
 </script>

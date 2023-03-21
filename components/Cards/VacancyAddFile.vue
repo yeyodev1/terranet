@@ -45,7 +45,6 @@ export default {
         const file = e.target.files[0]
         this.file = file
         const response = await this.setFile(file)
-        console.log(response)
         this.$emit('image-response', response.data)
         this.file = {}
       } catch (error) {
