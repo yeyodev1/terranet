@@ -14,7 +14,7 @@
                 Seleccionar archivo
               </p>
             </div>
-            <input type="file" class="opacity-0 absolute input-scale" @change="onFileChange" />
+            <input type="file" class="opacity-0 absolute input-scale" @change.prevent="onFileChange" />
           </button>
           <div v-if="Object.keys(file).length" class="w-16 h-16 flex justify-center items-center mt-2">
             <p>
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { emit } from 'process';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -39,26 +40,28 @@ export default {
   },
   methods: {
     ...mapActions('workWithUs', ['sendCv']),
-    onFileChange(e) {
-      const file = e.target.files[0]
-      this.file = file
-      if (!file.length) {
-        return
+    async onFileChange(e) {
+      try {
+        const file = e.target.files[0]
+        this.file = file
+        const response = await this.setFile(file)
+        console.log(response)
+        this.$emit('image-response', response.data)
+        this.file = {}
+      } catch (error) {
+        console.error('CANNOT_SEND_CV')
       }
     },
-    setFile() {
-      const fd = new FormData()
-      fd.append('capacityFile', this.file)
-      this.sendCv(fd)
-      this.file = {}
+    async setFile(file) {
+      try {
+        const fd = new FormData()
+        fd.append('cvFile', file)
+        const result = await this.sendCv(fd)
+        return result
+      } catch (error) {
+        console.error(error)
+      }
     },
   },
-  watch: {
-    file(newVal, oldVal) {
-      if (Object.keys(newVal).length) {
-        setFile()
-      }
-    }
-  }
 }
 </script>

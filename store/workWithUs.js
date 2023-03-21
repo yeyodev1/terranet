@@ -20,11 +20,25 @@ const actions = {
   async sendCv({ commit }, payload) {
     try {
       commit('SET_LOADING', true)
-      console.log(payload)
-      // await axios.post(`${process.env.NUXT_API}api/cvFile`, payload)
+      const response = await axios.post(
+        `${process.env.NUXT_API}api/cvFile`,
+        payload
+      )
       commit('SET_LOADING', false)
+      return response.data
     } catch (e) {
       console.error('CANNOT_SEND_CV', e)
+    }
+  },
+  async postApplication({ commit }, payload) {
+    try {
+      const response = await axios.post(
+        `${process.env.NUXT_API}api/workWUs`,
+        payload
+      )
+      console.log('response', response.data)
+    } catch (error) {
+      console.error('CANNOT_SEND_CV')
     }
   },
 }

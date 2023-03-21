@@ -26,7 +26,7 @@
       </button>
     </div>
     <div v-if="formIsOpen" class="w-full flex justify-start items-center mt-4 mb-2">
-      <VacancyForm @close-form="openCloseApplication" @applicant-form="$emit('applicant-form')" />
+      <VacancyForm :vacant="vacancy.jobVacancy" @close-form="openCloseApplication" />
     </div>
   </div>
 </template>
