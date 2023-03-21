@@ -6,7 +6,7 @@
         Comenzar
       </button>
       <div v-else-if="!isLoading && Object.keys(getSpeed).length" class="flex justify-center items-center">
-        <p class="text-white font-open text-5xl">
+        <p class="text-white font-open text-5xl text-center">
           {{ getSpeed.test }}
         </p>
       </div>
