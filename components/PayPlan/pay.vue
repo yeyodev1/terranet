@@ -41,7 +41,7 @@
         </div>
         <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
         <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
-        <PayPhoneCheckout :amount="getDoubt" />
+        <PayPhoneCheckout v-if="Object.keys(this.customer).length" :amount="getDoubt" />
       </div>
     </div>
   </div>
@@ -70,7 +70,7 @@ export default {
       return this.userIdentification.length > 9;
     },
     getDoubt() {
-      return this.customer.res.saldo * 100;
+      return this.customer.res.saldo !== null ? this.customer.res.saldo  * 100 : 0;
     }
   },
   methods: {
