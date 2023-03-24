@@ -41,7 +41,7 @@
         </div>
         <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
         <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
-        <PayPhoneCheckout :amount="1000" />
+        <PayPhoneCheckout :amount="getDoubt" />
       </div>
     </div>
   </div>
@@ -68,6 +68,9 @@ export default {
     },
     formIsValid() {
       return this.userIdentification.length > 9;
+    },
+    getDoubt() {
+      return this.customer.res.saldo * 100;
     }
   },
   methods: {
