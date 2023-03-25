@@ -27,7 +27,7 @@ export default {
       clientTxId: client
     });
 
-    const result = await fetch('https://pay.payphonetodoesposible.com/api/button/V2/Confirm'. {
+    const result = await fetch('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
       methods: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.NUXT_PAYPHONE_TOKEN}`,
