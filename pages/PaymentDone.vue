@@ -20,8 +20,6 @@ export default {
     result: ''
   }),
   async created() {
-    console.log('router', this.$router)
-    console.log('route', this.$route)
     const transaccion = this.$route.query.id
     const client = this.$route.query.clientTransactionId;
 
@@ -29,10 +27,6 @@ export default {
       id: parseInt(transaccion),
       clientTxId: client
     });
-
-    console.log('data', data)
-    console.log('transaccion', transaccion)
-    console.log('client', client)
 
     const result = await axios.post('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
       data,
