@@ -64,7 +64,7 @@ export default {
       return this.userIdentification.length > 9;
     },
     getDoubt() {
-      return this.customers !== null ? this.customer.res.saldo  * 100 : 0;
+      return Object.keys(this.customer).length ? this.customer.res.saldo  * 100 : 0;
     }
   },
   methods: {
