@@ -21,7 +21,7 @@ export default {
     console.log('router', this.$router)
     console.log('route', this.$route)
     const transaccion = this.$route.query.id
-    const client = this.$route.clientTransactionId;
+    const client = this.$route.query.clientTransactionId;
 
     const data = JSON.stringify({
       id: parseInt(transaccion),
