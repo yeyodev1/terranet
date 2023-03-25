@@ -27,6 +27,11 @@ export default {
       clientTxId: client
     });
 
+    console.log('urlParams', urlParams)
+    console.log('data', data)
+    console.log('transaccion', transaccion)
+    console.log('client', client)
+
     const result = await fetch('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
       methods: 'POST',
       headers: {
@@ -36,10 +41,14 @@ export default {
       body: data
     })
 
+    console.log(result)
+
     const response = await result.json();
 
-    this.isLoading = false;
-    this.result = JSON.stringify(response)
+    console.log(response)
+
+    // this.isLoading = false;
+    // this.result = JSON.stringify(response)
   }
 }
 </script>
