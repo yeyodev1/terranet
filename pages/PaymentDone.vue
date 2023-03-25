@@ -19,6 +19,7 @@ export default {
   }),
   async created() {
     console.log('router', this.$router)
+    console.log('route', this.$route)
     const urlParams = new URLSearchParams(window.location.search);
     const transaccion = urlParams.get('id')
     const client = urlParams('clientTransactionId');
