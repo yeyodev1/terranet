@@ -40,8 +40,8 @@ export default {
         btnCard: true,
         createOrder: (actions) => {
           return actions.prepare({
-            amount: this.amount,
-            amountWithoutTax: this.amount,
+            amount: 10000,
+            amountWithoutTax: 10000,
             currency: 'USD',
             clientTransactionId: this.clientTransactionId,
             lang: 'es',
