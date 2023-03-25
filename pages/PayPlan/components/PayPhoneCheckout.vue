@@ -18,12 +18,7 @@ export default {
     responseUrl: ''
   }),
   async mounted() {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://pay.payphonetodoesposible.com/api/button/js?appId=3ixGNbNDlkaCoCxtXlFTQ'
-    document.body.appendChild(script)
     this.clientTransactionId = 'transaction' + Date.now();
-    console.log(this.clientTransactionId)
     this.initPayment()
   },
   methods: {
