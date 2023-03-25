@@ -20,16 +20,14 @@ export default {
   async created() {
     console.log('router', this.$router)
     console.log('route', this.$route)
-    const urlParams = new URLSearchParams(window.location.search);
-    const transaccion = urlParams.get('id')
-    const client = urlParams('clientTransactionId');
+    const transaccion = this.$route.query.id
+    const client = this.$route.clientTransactionId;
 
     const data = JSON.stringify({
       id: parseInt(transaccion),
       clientTxId: client
     });
 
-    console.log('urlParams', urlParams)
     console.log('data', data)
     console.log('transaccion', transaccion)
     console.log('client', client)
