@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data: () => ({
     isLoading: true,
@@ -32,13 +34,12 @@ export default {
     console.log('transaccion', transaccion)
     console.log('client', client)
 
-    const result = await fetch('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
-      methods: 'POST',
+    const result = await axios.post('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
+      data,
       headers: {
         'Authorization': `Bearer ${process.env.NUXT_PAYPHONE_TOKEN}`,
         'Content-type': 'application/json'
       },
-      body: data
     })
 
     console.log(result)
@@ -47,8 +48,8 @@ export default {
 
     console.log(response)
 
-    // this.isLoading = false;
-    // this.result = JSON.stringify(response)
+    this.isLoading = false;
+    this.result = JSON.stringify(response)
   }
 }
 </script>
