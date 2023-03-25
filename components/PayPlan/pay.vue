@@ -32,16 +32,10 @@
             <strong class="mr-2 text-base"> Fecha de corte: </strong>
             {{ customer.fecha_corte }}
           </p>
-          <div class="w-full flex justify-center">
-            <!-- <button class="p-3 text-sm text-white border rounded-md font-principal border-lightBlue mt-12 mb-10 mx-auto"
-              @click="pay">
-              Botón de pago
-            </button> -->
-          </div>
         </div>
         <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
         <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
-        <PayPhoneCheckout v-if="Object.keys(this.customer).length" :amount="getDoubt" />
+        <PayPhoneCheckout :amount="getDoubt" />
       </div>
     </div>
   </div>
