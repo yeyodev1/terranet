@@ -35,7 +35,7 @@
         </div>
         <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
         <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
-        <PayPhoneCheckout :amount="getDoubt" />
+        <PayPhoneCheckout v-if="Object.keys(customer).length" :amount="getDoubt" />
       </div>
     </div>
   </div>

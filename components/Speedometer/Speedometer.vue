@@ -7,7 +7,7 @@
       </button>
       <div v-else-if="!isLoading && Object.keys(getSpeed).length" class="flex justify-center items-center">
         <p class="text-white font-open text-5xl text-center">
-          {{ getSpeed.test }}
+          {{ getSpeedformat() }} MB / s
         </p>
       </div>
       <h2 v-else class="text-white font-open text-3xl">
@@ -44,6 +44,11 @@ export default {
         console.log('Getting Network Error')
       }
     },
+    getSpeedformat() {
+      const speed = parseFloat(this.getSpeed.size.split(' '))
+      const time = parseFloat(this.getSpeed.time.split(' '))
+      return speed / time;
+    }
   }
 }
 </script>
