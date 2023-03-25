@@ -6,16 +6,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      script: [
-        {
-          src: 'https://pay.payphonetodoesposible.com/api/button/js?appId=3ixGNbNDlkaCoCxtXlFTQ',
-          defer: true
-        }
-      ]
-    }
-  },
   props: {
     amount: {
       type: Number,
@@ -28,6 +18,10 @@ export default {
     responseUrl: ''
   }),
   async mounted() {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://pay.payphonetodoesposible.com/api/button/js?appId=3ixGNbNDlkaCoCxtXlFTQ'
+    document.body.appendChild(script)
     this.clientTransactionId = 'transaction' + Date.now();
     console.log(this.clientTransactionId)
     this.initPayment()
@@ -40,8 +34,8 @@ export default {
         btnCard: true,
         createOrder: (actions) => {
           return actions.prepare({
-            amount: 10000,
-            amountWithoutTax: 10000,
+            amount: this.amount,
+            amountWithoutTax: this.amount,
             currency: 'USD',
             clientTransactionId: this.clientTransactionId,
             lang: 'es',
