@@ -72,7 +72,7 @@ export default {
     ...mapActions('payment', ['fetchUserById']),
     async getCustomer() {
       try {
-        this.fetchUserById(this.userIdentification);
+        await this.fetchUserById(this.userIdentification);
         this.isPayphoneOpen = true;
         this.saveBillsInlocalStorage()
       }
