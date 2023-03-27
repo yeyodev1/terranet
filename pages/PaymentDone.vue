@@ -59,7 +59,7 @@ export default {
     async paymentOnWisphub() {
       try {
         const storedBillsId = JSON.parse(localStorage.getItem('bills'))
-        console.log(billsId)
+        console.log(storedBillsId)
         const request = {
           ids: storedBillsId
         }
