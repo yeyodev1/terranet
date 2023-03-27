@@ -3,7 +3,7 @@
     <div v-if="isLoading" class="text-white font-open text-center text-3xl">
       Cargando...
     </div>
-    <div v-else class="text-white font-open text-center text-3xl">
+    <div v-else class="text-white font-open text-center text-2xl">
       <p>
         {{ result }}
       </p>
@@ -48,7 +48,7 @@ export default {
         this.result = 'Tu pago fue aceptado exitosamente'
       }
       if (response.transactionStatus === 'Canceled') {
-        this.result = 'Tu pago fue cancelado'
+        this.result = 'Tu pago fue cancelado. Por favor escoge otro método de pago u otra tarjeta'
       }
       console.log(response.transactionStatus)
     } catch (error) {
