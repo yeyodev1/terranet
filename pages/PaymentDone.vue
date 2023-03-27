@@ -60,10 +60,12 @@ export default {
     async paymentOnWisphub() {
       try {
         console.log(this.getCustomerResult.res.facturas);
+        const billsId = this.getCustomerResult.res.facturas.map(bill => bill.id)
+        console.log(billsId)
         const request = {
-          ids: this.getCustomerResult.res.facturas
+          ids: billsId
         }
-        const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
+        // const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
         console.log(response)
         this.result = 'Tu pago fue aceptado exitosamente'
       } catch (e) {
