@@ -80,6 +80,16 @@ export default {
         this.errorOpen = true;
       }
     },
+    saveBillsInlocalStorage() {
+      const storedBills = localStorage.getItem('bills')
+      if (storedBills !== null) {
+        localStorage.removeItem('bills')
+      }
+      if (isCustomer) {
+        const bills = this.getCustomerResult.res.facturas.map(bill => bill.id)
+        localStorage.setItem('bills', JSON.stringify(bills))
+      }
+    }
   },
 }
 </script>

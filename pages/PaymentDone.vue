@@ -41,7 +41,6 @@ export default {
         },
         body: data,
       })
-      console.log(result)
       const response = await result.json();
       this.isLoading = false;
       if (response.transactionStatus === 'Approved') {
@@ -59,12 +58,12 @@ export default {
   methods: {
     async paymentOnWisphub() {
       try {
-        console.log(this.getCustomerResult);
-        const billsId = this.getCustomerResult.res.facturas.map(bill => bill.id)
+        const storedBillsId = JSON.parse(localStorage.getItem('bills'))
         console.log(billsId)
         const request = {
-          ids: billsId
+          ids: storedBillsId
         }
+        console.log(request)
         // const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
         // console.log(response)
         this.result = 'Tu pago fue aceptado exitosamente'

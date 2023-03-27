@@ -19,7 +19,7 @@ export default {
   }),
   async mounted() {
     this.clientTransactionId = 'transaction' + Date.now();
-    this.initPayment()
+    this.initPayment();
   },
   methods: {
     initPayment() {
@@ -51,9 +51,8 @@ export default {
           })
         },
       });
-
       payphoneButton.render("#pp-button");
-    }
+    },
   }
 }
 </script>
