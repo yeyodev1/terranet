@@ -75,8 +75,8 @@ export default {
         await this.fetchUserById(this.userIdentification);
         this.isPayphoneOpen = true;
         this.saveBillsInlocalStorage()
-      }
-      catch (e) {
+      } catch (e) {
+        console.log(e)
         this.errorOpen = true;
       }
     },
@@ -85,10 +85,8 @@ export default {
       if (storedBills !== null) {
         localStorage.removeItem('bills')
       }
-      if (isCustomer) {
-        const bills = this.getCustomerResult.res.facturas.map(bill => bill.id)
-        localStorage.setItem('bills', JSON.stringify(bills))
-      }
+      const bills = this.getCustomerResult.res.facturas.map(bill => bill.id)
+      localStorage.setItem('bills', JSON.stringify(bills))
     }
   },
 }
