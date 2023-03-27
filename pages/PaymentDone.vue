@@ -15,11 +15,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data: () => ({
     isLoading: true,
     result: ''
   }),
+  computed: {
+    ...mapGetters('payment', ['getCustomerResult'])
+  },
   async mounted() {
     const transaccion = this.$route.query.id
     const client = this.$route.query.clientTransactionId;
@@ -28,11 +32,7 @@ export default {
       id: parseInt(transaccion),
       clientTxId: client
     });
-
-    console.log(process.env.NUXT_PAYPHONE_TOKEN)
-
     try {
-
       const result = await fetch('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
         method: 'POST',
         headers: {
@@ -46,6 +46,7 @@ export default {
       this.isLoading = false;
       if (response.transactionStatus === 'Approved') {
         this.result = 'Tu pago fue aceptado exitosamente'
+        this.paymentOnWisphub()
       }
       if (response.transactionStatus === 'Canceled') {
         this.result = 'Tu pago fue cancelado. Por favor escoge otro método de pago u otra tarjeta'
@@ -56,5 +57,20 @@ export default {
       this.result = 'ooppp Algo ocurrio con el pago, contacta con Terranet Soporte'
     }
   },
+  methods: {
+    async paymentOnWisphub() {
+      try {
+        console.log(this.getCustomerResult.res.facturas);
+        const request = {
+          ids: this.getCustomerResult.res.facturas
+        }
+        const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
+        console.log(response)
+      }
+      catch (e) {
+        console.error(e);
+      }
+    },
+  }
 }
 </script>

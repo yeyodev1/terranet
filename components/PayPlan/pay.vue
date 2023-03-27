@@ -22,20 +22,20 @@
         <div v-else class="my-12 w-full mx-auto flex flex-col justify-center items-start">
           <p class="text-white font-principal">
             <strong class="mr-2 mb-4"> Nombre: </strong>
-            {{ customer.res.nombre }}
+            {{ getCustomerResult.res.nombre }}
           </p>
           <p class="text-white font-principal text-xl">
             <strong class="mr-2 text-base"> Valor pendiente de pago: </strong>
-            $ {{ customer.res.saldo }}
+            $ {{ getCustomerResult.res.saldo }}
           </p>
           <p class="text-white font-principal text-lg">
             <strong class="mr-2 text-base"> Fecha de corte: </strong>
-            {{ customer.fecha_corte }}
+            {{ getCustomerResult.fecha_corte }}
           </p>
         </div>
         <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
         <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
-        <PayPhoneCheckout v-if="Object.keys(customer).length" :amount="getDoubt" />
+        <PayPhoneCheckout v-if="isCustomer" :amount="getDoubt" />
       </div>
     </div>
   </div>
@@ -43,6 +43,7 @@
 
 <script>
 import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex';
 import PayPhoneCheckout from '~/pages/PayPlan/components/PayPhoneCheckout.vue';
 
 export default {
@@ -57,38 +58,26 @@ export default {
     isPayphoneOpen: false
   }),
   computed: {
+    ...mapGetters('payment', ['getCustomerResult']),
     isCustomer() {
-      return Object.keys(this.customer).length;
+      return Object.keys(this.getCustomerResult).length;
     },
     formIsValid() {
       return this.userIdentification.length > 9;
     },
     getDoubt() {
-      return Object.keys(this.customer).length ? this.customer.res.saldo * 100 : 0;
+      return this.isCustomer ? this.getCustomerResult.res.saldo * 100 : 0;
     }
   },
   methods: {
+    ...mapActions('payment', ['fetchUserById']),
     async getCustomer() {
       try {
-        const request = { ci: this.userIdentification };
-        const response = await axios.get(`${process.env.NUXT_API}api/payment/${this.userIdentification}`);
-        this.customer = response.data;
-        this.isPayphoneOpen = true
+        this.fetchUserById(this.userIdentification);
+        this.isPayphoneOpen = true;
       }
       catch (e) {
         this.errorOpen = true;
-      }
-    },
-    async pay() {
-      try {
-        const request = {
-          paymentDone: true
-        };
-        console.log(this.customer);
-        const response = await axios.patch(`${process.env.NUXT_API}api/payment/${this.customer._id}`, request);
-      }
-      catch (e) {
-        console.error(e);
       }
     },
   },
