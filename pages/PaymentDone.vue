@@ -45,7 +45,6 @@ export default {
       const response = await result.json();
       this.isLoading = false;
       if (response.transactionStatus === 'Approved') {
-        this.result = 'Tu pago fue aceptado exitosamente'
         this.paymentOnWisphub()
       }
       if (response.transactionStatus === 'Canceled') {
@@ -66,8 +65,8 @@ export default {
         }
         const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
         console.log(response)
-      }
-      catch (e) {
+        this.result = 'Tu pago fue aceptado exitosamente'
+      } catch (e) {
         console.error(e);
       }
     },
