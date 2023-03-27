@@ -64,7 +64,7 @@ export default {
       return this.userIdentification.length > 9;
     },
     getDoubt() {
-      return Object.keys(this.customer).length ? this.customer.res.saldo  * 100 : 0;
+      return Object.keys(this.customer).length ? this.customer.res.saldo * 100 : 0;
     }
   },
   methods: {
@@ -86,7 +86,6 @@ export default {
         };
         console.log(this.customer);
         const response = await axios.patch(`${process.env.NUXT_API}api/payment/${this.customer._id}`, request);
-        console.log("exito");
       }
       catch (e) {
         console.error(e);

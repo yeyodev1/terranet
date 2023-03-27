@@ -1,19 +1,20 @@
 <template>
-  <div class="bg-lightBlue">
-    <div v-if="isLoading" class="text-white font-open">
+  <div class="bg-lightBlue py-4">
+    <div v-if="isLoading" class="text-white font-open text-center text-3xl">
       Cargando...
     </div>
-    <div v-else class="text-white font-open">
+    <div v-else class="text-white font-open text-center text-3xl">
       <p>
         {{ result }}
       </p>
+      <nuxt-link to="/" class="border border-white rounded-md px-2 py-1 mt-4 text-sm">
+        Regresa al inicio
+      </nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data: () => ({
     isLoading: true,
@@ -43,10 +44,16 @@ export default {
       console.log(result)
       const response = await result.json();
       this.isLoading = false;
-      this.result = JSON.stringify(response)
-      console.log(response)
+      if (response.transactionStatus === 'Approved') {
+        this.result = 'Tu pago fue aceptado exitosamente'
+      }
+      if (response.transactionStatus === 'Canceled') {
+        this.result = 'Tu pago fue cancelado'
+      }
+      console.log(response.transactionStatus)
     } catch (error) {
       console.error(error)
+      this.result = 'ooppp Algo ocurrio con el pago, contacta con Terranet Soporte'
     }
   },
 }

@@ -41,7 +41,7 @@ export default {
             id: model.id,
             clientTxId: model.clientTxId,
           }).then(function (value) {
-            if (value.transactionsStatus == 'Approved') {
+            if (value.transactionStatus == 'Approved') {
               alert('paso' + value.transactionId + 'recibido, ' + 'estado' + value.transactionsStatus)
               console.log('pago exitoso')
             }
