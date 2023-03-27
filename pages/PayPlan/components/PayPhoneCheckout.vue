@@ -43,11 +43,9 @@ export default {
           }).then(function (value) {
             if (value.transactionStatus == 'Approved') {
               alert('paso' + value.transactionId + 'recibido, ' + 'estado' + value.transactionsStatus)
-              console.log('pago exitoso')
             }
           }).catch(function (error) {
             console.error('error', error)
-            console.log('pago no realizado')
           })
         },
       });

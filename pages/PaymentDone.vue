@@ -49,7 +49,6 @@ export default {
       if (response.transactionStatus === 'Canceled') {
         this.result = 'Tu pago fue cancelado. Por favor escoge otro método de pago u otra tarjeta'
       }
-      console.log(response.transactionStatus)
     } catch (error) {
       console.error(error)
       this.result = 'ooppp Algo ocurrio con el pago, contacta con Terranet Soporte'
@@ -59,13 +58,11 @@ export default {
     async paymentOnWisphub() {
       try {
         const storedBillsId = JSON.parse(localStorage.getItem('bills'))
-        console.log(storedBillsId)
         const request = {
           ids: storedBillsId
         }
-        console.log(request)
-        // const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
-        // console.log(response)
+        const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
+        console.log(response)
         this.result = 'Tu pago fue aceptado exitosamente'
       } catch (e) {
         console.error(e);

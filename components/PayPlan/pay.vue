@@ -76,7 +76,6 @@ export default {
         this.isPayphoneOpen = true;
         this.saveBillsInlocalStorage()
       } catch (e) {
-        console.log(e)
         this.errorOpen = true;
       }
     },
