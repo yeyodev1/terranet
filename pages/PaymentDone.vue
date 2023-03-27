@@ -19,7 +19,7 @@ export default {
     isLoading: true,
     result: ''
   }),
-  async created() {
+  async mounted() {
     const transaccion = this.$route.query.id
     const client = this.$route.query.clientTransactionId;
 
@@ -28,22 +28,26 @@ export default {
       clientTxId: client
     });
 
-    const result = await axios.post('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
-      data,
-      headers: {
-        'Authorization': `Bearer ${process.env.NUXT_PAYPHONE_TOKEN}`,
-        'Content-type': 'application/json'
-      },
-    })
+    console.log(process.env.NUXT_PAYPHONE_TOKEN)
 
-    console.log(result)
+    try {
 
-    const response = await result.json();
-
-    console.log(response)
-
-    this.isLoading = false;
-    this.result = JSON.stringify(response)
-  }
+      const result = await fetch('https://pay.payphonetodoesposible.com/api/button/V2/Confirm', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.NUXT_PAYPHONE_TOKEN}`,
+          'Content-type': 'application/json'
+        },
+        body: data,
+      })
+      console.log(result)
+      const response = await result.json();
+      this.isLoading = false;
+      this.result = JSON.stringify(response)
+      console.log(response)
+    } catch (error) {
+      console.error(error)
+    }
+  },
 }
 </script>
