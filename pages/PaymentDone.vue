@@ -59,7 +59,7 @@ export default {
   methods: {
     async paymentOnWisphub() {
       try {
-        console.log(this.getCustomerResult.res.facturas);
+        console.log(this.getCustomerResult);
         const billsId = this.getCustomerResult.res.facturas.map(bill => bill.id)
         console.log(billsId)
         const request = {
