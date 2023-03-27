@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex';
 import PayPhoneCheckout from '~/pages/PayPlan/components/PayPhoneCheckout.vue';
 
@@ -75,6 +74,7 @@ export default {
       try {
         this.fetchUserById(this.userIdentification);
         this.isPayphoneOpen = true;
+        this.saveBillsInlocalStorage()
       }
       catch (e) {
         this.errorOpen = true;
