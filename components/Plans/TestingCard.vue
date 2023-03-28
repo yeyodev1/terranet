@@ -9,7 +9,7 @@
       </p>
     </div>
     <div class="flex flex-col items-center mb-16">
-      <div v-if="!isPlanSelected" class="flex items-end justify-end mt-5 mb-10">
+      <div v-if="!isPlanSelected" class="flex items-end justify-end mt-5 mb-10 relative">
         <div class="relative bottom-3">
           <p class="text-base font-bold text-white font-principal">
             {{ selectedPlan.speed }}
@@ -22,7 +22,7 @@
           <div>
             <p class="text-base font-bold text-lightBlue">Mbps</p>
           </div>
-          <div>
+          <div class="absolute top-14">
             <p class="mt-4 font-bold text-white font-open text-lg">{{ selectedPlan.planName }}</p>
           </div>
         </div>
