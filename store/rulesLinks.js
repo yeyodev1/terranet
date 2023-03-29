@@ -14,13 +14,6 @@ const mutations = {
   SET_RULES(state, payload) {
     state.rules = payload
   },
-  SET_RULE(state, payload) {
-    state.rules.push(payload)
-  },
-  REMOVE_RULE(state, payload) {
-    const idx = state.rules.findIndex((rule) => rule._id === payload)
-    state.rules.splice(idx, 1)
-  },
 }
 
 const actions = {
@@ -44,7 +37,7 @@ const actions = {
       console.error(e)
     }
   },
-  async setRule({ commit }, payload) {
+  async setRule({ commit, dispatch }, payload) {
     try {
       const response = await axios.post(
         `${process.env.NUXT_API}api/footerLinks`,
@@ -57,12 +50,12 @@ const actions = {
           },
         }
       )
-      commit('SET_RULE', response.data.data)
+      dispatch('rulesLinks/fetchRules', null, { root: true })
     } catch (e) {
       console.error(e)
     }
   },
-  async removeRule({ commit }, payload) {
+  async removeRule({ commit, dispatch }, payload) {
     try {
       const response = await axios.delete(
         `${process.env.NUXT_API}api/footerLinks/${payload}`,
@@ -74,7 +67,7 @@ const actions = {
           },
         }
       )
-      commit('REMOVE_RULE', payload)
+      dispatch('rulesLinks/fetchRules', null, { root: true })
     } catch (e) {
       console.error(e)
     }
