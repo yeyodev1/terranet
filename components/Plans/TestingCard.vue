@@ -42,13 +42,15 @@
           </div>
         </div>
       </div>
-      <button class="w-4/5 mt-5 font-semibold text-white border rounded-md border-yellow">
+      <button class="w-4/5 mt-5 font-semibold text-white border rounded-md border-yellow"
+        @click.prevent="redirectingToHirePage">
         Lo necesito
       </button>
     </div>
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex';
 import Speedometer from '../global/The/Svg/Speedometer.vue'
 
 export default {
@@ -64,6 +66,16 @@ export default {
   computed: {
     isPlanSelected() {
       return typeof this.selectedPlan === 'string'
+    }
+  },
+  methods: {
+    ...mapActions('plans', ['selectPlan']),
+    redirectingToHirePage() {
+      if (this.selectedPlan === 'No plan') {
+        return
+      }
+      this.selectPlan(this.selectedPlan)
+      this.$router.push('/HireService')
     }
   }
 }

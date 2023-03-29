@@ -3,6 +3,7 @@ import axios from 'axios'
 const state = () => ({
   plans: [],
   error: '',
+  selectedPlan: {},
 })
 
 const getters = {
@@ -11,6 +12,9 @@ const getters = {
   },
   getError(state) {
     return state.error
+  },
+  selectedPlan(state) {
+    return state.selectedPlan
   },
 }
 
@@ -34,6 +38,9 @@ const mutations = {
   },
   CLEAR_ERROR(state) {
     state.error = ''
+  },
+  SELECT_PLAN(state, payload) {
+    state.selectedPlan = payload
   },
 }
 
@@ -108,6 +115,9 @@ const actions = {
       )
       commit('ERASE_PLAN', payload)
     } catch (e) {}
+  },
+  selectPlan({ commit }, payload) {
+    commit('SELECT_PLAN', payload)
   },
 }
 
