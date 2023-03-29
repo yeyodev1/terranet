@@ -6,7 +6,7 @@ const state = () => ({
 
 const getters = {
   getSuggestions(state) {
-    return state.suggestions
+    return state.suggetions
   },
 }
 
