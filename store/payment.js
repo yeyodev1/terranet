@@ -51,7 +51,7 @@ const actions = {
         payload = 1
       }
       const response = await axios.get(
-        `${process.env.NUXT_API}api/payment?page=${payload}`,
+        `${process.env.NUXT_API}api/payment?size=10&page=${payload}`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(
@@ -85,29 +85,10 @@ const actions = {
           },
         }
       )
-      commit('SET_CUSTOMER_RESULT', response.data.data || {})
+      const data = response.data
+      commit('SET_CUSTOMER_RESULT', data || {})
     } catch (e) {
       console.error('CANNOT_GET_CUSTOMERS', e)
-    }
-  },
-  async uploadExcel({ commit, dispatch }, payload) {
-    try {
-      commit('SET_LOADING', true)
-      const response = await axios.post(
-        `${process.env.NUXT_API}api/excelFile`,
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem('token')
-            )}`,
-          },
-        }
-      )
-      dispatch('payment/fetchCustomers', 1, { root: true })
-      commit('SET_LOADING', false)
-    } catch (e) {
-      console.error(e)
     }
   },
   clearCustomerResult({ commit }) {
