@@ -114,6 +114,9 @@
         <div v-if="Object.keys(showCoupon).length" class="justify-center items-center" :class="showInput">
           <Coupon :name="showCoupon.promotionCode" :discount="showCoupon.discountPercentage" :id="showCoupon._id" />
         </div>
+        <p v-if="isCouponRight" class="text-red text-sm">
+          {{ wrongCouponMessage }}
+        </p>
         <div class="flex items-center justify-center w-full max-w-4xl pb-5 mx-auto mt-12" :class="showInput">
           <h5 class="text-xs font-bold text-white sm:whitespace-nowrap sm:text-base font-principal">
             Ingresar código:
@@ -121,6 +124,8 @@
           <input type="text" placeholder="CÓDIGO" v-model="coupon"
             class="py-3 pl-3 pr-3 ml-2 text-white border rounded-md outline-none sm:w-full placeholder:text-white placeholder:font-principal border-lightBlue background-input" />
         </div>
+        <Success :is-open="successOpen" :get-success="successMessage" @close-success="successOpen = false" />
+        <Warning :is-open="warningOpen" :get-error="warningMessage" @close-warning="warningOpen = false" />
         <div class="flex items-center justify-center mt-10 mb-6">
           <button type="submit" class="px-6 py-3 text-base border rounded-md font-principal" @click="sentData"
             :disabled="!formIsValid" :class="isButtonActive">
@@ -136,9 +141,11 @@
 import { mapActions, mapGetters } from 'vuex'
 import Icons from '../global/Icons.vue'
 import Coupon from '../Coupon/Coupon.vue'
+import Success from '../global/Success.vue'
+import Warning from '../global/Warning.vue'
 
 export default {
-  components: { Icons, Coupon },
+  components: { Icons, Coupon, Success, Warning },
   data: () => ({
     arrowDown: 'arrowDown',
     arrowUp: 'arrowUp',
@@ -154,6 +161,11 @@ export default {
     userDetailAdress: '',
     coupon: '',
     isCouponDisplay: false,
+    wrongCouponMessage: 'Por favor ingresa el código correctamente',
+    successOpen: false,
+    successMessage: 'Felicitaciones tu solicitud fue enviada correctamente. Soporte se contactará contigo.',
+    warningOpen: false,
+    warningMessage: 'Ooops, algo ocurrió. Contacta por teléfono, soporte estará arreglando este error pronto.',
   }),
   computed: {
     ...mapGetters('plans', ['getPlans', 'selectedPlan']),
@@ -200,6 +212,12 @@ export default {
         ? 'border-yellow text-white hover:text-black hover:bg-yellow'
         : 'border-grey text-grey'
     },
+    isCouponRight() {
+      if (!Object.keys(this.showCoupon).length) {
+        return false
+      }
+      return this.coupon !== this.showCoupon?.promotionCode && this.coupon.length !== this.showCoupon?.promotionCode.length && this.coupon.length;
+    }
   },
   mounted() {
     if (!Object.keys(this.showCoupon).length) {
@@ -219,12 +237,10 @@ export default {
     ...mapActions('coupon', ['activeCoupon']),
     async sentData() {
       try {
-        if (Object.keys(this.selectedPlan).length) {
-          this.plan = this.selectedPlan.planName
-        }
+        const couponCode = this.applyCoupon()
         const request = {
           plan: this.plan,
-          discountCode: this.coupon,
+          discountCode: couponCode,
           ci: this.userId,
           name: this.userName,
           email: this.userEmail,
@@ -235,11 +251,20 @@ export default {
           `${process.env.NUXT_API}api/hiringPlan`,
           request
         )
-
+        this.successOpen = true;
+        this.resetValues()
       } catch (e) {
+        this.warningOpen = true;
         console.error(e)
       }
     },
+    applyCoupon() {
+      if (Object.keys(this.showCoupon).length && this.plan.length) {
+        return this.showCoupon.discountPercentage + '%'
+      } else {
+        return 'No Codigo de descuento'
+      }
+    }
   },
 }
 </script>
