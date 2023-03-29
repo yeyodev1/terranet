@@ -104,12 +104,15 @@
       </form>
       <div class="w-full">
         <div class="flex flex-col items-center justify-center w-full max-w-lg pb-5 mx-auto mt-12 sm:w-1/2 sm:mt-11">
-          <button class="flex items-center w-full justify-evenly" @click="setCoupon">
+          <button class="flex items-center w-full justify-evenly" @click="isCouponDisplay = !isCouponDisplay">
             <h4 class="text-xs text-white sm:text-base font-principal">
-              ¿Tienes algún código de descuento
+              ¿Tienes algún código de descuento?, Utilízalo
             </h4>
             <Icons class="h-4 text-yellow sm:h-6" :name="isPresset" />
           </button>
+        </div>
+        <div v-if="Object.keys(showCoupon).length" class="justify-center items-center" :class="showInput">
+          <Coupon :name="showCoupon.promotionCode" :discount="showCoupon.discountPercentage" :id="showCoupon._id" />
         </div>
         <div class="flex items-center justify-center w-full max-w-4xl pb-5 mx-auto mt-12" :class="showInput">
           <h5 class="text-xs font-bold text-white sm:whitespace-nowrap sm:text-base font-principal">
@@ -130,10 +133,12 @@
 </template>
 
 <script>
-import Icons from '../global/Icons.vue'
 import { mapActions, mapGetters } from 'vuex'
+import Icons from '../global/Icons.vue'
+import Coupon from '../Coupon/Coupon.vue'
+
 export default {
-  components: { Icons },
+  components: { Icons, Coupon },
   data: () => ({
     arrowDown: 'arrowDown',
     arrowUp: 'arrowUp',
@@ -148,10 +153,12 @@ export default {
     contactPhone: '',
     userDetailAdress: '',
     coupon: '',
+    isCouponDisplay: false,
   }),
   computed: {
     ...mapGetters('plans', ['getPlans', 'selectedPlan']),
     ...mapGetters('form', ['showForm']),
+    ...mapGetters('coupon', ['showCoupon']),
     homePlans() {
       if (this.showForm) {
         return 'flex'
@@ -159,20 +166,21 @@ export default {
         return 'hidden'
       }
     },
-    ...mapGetters('coupon', ['putCoupon']),
     isPresset() {
-      if (!this.putCoupon) {
-        return 'arrowDown'
-      } else {
-        return 'arrowUp'
-      }
+      // if (!this.isCouponDisplay) {
+      //   return 'arrowDown'
+      // } else {
+      //   return 'arrowUp'
+      // }
+      return !this.isCouponDisplay ? 'arrowDown' : 'arrowUp'
     },
     showInput() {
-      if (this.putCoupon) {
-        return 'flex'
-      } else {
-        return 'hidden'
-      }
+      // if (this.isCouponDisplay) {
+      //   return 'flex'
+      // } else {
+      //   return 'hidden'
+      // }
+      return this.isCouponDisplay ? 'flex' : 'hidden';
     },
     // Validating form has information fron sending
     formIsValid() {
@@ -193,8 +201,14 @@ export default {
         : 'border-grey text-grey'
     },
   },
+  mounted() {
+    if (!Object.keys(this.showCoupon).length) {
+      this.getCoupon()
+    }
+  },
   methods: {
     ...mapActions('form', ['activeForm']),
+    ...mapActions('coupon', ['getCoupon']),
     showHomePlans() {
       if (this.showForm) {
         this.activeForm(false)
@@ -203,15 +217,11 @@ export default {
       }
     },
     ...mapActions('coupon', ['activeCoupon']),
-    setCoupon() {
-      if (this.putCoupon) {
-        this.activeCoupon(false)
-      } else {
-        this.activeCoupon(true)
-      }
-    },
     async sentData() {
       try {
+        if (Object.keys(this.selectedPlan).length) {
+          this.plan = this.selectedPlan.planName
+        }
         const request = {
           plan: this.plan,
           discountCode: this.coupon,
@@ -221,8 +231,11 @@ export default {
           phone: this.userPhone,
           address: this.userAddress,
         }
-        const response = await axios.post()
-        this.$router.push('/datasent')
+        await axios.post(
+          `${process.env.NUXT_API}api/hiringPlan`,
+          request
+        )
+
       } catch (e) {
         console.error(e)
       }

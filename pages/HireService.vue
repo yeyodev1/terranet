@@ -1,8 +1,6 @@
 <template>
   <div class="w-full">
     <Form />
-    <Benefits />
-    <PhoneCallToAction />
   </div>
 </template>
 
