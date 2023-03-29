@@ -103,7 +103,6 @@ const actions = {
   },
   async deletePlan({ commit, dispatch }, payload) {
     try {
-      console.log('payload', payload)
       const response = await axios.delete(
         `${process.env.NUXT_API}api/plansBoard/${payload}`,
         {

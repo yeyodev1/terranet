@@ -135,7 +135,6 @@ export default {
       this.planRequeriments.devices = value
     },
     secondOption(value) {
-      console.log(value)
       this.planRequeriments.activities = value
     }
   },
