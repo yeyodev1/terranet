@@ -71,6 +71,7 @@ export default {
       this.$emit('edit-plan', this.homePlan)
     },
     deleteSelectedPlan() {
+      console.log(this.homePlan)
       this.deletePlan(this.homePlan._id)
     },
   },
