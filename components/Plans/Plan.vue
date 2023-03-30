@@ -52,9 +52,7 @@ export default {
   computed: {
     // THIS COMPUTED FUNCTION GET THE DOLLARS OF A VALUE
     getDollars() {
-      return Math.trunc(
-        Math.round((this.homePlan.price * 100) / 100).toFixed(2)
-      )
+      return Math.trunc(this.homePlan.price)
     },
     // THIS COMPUTED FUNCTION GET THE CENTS OF A VALUE
     getCents() {
