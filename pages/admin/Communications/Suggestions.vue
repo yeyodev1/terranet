@@ -74,13 +74,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions('suggestions', ['fetchSuggestions', 'deleteSuggestion']),
+    ...mapActions('suggestions', ['fetchSuggestions', 'deleteSuggestions']),
     openModal(id) {
       this.isOpen = true
       this.deletingId = id
     },
     deleteComment() {
-      this.deleteSuggestion(this.deletingId)
+      this.deleteSuggestions(this.deletingId)
       this.closeModal()
     },
     closeModal() {
