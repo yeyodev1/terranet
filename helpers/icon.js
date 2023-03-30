@@ -30,7 +30,7 @@ import {
     mdiFileExcel,
     mdiChevronDoubleRight,
     mdiChevronDoubleLeft,
-    mdiPencil
+    mdiPencil,
 } from '@mdi/js'
 
 export default {
@@ -65,5 +65,5 @@ export default {
     excel: mdiFileExcel,
     nextPage: mdiChevronDoubleRight,
     previousPage: mdiChevronDoubleLeft,
-    edit: mdiPencil
+    edit: mdiPencil,
 }

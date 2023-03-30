@@ -18,8 +18,8 @@ module.exports = {
             lightBlue: '#3573E5',
             grey: '#EAECF3',
             appBackground: '#313646',
-            red: "#eb5757",
-            green: "#36B37E"
+            red: '#eb5757',
+            green: '#36B37E',
         },
         extend: {
             fontFamily: {

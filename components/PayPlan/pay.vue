@@ -8,135 +8,85 @@
         Realiza el pago de tus planes cada mes
       </p>
       <div class="mt-8 sm:w-1/3 sm:mt-12">
-        <p class="text-lg font-bold text-white font-principal">Cédula</p>
-        <input
-          type="number"
-          v-model="userIdentification"
-          placeholder="Número de cédula"
-          class="
-            w-full
-            p-3
-            text-sm text-white
-            border
-            rounded-md
-            outline-none
-            background-input
-            border-lightBlue
-          "
-        />
-        <div v-if="isCustomer" class="flex justify-center items-center mb-10">
-          <button
-            class="
-              p-3
-              mt-4
-              text-sm text-white
-              border
-              rounded-md
-              font-principal
-              border-lightBlue
-            "
-            @click="getCustomer"
-          >
+        <p class="text-lg font-bold text-white font-principal">
+          Cédula
+        </p>
+        <input type="number" v-model="userIdentification" placeholder="Número de cédula"
+          class="w-full p-3 text-sm text-white border rounded-md outline-none background-input border-lightBlue" />
+        <div v-if="!isCustomer" class="flex justify-center items-center mb-10">
+          <button class="p-3 mt-4 text-sm text-white border rounded-md font-principal border-lightBlue"
+            @click="getCustomer">
             buscar
           </button>
         </div>
-        <div
-          v-else
-          class="mt-12 w-full mx-auto flex flex-col justify-center items-start"
-        >
+        <div v-else class="my-12 w-full mx-auto flex flex-col justify-center items-start">
           <p class="text-white font-principal">
-            <strong class="mr-2 mb-4"> Nombre: </strong> {{ customer.name }}
-            {{ customer.lastNames }}
+            <strong class="mr-2 mb-4"> Nombre: </strong>
+            {{ getCustomerResult.res.nombre }}
           </p>
-          <p class="text-white font-principal">
-            <strong class="mr-2"> Valor pendiente de pago: </strong>
-            $ {{ customer.value }}
+          <p class="text-white font-principal text-xl">
+            <strong class="mr-2 text-base"> Valor pendiente de pago: </strong>
+            $ {{ getCustomerResult.res.saldo }}
           </p>
-          <p class="text-white font-principal">
-            <strong class="mr-2"> Fecha de corte: </strong>
-            {{ getDate }}
+          <p class="text-white font-principal text-lg">
+            <strong class="mr-2 text-base"> Fecha de corte: </strong>
+            {{ getCustomerResult.fecha_corte }}
           </p>
-          <div class="w-full flex justify-center">
-            <button
-              class="
-                p-3
-                text-sm text-white
-                border
-                rounded-md
-                font-principal
-                border-lightBlue
-                mt-12
-                mb-10
-                mx-auto
-              "
-              @click="pay"
-            >
-              Botón de pago
-            </button>
-          </div>
         </div>
-        <warning
-          :isOpen="errorOpen"
-          :getError="errorMessage"
-          @close-warning="errorOpen = false"
-        />
-        <success
-          :isOpen="successOpen"
-          :getSuccess="successMessage"
-          @close-success="successOpen = false"
-        />
+        <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
+        <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
+        <PayPhoneCheckout v-if="isCustomer" :amount="getDoubt" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import { mapActions, mapGetters } from 'vuex';
+import PayPhoneCheckout from '~/pages/PayPlan/components/PayPhoneCheckout.vue';
 
 export default {
+  components: { PayPhoneCheckout },
   data: () => ({
-    userIdentification: '',
+    userIdentification: "",
     customer: {},
     errorOpen: false,
-    errorMessage:
-      'Por favor, comprueba que hayas llenado todos los campos por favor',
+    errorMessage: "Por favor, comprueba que hayas llenado todos los campos por favor",
     successOpen: false,
-    successMessage: 'Tú solicitud ha sido enviada con éxito',
+    successMessage: "Tú solicitud ha sido enviada con éxito",
+    isPayphoneOpen: false
   }),
   computed: {
+    ...mapGetters('payment', ['getCustomerResult']),
     isCustomer() {
-      return Object.keys(this.customer).length === 0
+      return Object.keys(this.getCustomerResult).length;
     },
     formIsValid() {
-      return this.userIdentification.length > 9
+      return this.userIdentification.length > 9;
     },
-    getDate() {
-      return this.customer?.cutOffDate.split(' ').splice(0, 3).join(' ')
-    },
+    getDoubt() {
+      return this.isCustomer ? this.getCustomerResult.res.saldo * 100 : 0;
+    }
   },
   methods: {
+    ...mapActions('payment', ['fetchUserById']),
     async getCustomer() {
       try {
-        const request = { ci: this.userIdentification }
-        const response = await axios.get(
-          `${process.env.NUXT_API}api/payment/${this.userIdentification}`
-        )
-        this.customer = response.data.data
+        await this.fetchUserById(this.userIdentification);
+        this.isPayphoneOpen = true;
+        this.saveBillsInlocalStorage()
       } catch (e) {
-        this.errorOpen = true
+        this.errorOpen = true;
       }
     },
-    async pay() {
-      try {
-        const request = this.customer
-        request.paymentDone = true
-        const response = await axios.put(
-          `${process.env.NUXT_API}api/payment/${request._id}`
-        )
-      } catch (e) {
-        console.error(e)
+    saveBillsInlocalStorage() {
+      const storedBills = localStorage.getItem('bills')
+      if (storedBills !== null) {
+        localStorage.removeItem('bills')
       }
-    },
+      const bills = this.getCustomerResult.res.facturas.map(bill => bill.id)
+      localStorage.setItem('bills', JSON.stringify(bills))
+    }
   },
 }
 </script>
@@ -145,6 +95,7 @@ export default {
 .background-input {
   background: none;
 }
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;

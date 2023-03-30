@@ -19,11 +19,10 @@ const mutations = {
 const actions = {
   async fetchHero({ commit }) {
     try {
-      const response = await axios.get(`${process.env.NUXT_API}api/hero`,
-      {
+      const response = await axios.get(`${process.env.NUXT_API}api/hero`, {
         headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`
-        }
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
       })
       commit('SET_HERO', response.data.data[0].url)
     } catch (e) {
@@ -32,12 +31,15 @@ const actions = {
   },
   async setHero({ commit }, payload) {
     try {
-      const response = await axios.post(`${process.env.NUXT_API}api/hero`,
+      const response = await axios.post(
+        `${process.env.NUXT_API}api/hero`,
         payload,
         {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-          }
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem('token')
+            )}`,
+          },
         }
       )
       commit('SET_HERO', response.data.data.url)
@@ -62,8 +64,8 @@ const actions = {
 }
 
 export default {
-    state,
-    getters,
-    mutations,
-    actions,
+  state,
+  getters,
+  mutations,
+  actions,
 }

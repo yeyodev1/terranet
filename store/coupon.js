@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const state = () => ({
-    isCoupon: {},
+  isCoupon: {},
 })
 
 const getters = {
@@ -34,26 +34,28 @@ const actions = {
         `${process.env.NUXT_API}api/promotionCode`,
         {
           headers: {
-            Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem('token')
+            )}`,
           },
         }
       )
       if (!response.data.data.length) {
-        return (commit('SET_COUPON', {}))
+        return commit('SET_COUPON', {})
       }
-      commit('SET_COUPON', response.data.data[0])  
+      commit('SET_COUPON', response.data.data[0])
     } catch (e) {
       console.error(e)
     }
   },
   deleteCoupon({ commit }) {
     commit('SET_COUPON', {})
-  }
+  },
 }
 
 export default {
-    state,
-    getters,
-    mutations,
-    actions,
+  state,
+  getters,
+  mutations,
+  actions,
 }

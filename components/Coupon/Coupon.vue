@@ -1,48 +1,16 @@
 <template>
   <div>
     <div class="flex mx-auto mt-12 rounded-lg background relative">
-      <button
-        v-if="isInAdmin"
-        class="
-          w-5
-          h-5
-          flex
-          justify-center
-          items-center
-          absolute
-          -top-2
-          -right-2
-          bg-red
-          rounded-full
-        "
-        @click="deleteCoupon(id)"
-      >
+      <button v-if="isInAdmin"
+        class="w-5 h-5 flex justify-center items-center absolute -top-2 -right-2 bg-red rounded-full"
+        @click="deleteCoupon(id)">
         <icons name="close" class="text-white" />
       </button>
-      <div
-        class="
-          flex flex-col
-          items-center
-          justify-center
-          w-1/2
-          py-3
-          sm:w-3/5 sm:py-6
-        "
-      >
+      <div class="flex flex-col items-center justify-center w-1/2 py-3 sm:w-3/5 sm:py-6">
         <p class="text-xs text-center text-white font-principal">
           Código de descuento:
         </p>
-        <p
-          class="
-            text-base
-            font-bold
-            text-center
-            uppercase
-            text-yellow
-            font-principal
-            sm:text-2xl
-          "
-        >
+        <p class="text-base font-bold text-center uppercase text-yellow font-principal sm:text-2xl">
           {{ name }}
         </p>
         <p class="text-xs text-center text-white font-principal">
@@ -56,22 +24,11 @@
         </p>
       </div>
     </div>
-    <div v-if="!isInAdmin" class="flex items-center justify-center mt-12 mb-7">
-      <button
-        class="
-          px-6
-          py-3
-          text-base
-          font-semibold
-          text-white
-          border
-          rounded-md
-          border-yellow
-        "
-      >
+    <!-- <div v-if="!isInAdmin" class="flex items-center justify-center mt-12 mb-7">
+      <button class="px-6 py-3 text-base font-semibold text-white border rounded-md border-yellow">
         Utilizar
       </button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -115,6 +72,7 @@ export default {
   background-position: center;
   background-size: cover;
 }
+
 @font-face {
   font-family: 'FontJek';
   font-display: swap;

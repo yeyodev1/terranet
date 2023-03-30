@@ -11,26 +11,26 @@ export default {
   props: {
     getSuccess: {
       type: String,
-      required: true
+      required: true,
     },
     isOpen: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     closeSuccess() {
       setTimeout(() => {
         this.$emit('close-success')
-      }, 2500);
-    }
+      }, 2500)
+    },
   },
   watch: {
     isOpen(value) {
-      if(value) {
+      if (value) {
         this.closeSuccess()
       }
-    }
-  }
+    },
+  },
 }
 </script>

@@ -1,25 +1,7 @@
 <template>
   <div class="relative flex flex-col items-center">
-    <div
-      class="
-        flex flex-col
-        items-center
-        justify-center
-        w-full
-        rounded-md
-        background-plans
-      "
-    >
-      <p
-        class="
-          px-8
-          pt-10
-          text-5xl text-center
-          font-secondary
-          text-yellow
-          whitespace-nowrap
-        "
-      >
+    <div class="flex flex-col items-center justify-center w-full rounded-md background-plans">
+      <p class="px-8 pt-10 text-5xl text-center font-secondary text-yellow whitespace-nowrap">
         {{ homePlan.planName }}
       </p>
       <div class="flex pt-3">
@@ -45,29 +27,11 @@
         </div>
       </div>
     </div>
-    <button
-      v-if="isInAdmin"
-      @click="getPlanId"
-      class="mt-2 py-1 px-2 mx-auto bg-yellow rounded-lg"
-    >
+    <button v-if="isInAdmin" @click="getPlanId" class="mt-2 py-1 px-2 mx-auto bg-yellow rounded-lg">
       Editar
     </button>
-    <button
-      v-if="isInAdmin"
-      @click="deleteSelectedPlan"
-      class="
-        w-5
-        h-5
-        flex
-        justify-center
-        items-center
-        rounded-full
-        bg-red
-        absolute
-        top-0
-        right-0
-      "
-    >
+    <button v-if="isInAdmin" @click="deleteSelectedPlan"
+      class="w-5 h-5 flex justify-center items-center rounded-full bg-red absolute top-0 right-0">
       <icons name="close" class="text-white" />
     </button>
   </div>
@@ -94,10 +58,7 @@ export default {
     },
     // THIS COMPUTED FUNCTION GET THE CENTS OF A VALUE
     getCents() {
-      const decimalStr = Math.round((this.homePlan.price * 100) / 100)
-        .toFixed(2)
-        .toString()
-        .split('.')[1]
+      const decimalStr = (this.homePlan.price % 1).toFixed(2).substring(2)
       return Number(decimalStr)
     },
     isInAdmin() {
