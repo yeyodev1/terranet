@@ -29,7 +29,6 @@ const actions = {
           },
         }
       )
-      console.log(response)
       commit('SET_SUGGESTIONS', response.data.data)
     } catch (e) {
       console.error('CANNOT_GET_SUGGESTIONS', e)
