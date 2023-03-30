@@ -89,9 +89,9 @@ export default {
     },
     isFormValid() {
       return (
-        this.namePlan !== '' &&
-        this.pricePlan !== '' &&
-        this.speedPlan !== ''
+        this.jobTitle !== '' &&
+        this.jobDescription !== '' &&
+        this.requirements.length !== 0
       )
     },
   },
@@ -113,7 +113,7 @@ export default {
       this.jobTitle = ''
       this.jobDescription = ''
       this.jobRequirements = ''
-      this.requirements = ''
+      this.requirements = []
     },
     getRequirement() {
       this.requirements.push(this.jobRequirements)
