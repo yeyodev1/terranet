@@ -4,19 +4,25 @@
       <img src="@/static/Logos/LogoFooter.png" alt="" />
     </div>
 
-    <div class="flex flex-col mx-auto sm:justify-between md:justify-evenly md:flex-row lg:px-6 max-w-7xl">
+    <div
+      class="flex flex-col mx-auto sm:justify-between md:justify-evenly md:flex-row lg:px-6 max-w-7xl"
+    >
       <!-- CALL CENTER -->
       <div>
         <p class="text-xl font-bold text-blue">Atención al cliente</p>
         <a href="tel:+593939329000">
-          <button class="flex items-center justify-center mt-3 text-xl font-medium text-black transition-border">
+          <button
+            class="flex items-center justify-center mt-3 text-xl font-medium text-black transition-border"
+          >
             <icons class="h-6 pr-2" :name="phone" />
             0939329000
           </button>
         </a>
         <p class="text-xl font-bold text-blue">Ventas</p>
         <a href="tel:+593967377000">
-          <button class="flex items-center justify-center mt-3 text-xl font-medium text-black transition-border">
+          <button
+            class="flex items-center justify-center mt-3 text-xl font-medium text-black transition-border"
+          >
             <icons class="h-6 pr-2" :name="phone" />
             0967377000
           </button>
@@ -39,13 +45,18 @@
         <Content :linkSection="linkSection4" />
       </div>
       <div class="mt-12 md:mt-0">
-        <div class="flex flex-col items-center justify-start w-full pl-4 lg:px-5">
-          <p class="w-full text-xl font-bold text-blue">
-            Normativa
-          </p>
+        <div
+          class="flex flex-col items-center justify-start w-full pl-4 lg:px-5"
+        >
+          <p class="w-full text-xl font-bold text-blue">Normativa</p>
           <div class="flex flex-col w-full">
-            <a v-for="(link, index) in getRules" :key="index" target="_blank" :href="link.url"
-              class="hover:text-lightBlue w-full mt-3 text-base text-black transition-border">
+            <a
+              v-for="(link, index) in getRules"
+              :key="index"
+              target="_blank"
+              :href="link.url"
+              class="hover:text-lightBlue w-full mt-3 text-base text-black transition-border"
+            >
               {{ link.name }}
             </a>
           </div>
@@ -56,7 +67,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex'
 import Icons from '@/components/global/Icons.vue'
 import Content from './Content/Footer/content.vue'
 export default {
@@ -88,7 +99,7 @@ export default {
           url: '/speedometer',
         },
         {
-          name: '¿Cuál es mi plan ideal',
+          name: '¿Cuál es mi plan ideal?',
           url: '/homeplans#testplan',
         },
         {
@@ -142,7 +153,7 @@ export default {
     // },
   }),
   computed: {
-    ...mapGetters('rulesLinks', ['getRules'])
+    ...mapGetters('rulesLinks', ['getRules']),
   },
   mounted() {
     if (!this.getRules.length) {
@@ -150,8 +161,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions('rulesLinks', ['fetchRules'])
-  }
+    ...mapActions('rulesLinks', ['fetchRules']),
+  },
 }
 </script>
 
