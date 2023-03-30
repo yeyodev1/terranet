@@ -1,5 +1,5 @@
 <template>
-	<form class="flex flex-wrap w-4/5 max-w-7xl justify-between">
+	<div class="flex flex-wrap w-4/5 max-w-7xl justify-between">
 		<!-- NAME SECTION  -->
 		<div class="flex flex-col w-full pt-6 sm:w-2/5">
 			<label for="ci" class="text-base font-bold text-white font-principal">
@@ -67,7 +67,7 @@
 				Enviar
 			</button>
 		</div>
-	</form>
+	</div>
 </template>
 
 <script>

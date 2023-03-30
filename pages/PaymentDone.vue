@@ -62,7 +62,6 @@ export default {
           ids: storedBillsId
         }
         const response = await axios.post(`${process.env.NUXT_API}api/payment`, request);
-        console.log(response)
         this.result = 'Tu pago fue aceptado exitosamente'
       } catch (e) {
         console.error(e);

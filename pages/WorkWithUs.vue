@@ -18,8 +18,7 @@
     </div>
     <div class="w-4/5 max-w-6xl mx-auto my-20">
       <div v-if="getVacancies.length" class="mt-4">
-        <vacancy-card v-for="(vacancy, index) in getVacancies" :key="index" :vacancy="vacancy"
-          @applicant-form="sendApplication" class="mb-4" />
+        <vacancy-card v-for="(vacancy, index) in getVacancies" :key="index" :vacancy="vacancy" class="mb-4" />
       </div>
     </div>
   </div>
@@ -36,9 +35,6 @@ export default {
   },
   methods: {
     ...mapActions('vacancy', ['fetchVacancies']),
-    sendApplication(value) {
-      console.log(value)
-    },
   },
   mounted() {
     if (!this.getVacancies.length) {

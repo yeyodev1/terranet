@@ -57,7 +57,7 @@ const actions = {
       }, 1500)
     }
   },
-  async createPlan({ commit }, payload) {
+  async createPlan({ commit, dispatch }, payload) {
     try {
       const response = await axios.post(
         `${process.env.NUXT_API}api/plansBoard`,
@@ -70,7 +70,7 @@ const actions = {
           },
         }
       )
-      commit('SET_PLAN', payload)
+      dispatch('plans/fetchPlans', null, { root: true })
     } catch (e) {
       commit('SET_ERROR')
       setTimeout(() => {
@@ -101,7 +101,7 @@ const actions = {
       console.error(e)
     }
   },
-  async deletePlan({ commit }, payload) {
+  async deletePlan({ commit, dispatch }, payload) {
     try {
       const response = await axios.delete(
         `${process.env.NUXT_API}api/plansBoard/${payload}`,
@@ -113,8 +113,10 @@ const actions = {
           },
         }
       )
-      commit('ERASE_PLAN', payload)
-    } catch (e) {}
+      dispatch('plans/fetchPlans', null, { root: true })
+    } catch (e) {
+      console.error('CANNOT_DELETE_PLAN')
+    }
   },
   selectPlan({ commit }, payload) {
     commit('SELECT_PLAN', payload)

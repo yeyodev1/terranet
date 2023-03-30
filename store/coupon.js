@@ -17,13 +17,13 @@ const mutations = {
 }
 
 const actions = {
-  async saveCoupon({ commit }, payload) {
+  async saveCoupon({ commit, dispatch }, payload) {
     try {
       const response = await axios.post(
         `${process.env.NUXT_API}api/promotionCode`,
         payload
       )
-      commit('SET_COUPON', response.data.data)
+      dispatch('coupon/getCoupon', null, { root: true })
     } catch (e) {
       console.error(e)
     }
@@ -48,8 +48,22 @@ const actions = {
       console.error(e)
     }
   },
-  deleteCoupon({ commit }) {
-    commit('SET_COUPON', {})
+  async deleteCoupon({ commit }, payload) {
+    try {
+      const response = await axios.delete(
+        `${process.env.NUXT_API}api/promotionCode/${payload}`,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem('token')
+            )}`,
+          },
+        }
+      )
+      dispatch('coupon/getCoupon', null, { root: true })
+    } catch (error) {
+      console.error('CANNOT_DELETE_PROMOTION')
+    }
   },
 }
 
