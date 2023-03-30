@@ -14,11 +14,11 @@
                 Seleccionar archivo
               </p>
             </div>
-            <input type="file" class="opacity-0 absolute input-scale" @change.prevent="onFileChange" />
+            <input type="file" class="w-full opacity-0 absolute input-scale" @change.prevent="onFileChange" />
           </button>
-          <div v-if="Object.keys(file).length" class="w-16 h-16 flex justify-center items-center mt-2">
-            <p>
-              hey
+          <div v-if="name.length" class="w-auto h-16 flex justify-center items-center ">
+            <p class="w-auto text-white font-open text-lg">
+              {{ name }}
             </p>
           </div>
         </div>
@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import { emit } from 'process';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data: () => ({
-    file: {}
+    file: {},
+    name: ''
   }),
   computed: {
     ...mapGetters('workWithUs', ['isLoading'])
@@ -43,6 +43,7 @@ export default {
     async onFileChange(e) {
       try {
         const file = e.target.files[0]
+        this.name = file.name
         this.file = file
         const response = await this.setFile(file)
         this.$emit('image-response', response.data)
@@ -64,3 +65,14 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.input-scale {
+  transform: scale(1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+}
+</style>
