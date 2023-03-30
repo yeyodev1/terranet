@@ -1,16 +1,27 @@
 <template>
-  <div id="testplan" class="flex flex-col items-center justify-center w-full pt-12">
-    <p class="px-4 mt-12 text-2xl font-bold text-center text-white sm:mt-20 font-principal sm:text-3xl sm:px-0">
+  <div
+    id="testplan"
+    class="flex flex-col items-center justify-center w-full pt-12"
+  >
+    <p
+      class="px-4 mt-12 text-2xl font-bold text-center text-white sm:mt-20 font-principal sm:text-3xl sm:px-0"
+    >
       ¿Aún no sabes qué plan necesitas?
     </p>
     <p class="text-base text-center text-white font-principal sm:text-2xl">
-      Te ayudamor a elegir tu plan ideal
+      Te ayudamos a elegir tu plan ideal
     </p>
-    <button class="flex items-center justify-center w-12 h-12 mb-8" @click="showTestPlan">
+    <button
+      class="flex items-center justify-center w-12 h-12 mb-8"
+      @click="showTestPlan"
+    >
       <Icons class="text-yellow" :name="isPresset" />
     </button>
     <div class="flex flex-wrap items-center justify-center w-full px-2 py-2">
-      <form class="flex flex-wrap w-4/5 lg:mb-8 justify-evenly" :class="getForm">
+      <form
+        class="flex flex-wrap w-4/5 lg:mb-8 justify-evenly"
+        :class="getForm"
+      >
         <div class="sm:w-2/5">
           <QuestionPlan :quiz="quiz" @option="firstOption" />
         </div>
@@ -83,8 +94,8 @@ export default {
     },
     planRequeriments: {
       devices: null,
-      activities: null
-    }
+      activities: null,
+    },
   }),
   computed: {
     // GETTING STATE FROM FORM STORE
@@ -115,12 +126,15 @@ export default {
         return this.getPlans[0]
       } else if (devices === this.quiz.options[1].option) {
         return this.getPlans[1]
-      } else if (devices === this.quiz.options[2].option && activities.includes('Streaming')) {
+      } else if (
+        devices === this.quiz.options[2].option &&
+        activities.includes('Streaming')
+      ) {
         return this.getPlans[2]
       } else {
         return this.getPlans[0]
       }
-    }
+    },
   },
   methods: {
     ...mapActions('form', ['activeForm']),
@@ -136,7 +150,7 @@ export default {
     },
     secondOption(value) {
       this.planRequeriments.activities = value
-    }
+    },
   },
 }
 </script>
