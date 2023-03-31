@@ -4,7 +4,7 @@
       <p
         class="text-2xl font-bold text-center text-white sm:text-3xl font-principal"
       >
-        Nos gustaría conocer tu opinion
+        Nos gustaría conocer tu opinión
       </p>
     </div>
     <warning
