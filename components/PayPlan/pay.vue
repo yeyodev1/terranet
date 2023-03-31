@@ -8,18 +8,25 @@
         Realiza el pago de tus planes cada mes
       </p>
       <div class="mt-8 sm:w-1/3 sm:mt-12">
-        <p class="text-lg font-bold text-white font-principal">
-          Cédula
-        </p>
-        <input type="number" v-model="userIdentification" placeholder="Número de cédula"
-          class="w-full p-3 text-sm text-white border rounded-md outline-none background-input border-lightBlue" />
+        <p class="text-lg font-bold text-white font-principal">Cédula</p>
+        <input
+          type="number"
+          v-model="userIdentification"
+          placeholder="Número de cédula"
+          class="w-full p-3 text-sm text-white border rounded-md outline-none background-input border-lightBlue"
+        />
         <div v-if="!isCustomer" class="flex justify-center items-center mb-10">
-          <button class="p-3 mt-4 text-sm text-white border rounded-md font-principal border-lightBlue"
-            @click="getCustomer">
+          <button
+            class="p-3 mt-4 text-sm text-white border rounded-md font-principal border-lightBlue"
+            @click="getCustomer"
+          >
             buscar
           </button>
         </div>
-        <div v-else class="my-12 w-full mx-auto flex flex-col justify-center items-start">
+        <div
+          v-else
+          class="my-12 w-full mx-auto flex flex-col justify-center items-start"
+        >
           <p class="text-white font-principal">
             <strong class="mr-2 mb-4"> Nombre: </strong>
             {{ getCustomerResult.res.nombre }}
@@ -33,8 +40,16 @@
             {{ getCustomerResult.fecha_corte }}
           </p>
         </div>
-        <warning :isOpen="errorOpen" :getError="errorMessage" @close-warning="errorOpen = false" />
-        <success :isOpen="successOpen" :getSuccess="successMessage" @close-success="successOpen = false" />
+        <warning
+          :isOpen="errorOpen"
+          :getError="errorMessage"
+          @close-warning="errorOpen = false"
+        />
+        <success
+          :isOpen="successOpen"
+          :getSuccess="successMessage"
+          @close-success="successOpen = false"
+        />
         <PayPhoneCheckout v-if="isCustomer" :amount="getDoubt" />
       </div>
     </div>
@@ -42,41 +57,41 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import PayPhoneCheckout from '~/pages/PayPlan/components/PayPhoneCheckout.vue';
+import { mapActions, mapGetters } from 'vuex'
+import PayPhoneCheckout from '~/pages/PayPlan/components/PayPhoneCheckout.vue'
 
 export default {
   components: { PayPhoneCheckout },
   data: () => ({
-    userIdentification: "",
+    userIdentification: '',
     customer: {},
     errorOpen: false,
-    errorMessage: "Por favor, comprueba que hayas llenado todos los campos por favor",
+    errorMessage: 'La credencial ingresada es inválida, vuelva a intentar.',
     successOpen: false,
-    successMessage: "Tú solicitud ha sido enviada con éxito",
-    isPayphoneOpen: false
+    successMessage: 'Tú solicitud ha sido enviada con éxito',
+    isPayphoneOpen: false,
   }),
   computed: {
     ...mapGetters('payment', ['getCustomerResult']),
     isCustomer() {
-      return Object.keys(this.getCustomerResult).length;
+      return Object.keys(this.getCustomerResult).length
     },
     formIsValid() {
-      return this.userIdentification.length > 9;
+      return this.userIdentification.length > 9
     },
     getDoubt() {
-      return this.isCustomer ? this.getCustomerResult.res.saldo * 100 : 0;
-    }
+      return this.isCustomer ? this.getCustomerResult.res.saldo * 100 : 0
+    },
   },
   methods: {
     ...mapActions('payment', ['fetchUserById']),
     async getCustomer() {
       try {
-        await this.fetchUserById(this.userIdentification);
-        this.isPayphoneOpen = true;
+        await this.fetchUserById(this.userIdentification)
+        this.isPayphoneOpen = true
         this.saveBillsInlocalStorage()
       } catch (e) {
-        this.errorOpen = true;
+        this.errorOpen = true
       }
     },
     saveBillsInlocalStorage() {
@@ -84,9 +99,9 @@ export default {
       if (storedBills !== null) {
         localStorage.removeItem('bills')
       }
-      const bills = this.getCustomerResult.res.facturas.map(bill => bill.id)
+      const bills = this.getCustomerResult.res.facturas.map((bill) => bill.id)
       localStorage.setItem('bills', JSON.stringify(bills))
-    }
+    },
   },
 }
 </script>
