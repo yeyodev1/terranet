@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-wrap items-center justify-center w-full p-4 pb-12 border-b-2 border-white background-phoneCallToAction"
+    class="flex gap-3 flex-wrap items-center justify-center w-full p-4 pb-12 border-b-2 border-white background-phoneCallToAction"
   >
     <div class="flex flex-col items-center justify-center w-auto max-w-7xl">
       <p class="text-base text-white font-principal sm:text-2xl">
@@ -13,10 +13,10 @@
         y nos comunicaremos contigo
       </p>
     </div>
-    <div v-if="!getNumber.length" class="flex flex-wrap max-w-7xl px-4">
-      <div class="flex w-full md:w-auto mx-2">
+    <div v-if="!getNumber.length" class="flex flex-wrap gap-2 max-w-7xl px-4">
+      <div class="flex w-full md:w-auto">
         <div
-          class="flex items-end w-full p-1 border border-white rounded-md lg:w-full"
+          class="flex items-end w-auto p-1 border border-white rounded-md mx-auto"
         >
           <p class="text-white">(+593)</p>
           <label for="cellphone-numer">
@@ -24,14 +24,15 @@
               v-model="phoneNumber"
               class="w-auto px-2 text-white background focus:outline-none"
               id="cellphone-numer"
-              type="number"
+              type="string"
+              :maxlength="9"
               placeholder="_ _ _ _ _ _ _ _ _"
             />
           </label>
         </div>
       </div>
       <button
-        class="p-2 text-xs font-semibold rounded-md lg:px-6 lg:py-3 lg:text-base h-fit font-principal border border-white"
+        class="p-2 text-xs font-semibold rounded-md lg:px-6 lg:py-3 lg:text-base h-fit font-principal border border-white mx-auto"
         :class="{
           'text-black bg-yellow': isPhoneNumberValidated,
           'text-white bg-transparent': !isPhoneNumberValidated,
