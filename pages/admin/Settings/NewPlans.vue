@@ -121,7 +121,7 @@ export default {
         speed: Number(this.speedPlan),
       }
       if (this.isEditing) {
-        const id = this.selectedPlan.id
+        const id = this.selectedPlan._id
         this.editPlan({ id, ...plan })
         this.resetForm()
         this.selectedPlan = {}
