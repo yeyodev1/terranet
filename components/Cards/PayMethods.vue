@@ -1,21 +1,13 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full">
     <div
-      class="flex flex-col items-center justify-center w-4/5 px-24 pt-8 mt-8 border-b md:justify-evenly max-w-7xl background pb-7"
-    >
+      class="flex flex-col items-center justify-center w-4/5 px-24 pt-8 mt-8 border-b md:justify-evenly max-w-7xl background pb-7">
       <!-- PICHINCHA BANK  -->
-      <div
-        class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7"
-      >
+      <div class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7">
         <div class="flex md:w-1/3 items-center justify-center">
-          <img
-            src="@/static/Banks/BancoPichincha.png"
-            alt="Logo del banco pichincha"
-          />
+          <img src="@/static/Banks/BancoPichincha.png" alt="Logo del banco pichincha" />
         </div>
-        <div
-          class="flex md:w-1/3 flex-col sm:flex-row items-center justify-center"
-        >
+        <div class="flex md:w-1/3 flex-col sm:flex-row items-center justify-center">
           <div>
             <p class="font-semibold text-center text-white font-principal">
               Banco Pichincha <br />
@@ -31,18 +23,11 @@
         </div>
       </div>
       <!-- BOLIVARIANO BANK -->
-      <div
-        class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7"
-      >
+      <div class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7">
         <div class="flex md:w-1/3 items-center justify-center">
-          <img
-            src="@/static/Banks/BancoBolivarianoYWestern.png"
-            alt="Logo del banco bolivariano"
-          />
+          <img src="@/static/Banks/BancoBolivarianoYWestern.png" alt="Logo del banco bolivariano" />
         </div>
-        <div
-          class="flex md:w-1/3 flex-col sm:flex-row items-center justify-center"
-        >
+        <div class="flex md:w-1/3 flex-col sm:flex-row items-center justify-center">
           <div>
             <p class="font-semibold text-center text-white font-principal">
               Banco Bolivariano <br />
@@ -57,18 +42,11 @@
         </div>
       </div>
       <!-- PRODUBANCO  -->
-      <div
-        class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7"
-      >
+      <div class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7">
         <div class="flex md:w-1/3 items-center justify-center">
-          <img
-            src="@/static/Banks/ProdubancoYServipago.png"
-            alt="Logo de Produbanco"
-          />
+          <img src="@/static/Banks/ProdubancoYServipago.png" alt="Logo de Produbanco" />
         </div>
-        <div
-          class="flex md:w-1/3 items-center justify-center flex-col sm:flex-row"
-        >
+        <div class="flex md:w-1/3 items-center justify-center flex-col sm:flex-row">
           <div class="">
             <p class="font-semibold text-center text-white font-principal">
               Produbanco <br />
@@ -84,15 +62,11 @@
         </div>
       </div>
       <!-- BANCO DEL PACIFICO  -->
-      <div
-        class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7"
-      >
+      <div class="flex flex-col items-center justify-center w-full pb-6 border-b md:flex-row border-lightBlue pt-7">
         <div class="flex md:w-1/3 items-center justify-center">
           <img src="@/static/Banks/BancoPacifico.png" alt="" />
         </div>
-        <div
-          class="flex md:w-1/3 flex-col sm:flex-row justify-center items-center"
-        >
+        <div class="flex md:w-1/3 flex-col sm:flex-row justify-center items-center">
           <div>
             <p class="font-semibold text-center text-white font-principal">
               Banco Del Pacífico
@@ -121,23 +95,34 @@
         Realiza el pago de tus planes cada mes
       </p>
     </div>
+    <div class="w-full flex justify-center mb-4">
+      <button
+        class="p-2 text-xs font-semibold rounded-md text-black bg-yellow lg:px-6 lg:py-3 lg:text-base h-fit font-principal mx-auto"
+        @click="redirectToPay">
+        Paga en línea ahora
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    redirectToPay() {
+      this.$router.push('/payplan')
+    }
+  }
+}
 </script>
 
 <style scoped>
 .background {
-  background: linear-gradient(
-    155.02deg,
-    rgba(250, 251, 255, 0.4) 0.55%,
-    rgba(250, 251, 255, 0.190022) 20.21%,
-    rgba(250, 251, 255, 0.124771) 34.02%,
-    rgba(250, 251, 255, 0.0654234) 44.23%,
-    rgba(250, 251, 255, 0.02) 75.4%
-  );
+  background: linear-gradient(155.02deg,
+      rgba(250, 251, 255, 0.4) 0.55%,
+      rgba(250, 251, 255, 0.190022) 20.21%,
+      rgba(250, 251, 255, 0.124771) 34.02%,
+      rgba(250, 251, 255, 0.0654234) 44.23%,
+      rgba(250, 251, 255, 0.02) 75.4%);
   border-radius: 8px;
 }
 </style>
