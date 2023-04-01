@@ -63,10 +63,10 @@
           </div>
           <!-- USERS ADDRESS -->
           <div class="flex flex-col items-start justify-start w-full mt-6 sm:mt-8">
-            <label for="userAdress" class="w-full mb-3 text-base font-bold text-white font-principal sm:mb-0">
+            <label for="userAddress" class="w-full mb-3 text-base font-bold text-white font-principal sm:mb-0">
               Dirección
             </label>
-            <input type="text" id="userAdress" v-model="userAdress" placeholder="Dirección de domicilio" required
+            <input type="text" id="userAddress" v-model="userAddress" placeholder="Dirección de domicilio" required
               class="w-full px-3 py-3 text-white border rounded-md outline-none placeholder:text-white placeholder:font-principal placeholder:text-sm font-principal border-lightBlue background-input" />
           </div>
           <!-- DETAIL ADRESS   -->
@@ -138,6 +138,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { mapActions, mapGetters } from 'vuex'
 import Icons from '../global/Icons.vue'
 import Coupon from '../Coupon/Coupon.vue'
@@ -155,7 +156,7 @@ export default {
     userName: '',
     userEmail: '',
     userPhone: '',
-    userAdress: '',
+    userAddress: '',
     contactUser: '',
     contactPhone: '',
     userDetailAdress: '',
@@ -187,11 +188,6 @@ export default {
       return !this.isCouponDisplay ? 'arrowDown' : 'arrowUp'
     },
     showInput() {
-      // if (this.isCouponDisplay) {
-      //   return 'flex'
-      // } else {
-      //   return 'hidden'
-      // }
       return this.isCouponDisplay ? 'flex' : 'hidden';
     },
     // Validating form has information fron sending
@@ -201,7 +197,7 @@ export default {
         this.userName != '' &&
         this.userEmail != '' &&
         this.userPhone != '' &&
-        this.userAdress != '' &&
+        this.userAddress != '' &&
         this.contactUser != '' &&
         this.contactPhone != ''
       )
@@ -227,6 +223,16 @@ export default {
   methods: {
     ...mapActions('form', ['activeForm']),
     ...mapActions('coupon', ['getCoupon']),
+    ...mapActions('coupon', ['activeCoupon']),
+    resetValues() {
+      this.plan = ''
+      this.discountCode = ''
+      this.userId = ''
+      this.userName = ''
+      this.userEmail = ''
+      this.userPhone = ''
+      this.userAddress = ''
+    },
     showHomePlans() {
       if (this.showForm) {
         this.activeForm(false)
@@ -234,7 +240,6 @@ export default {
         this.activeForm(true)
       }
     },
-    ...mapActions('coupon', ['activeCoupon']),
     async sentData() {
       try {
         const couponCode = this.applyCoupon()
