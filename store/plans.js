@@ -79,7 +79,7 @@ const actions = {
       console.error(e)
     }
   },
-  async editPlan({ commit }, payload) {
+  async editPlan({ commit, dispatch }, payload) {
     try {
       const response = await axios.put(
         `${process.env.NUXT_API}api/plansBoard/${payload.id}`,
@@ -92,7 +92,7 @@ const actions = {
           },
         }
       )
-      commit('EDIT_PLAN', payload)
+      dispatch('plans/fetchPlans', null, { root: true })
     } catch (e) {
       commit('SET_ERROR')
       setTimeout(() => {
