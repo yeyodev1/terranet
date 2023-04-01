@@ -14,18 +14,18 @@
             <div class="w-full px-3 py-3 border rounded-md border-lightBlue">
               <template v-if="!Object.keys(selectedPlan).length">
                 <select v-model="plan" required class="w-full select">
-                  <option class="text-white background-input">
+                  <option class="text-white bg-blue">
                     Seleccion tú plan
                   </option>
                   <option v-for="(plan, index) in getPlans" :key="index"
-                    class="flex justify-between text-white items-center w-full  background-input">
+                    class="flex justify-between text-white items-center w-full  bg-blue">
                     <p>{{ plan.planName }}</p>
                     <p>$ {{ plan.price }}</p>
                   </option>
                 </select>
               </template>
               <template v-else>
-                <input v-model="selectedPlan.planName" class="w-full px-3 py-3 text-white background-input">
+                <input v-model="selectedPlan.planName" class="w-full px-3 py-3 text-white bg-blue">
               </template>
             </div>
           </div>
