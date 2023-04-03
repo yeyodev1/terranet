@@ -42,7 +42,7 @@
       </div>
       <div class="w-full mb-8 sm:w-5/12">
         <p class="pb-1 text-base font-bold text-white font-principal">
-          Télefono
+          Teléfono
         </p>
         <input
           type="number"
