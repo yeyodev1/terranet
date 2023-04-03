@@ -1,8 +1,10 @@
 <template>
   <div class="w-full">
     <div class="background">
-      <p class="pt-8 text-2xl font-bold text-center text-white font-principal sm:text-5xl">
-        Formas de pago
+      <p
+        class="pt-8 text-2xl font-bold text-center text-white font-principal sm:text-5xl"
+      >
+        Medios de pago
       </p>
       <p class="text-base text-center text-white font-principal sm:text-3xl">
         <strong class="text-lightBlue font-principal">Terranet</strong>
