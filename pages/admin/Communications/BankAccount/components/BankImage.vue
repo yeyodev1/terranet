@@ -35,6 +35,11 @@ export default {
   },
   methods: {
     ...mapActions('bankImage', ['sendBankImage']),
+    resetValues() {
+      this.name = ''
+      this.imageUrl = ''
+      this.file = {}
+    },
     async onFileChange(e) {
       try {
         const file = e.target.files[0]
@@ -43,7 +48,7 @@ export default {
         const response = await this.setFile(file)
         this.imageUrl = response.data.url
         this.$emit('bank-image', this.imageUrl)
-        this.file = {}
+        this.resetValues()
       } catch (error) {
         console.error('CANNOT_SEND_BANK_IMAGE')
       }
