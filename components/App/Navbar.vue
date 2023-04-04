@@ -1,14 +1,20 @@
 <template>
   <div
     class="w-64 bg-appBackground fixed top-0 bottom-0 right-0 z-50 border-r border-lightBlue p-4 min-h-screen transition-all"
-    :class="{ 'left-0': isMenuOpen, '-left-64': !isMenuOpen }">
+    :class="{ 'left-0': isMenuOpen, '-left-64': !isMenuOpen }"
+  >
     <div class="w-full py-1 px-2 flex justify-end items-center mb-2">
       <button @click="closeMenu" class="w-8 h-8">
         <icons name="close" class="text-white" />
       </button>
     </div>
     <div class="flex flex-col justify-start items-center">
-      <menu-toggle v-for="(item, i) in menu" :key="i" :itemMenu="item" @close-menu="closeMenu" />
+      <menu-toggle
+        v-for="(item, i) in menu"
+        :key="i"
+        :itemMenu="item"
+        @close-menu="closeMenu"
+      />
     </div>
   </div>
 </template>
@@ -53,6 +59,10 @@ export default {
           {
             name: 'Correos',
             link: '/admin/communications/Emails',
+          },
+          {
+            name: 'Cuentas bancarias',
+            link: '/admin/communications/BankAccount',
           },
         ],
       },
