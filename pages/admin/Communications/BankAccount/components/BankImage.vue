@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div class="w-4/5 mt-6">
     <button class="p-2 border border-lightBlue rounded-lg">
-      <div class="flex justify-start items-center w-full">
+      <div class="flex justify-center items-center w-full">
         <div class="w-5 h-5 flex justify-center items-center">
           <icons name="upload" class="text-white" />
         </div>
-        <p class="text-white ml-2">Seleccionar archivo</p>
+        <div>
+          <p class="text-white ml-2 text-center">Seleccionar archivo</p>
+        </div>
       </div>
       <input
         type="file"
@@ -13,13 +15,9 @@
         @change.prevent="onFileChange"
       />
     </button>
-    <div
-      v-if="name.length"
-      class="w-auto h-16 flex justify-center items-center"
-    >
-      <p class="w-auto text-white font-open text-lg">
-        {{ name }}
-      </p>
+
+    <div v-if="imageUrl.length" class="mt-6 rounded-sm">
+      <img :src="imageUrl" />
     </div>
   </div>
 </template>
@@ -30,6 +28,7 @@ export default {
   data: () => ({
     file: {},
     name: '',
+    imageUrl: '',
   }),
   computed: {
     ...mapGetters('bankImage', ['isLoading']),
@@ -42,7 +41,8 @@ export default {
         this.name = file.name
         this.file = file
         const response = await this.setFile(file)
-        this.$emit('image-response', response.data)
+        this.imageUrl = response.data.url
+        this.$emit('bank-image', this.imageUrl)
         this.file = {}
       } catch (error) {
         console.error('CANNOT_SEND_BANK_IMAGE')
@@ -51,8 +51,8 @@ export default {
     async setFile(file) {
       try {
         const fd = new FormData()
-        fd.append('cvFile', file)
-        const result = await this.sendCv(fd)
+        fd.append('image', file)
+        const result = await this.sendBankImage(fd)
         return result
       } catch (error) {
         console.error(error)
