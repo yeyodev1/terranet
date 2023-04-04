@@ -21,7 +21,7 @@ const actions = {
     try {
       commit('SET_LOADING', true)
       const response = await axios.post(
-        `${process.env.NUXT_BANK_IMAGE}`,
+        `${process.env.NUXT_API}api/bankAccounts/image/`,
         payload,
         {
           headers: {
