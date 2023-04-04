@@ -8,7 +8,7 @@
       </p>
       <div class="w-full flex justify-end items-center my-3">
         <button
-          class="w-28 rounded-lg flex justify-center items-center text-appBackground py-1 mt-4 bg-yellow"
+          class="rounded-lg flex justify-center items-center text-white border border-lightBlue mt-4 bg-appBackground px-7 py-4 font-bold text-xl"
           @click="openCloseForm"
         >
           Agregar Entidad Bancaria
@@ -36,6 +36,9 @@
           />
         </div>
         <BankImage @bank-image="getBankImage" />
+        <div v-if="image.length" class="mt-3">
+          <img :src="image" alt="" />
+        </div>
         <button
           class="w-28 rounded-lg flex justify-center items-center text-appBackground py-1 mt-4"
           :class="{
@@ -57,6 +60,7 @@ import { mapGetters, mapActions } from 'vuex'
 import BankImage from './BankImage.vue'
 
 export default {
+  components: { BankImage },
   data: () => ({
     isOpen: false,
     nameBank: '',
@@ -91,9 +95,7 @@ export default {
     },
     openCloseForm() {
       this.isOpen = !this.isOpen
-      console.log('me ejecturo')
     },
   },
-  components: { BankImage },
 }
 </script>
