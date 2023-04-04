@@ -1,8 +1,14 @@
 <template>
   <div class="w-4/5 mt-6">
-    <button class="p-2 border border-lightBlue rounded-lg">
+    <button
+      class="p-2 border border-lightBlue rounded-lg"
+      @change.prevent="onFileChange"
+    >
       <div class="flex justify-center items-center w-full">
-        <div class="w-5 h-5 flex justify-center items-center">
+        <div
+          class="w-5 h-5 flex justify-center items-center"
+          @change.prevent="onFileChange"
+        >
           <icons name="upload" class="text-white" />
         </div>
         <div>
