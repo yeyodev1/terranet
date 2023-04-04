@@ -1,8 +1,8 @@
 <template>
   <div class="w-full flex justify-between p-5">
     <div class="flex md:w-1/4 items-center justify-center">
-      <div>
-        <img :src="url" alt="Logo del banco pichincha" class="w-36 h-36" />
+      <div class="">
+        <img :src="url" alt="Logo del banco pichincha" class="" />
       </div>
     </div>
     <div class="flex md:w-1/4 flex-col sm:flex-row items-center justify-center">
@@ -19,7 +19,9 @@
         </p>
       </div>
     </div>
-    <button class="text-red" @click="deleteBankAccount">Borrar</button>
+    <button class="text-red" v-if="showDeleteButton" @click="deleteBankAccount">
+      Borrar
+    </button>
   </div>
 </template>
 
@@ -42,6 +44,11 @@ export default {
     id: {
       type: String,
       required: true,
+    },
+  },
+  computed: {
+    showDeleteButton() {
+      return this.$route.path == '/admin/communications/BankAccount'
     },
   },
   methods: {
