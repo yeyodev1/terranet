@@ -21,8 +21,15 @@ const actions = {
     try {
       commit('SET_LOADING', true)
       const response = await axios.post(
-        `${process.env.NUXT_BANK_IMAGE}api/bankimage`,
-        payload
+        `${process.env.NUXT_BANK_IMAGE}`,
+        payload,
+        {
+          headers: {
+            Authorization: `bearer ${JSON.parse(
+              localStorage.getItem('token')
+            )}`,
+          },
+        }
       )
       commit('SET_LOADING', false)
       return response.data
@@ -31,8 +38,25 @@ const actions = {
     }
   },
   async postBankImage({ commit }, payload) {
+    console.log(payload)
     try {
-      await axios.post(`${process.env.NUXT_BANK_IMAGE_URL}api/banks`)
+      commit('SET_LOADING', true)
+      const formData = new FormData()
+      formData.append('image', payload)
+      const response = await axios.post(
+        `${process.env.NUXT_BANK_IMAGE}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${JSON.parse(
+              localStorage.getItem('token')
+            )}`,
+            'Content-type': 'multipart/form-data',
+          },
+        }
+      )
+      commit('SET_LOADING', false)
+      return response.data
     } catch (error) {
       console.error('CANNOT_SEND_BANK_IMAGE', error)
     }
