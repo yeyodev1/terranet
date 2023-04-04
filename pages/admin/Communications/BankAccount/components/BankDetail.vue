@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full flex justify-between p-5">
-    <div class="flex md:w-1/4 items-center justify-center">
+  <div class="w-full flex flex-col md:flex-row justify-between md:p-5">
+    <div class="flex md:w-1/4 items-center justify-center mb-3 md:mb-0 w-full">
       <div class="">
         <img :src="url" alt="Logo del banco pichincha" class="" />
       </div>
