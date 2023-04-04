@@ -44,7 +44,7 @@ const actions = {
       const formData = new FormData()
       formData.append('image', payload)
       const response = await axios.post(
-        `${process.env.NUXT_BANK_IMAGE}`,
+        `${process.env.NUXT_API}api/bankAccounts/image/`,
         formData,
         {
           headers: {
