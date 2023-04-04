@@ -1,7 +1,7 @@
 <template>
   <div class="w-4/5 mt-6">
     <button
-      class="p-2 border border-lightBlue rounded-lg"
+      class="p-2 border border-lightBlue rounded-lg cursor-default"
       @change.prevent="onFileChange"
     >
       <div class="flex justify-center items-center w-full">
@@ -17,7 +17,7 @@
       </div>
       <input
         type="file"
-        class="w-full h-full opacity-0 bg-white"
+        class="w-full h-full opacity-0 bg-white cursor-pointer"
         @change.prevent="onFileChange"
       />
     </button>
