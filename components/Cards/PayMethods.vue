@@ -21,10 +21,15 @@
     <div class="w-4/5 mt-3 mb-10 max-w-7xl">
       <p class="text-yellow text-lg lg:text-xl">Importante</p>
       <p class="text-base text-white font-principal">
-        Envíanos tu comprobante de pago al WhatsApp +593969001683
+        Envíanos tu comprobante de pago al
+        <a
+          target="_blank"
+          href="https://api.whatsapp.com/send?phone=593967377000&text=%C2%A1Hola!%20Vi%20tu%20perfil%"
+          >WhatsApp +593969001683</a
+        >
       </p>
       <p class="text-base text-white font-principal">
-        Realiza el pago de tus planes cada mes
+        Recuerda: Debes realizar el pago de tu(s) servicio(s) mes a mes.
       </p>
     </div>
     <div class="w-full flex justify-center mb-4">
