@@ -24,7 +24,7 @@
         Envíanos tu comprobante de pago al WhatsApp +593969001683
       </p>
       <p class="text-base text-white font-principal">
-        Realiza el pago de tus planes cada mes
+        Recuerda: Debes realizar el pago de tu(s) servicio(s) mes a mes.
       </p>
     </div>
     <div class="w-full flex justify-center mb-4">
