@@ -22,9 +22,7 @@
       <p class="text-yellow text-lg lg:text-xl">Importante</p>
       <p class="text-base text-white font-principal">
         Envíanos tu comprobante de pago al
-        <a
-          target="_blank"
-          href="https://api.whatsapp.com/send?phone=593967377000&text=%C2%A1Hola!%20Vi%20tu%20perfil%"
+        <a target="_blank" href="https://wa.me/593969001683"
           >WhatsApp +593969001683</a
         >
       </p>
