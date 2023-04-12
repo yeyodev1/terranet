@@ -38,6 +38,13 @@
           </button>
         </nuxt-link>
       </div>
+      <div class="w-full flex items-center justify-center mt-5">
+        <nuxt-link to="/frequentquestions">
+          <button class="text-whie p-4 bg-yellow rounded-md font-principal">
+            Vamos a las preguntas
+          </button>
+        </nuxt-link>
+      </div>
     </div>
   </div>
 </template>
