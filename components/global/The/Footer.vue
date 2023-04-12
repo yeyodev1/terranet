@@ -10,12 +10,15 @@
       <!-- CALL CENTER -->
       <div>
         <p class="text-xl font-bold text-blue">Atención al cliente</p>
-        <a href="tel:+593939329000">
+        <a
+          target="_blank"
+          href="https://api.whatsapp.com/send/?phone=593991005007&text&type=phone_number&app_absent=0"
+        >
           <button
             class="flex items-center justify-center mt-3 text-xl font-medium text-black transition-border"
           >
             <icons class="h-6 pr-2" :name="phone" />
-            0939329000
+            0991005007
           </button>
         </a>
         <p class="text-xl font-bold text-blue">Ventas</p>
