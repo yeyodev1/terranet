@@ -33,9 +33,9 @@
           Consulta las preguntas frecuentas aquí
         </p>
         <nuxt-link to="/frequentquestions">
-          <div class="flex items-center justify-center w-6 h-6">
+          <button class="flex items-center justify-center w-6 h-6">
             <icons name="arrowRight" class="text-yellow" />
-          </div>
+          </button>
         </nuxt-link>
       </div>
     </div>
