@@ -113,6 +113,10 @@ export default {
           name: 'Preguntas frecuentes',
           url: '/frequentQuestions',
         },
+        {
+          name: 'Test de velocidad',
+          url: '/speedometer',
+        },
       ],
     },
     linkSection3: {
