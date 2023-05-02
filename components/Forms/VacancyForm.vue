@@ -106,7 +106,7 @@
       <button
         class="mt-12 rounded-lg py-1 px-2 text-appBackground"
         :class="{ 'bg-yellow': formIsValid, 'bg-grey': !formIsValid }"
-        :disabled="formIsValid"
+        :disabled="!formIsValid"
         @click.prevent="sendApplications"
       >
         Enviar
@@ -145,7 +145,6 @@ export default {
         this.applicant.lastname != '' &&
         !this.emailIsValid != '' &&
         this.applicant.address != '' &&
-        this.applicant.fileUrl != '' &&
         this.applicant.ci != ''
       )
     },
