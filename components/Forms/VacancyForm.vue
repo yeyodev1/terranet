@@ -136,6 +136,7 @@ export default {
       address: '',
       fileUrl: '',
       phoneNumber: '',
+      isFileUpload: false,
     },
   }),
   computed: {
@@ -145,7 +146,8 @@ export default {
         this.applicant.lastname != '' &&
         !this.emailIsValid != '' &&
         this.applicant.address != '' &&
-        this.applicant.ci != ''
+        this.applicant.ci != '' &&
+        this.applicant.isFileUpload === true
       )
     },
     emailIsValid() {
@@ -189,6 +191,7 @@ export default {
     },
     getCvFile(event) {
       this.applicant.fileUrl = event.url
+      this.applicant.isFileUpload = true
     },
   },
   components: { VacancyAddFile },
@@ -200,4 +203,3 @@ export default {
   background: transparent;
 }
 </style>
-
